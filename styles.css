@@ -11,20 +11,20 @@
   padding: 0;
   margin: 0;
   position: absolute;
-  bottom: 30
+  bottom: 5;
 }
 
-#headerName {
+#nameTitle {
   position: relative;
-  height: 130;
+  height: 110;
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
 
 li {
