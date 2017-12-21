@@ -23,15 +23,23 @@ div#header {
   text-align: center;
 }
 
+a.otherLinks {
+  margin: 0 2%;
+  text-decoration: none;
+}
+
 #nameTitle {
   position: relative;
   height: 110;
-  margin: 8px;
+  margin: 0 5%;
 }
 
 #entry {
-  margin-left: 10%;
-  margin-right: 10%
+  margin: 0 20%;
+}
+
+hr {
+  margin: 0 15%;
 }
 
 ul.centerUL {
