@@ -3,6 +3,19 @@
   font-size: 60px;
   padding: 0;
   margin: 0;
+  color: #333;
+}
+
+span.first {
+  color: #333;
+}
+
+span.middle {
+  color: gray;
+}
+
+span.last {
+  color: #e79100;
 }
 
 .title {
@@ -12,10 +25,13 @@
   margin: 0;
   position: absolute;
   bottom: 5;
+  color: #333;
 }
 
 body {
+  font-family: 'Roboto', sans-serif;
   margin: 0;
+  color: #555555;
 }
 
 div#header {
@@ -34,11 +50,21 @@ a.otherLinks {
   margin: 0 5%;
 }
 
-#entry {
+.entry {
   margin: 0 20%;
 }
 
-hr {
+.smallEntry {
+  position: relative;
+  margin: 0 1%;
+}
+
+.projectName {
+  font-family: 'Roboto Condensed', sans-sarif;
+  line-height: 50%;
+}
+
+hr.bottomLine {
   margin: 0 15%;
 }
 
