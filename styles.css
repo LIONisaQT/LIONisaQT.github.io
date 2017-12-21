@@ -14,21 +14,38 @@
   bottom: 5;
 }
 
+body {
+  margin: 0;
+}
+
+div#header {
+  width: 100%;
+  text-align: center;
+}
+
 #nameTitle {
   position: relative;
   height: 110;
+  margin: 8px;
 }
 
-ul {
+#entry {
+  margin-left: 10%;
+  margin-right: 10%
+}
+
+ul.centerUL {
   list-style-type: none;
-  margin: 0;
+  margin: 2px auto;
   padding: 0;
   overflow: hidden;
   background-color: #333;
 }
 
-li {
-    float: left;
+.centerUL li {
+    /* float: left; */
+    display: inline;
+    text-align: center;
 }
 
 li a {
