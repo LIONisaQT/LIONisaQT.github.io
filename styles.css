@@ -43,9 +43,9 @@ ul.centerUL {
 }
 
 .centerUL li {
-    /* float: left; */
-    display: inline;
+    display: inline-block;
     text-align: center;
+    margin: 0 5%;
 }
 
 li a {
@@ -57,7 +57,7 @@ li a {
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
+  color: darkgray;
 }
 
 .active {
