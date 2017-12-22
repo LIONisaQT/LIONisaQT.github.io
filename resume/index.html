@@ -1,21 +1,26 @@
 <head>
     <title>Ryan Shee | Resume</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400|Roboto:400,900" rel="stylesheet">
+    <script type='text/javascript' src='../toggle.js' ></script>
     <link rel="stylesheet" type="text/css" href="../styles.css">
 </head>
 <body>
+  <label class="switch">
+    <input type="checkbox" onclick="toggleMode()">
+    <span class="slider round"></span>
+  </label>
   <div id="wrapper">
     <div class="top">
       <div id="nameTitle">
-        <h1 class="name"><span class="first">RYAN</span><span class="middle">Z</span><span class="last">SHEE</span></h1>
+        <h1 class="name">RYAN<span class="middle">Z</span><span class="last">SHEE</span></h1>
         <h3 class="title"><i>I JUST NEED A JOB PLS</i></h3>
       </div>
       <div id="header">
         <ul class="centerUL">
-          <li><a href="../">Home</a></li>
-          <li><a href="/portfolio/">Portfolio</a></li>
-          <li><a href="/resume/">Resume</a></li>
-          <li><a href="/about/">About</a></li>
+          <li><a class="headerLink" href="../">Home</a></li>
+          <li><a class="headerLink" href="/portfolio/">Portfolio</a></li>
+          <li><a class="headerLink active" href="/resume/">Resume</a></li>
+          <li><a class="headerLink" href="/about/">About</a></li>
         </ul>
       </div>
     </div>
