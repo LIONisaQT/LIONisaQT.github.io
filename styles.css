@@ -107,6 +107,9 @@ li a.active {
   display: inline-block;
   width: 60px;
   height: 34px;
+  float: right;
+  bottom: 45px;
+  right: 5%;
 }
 
 .switch input {display:none;}
