@@ -102,6 +102,14 @@ li a.active {
   color: #e79100;
 }
 
+.dark-header {
+  background-color: #333;
+}
+
+.darker-header {
+  background-color: #222;
+}
+
 .switch {
   position: relative;
   display: inline-block;

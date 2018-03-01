@@ -4,7 +4,9 @@ function toggleMode() {
     if (lightMode) {
         document.body.style.backgroundColor="#333";
         document.getElementById('nameTitle').style.color="#eee";
-        document.getElementById('header').style.backgroundColor="#222";
+        // document.getElementById('header').style.backgroundColor="#222";
+        document.getElementById('header').classList.remove('dark-header');
+        document.getElementById('header').classList.add('darker-header');
         document.getElementById('wrapper').style.color="#eee";
         document.getElementById('wrapper').style.backgroundColor="#333";
         let notes = document.getElementsByClassName('projectNote');
@@ -16,6 +18,8 @@ function toggleMode() {
         document.body.style.backgroundColor="#eee";
         document.getElementById('nameTitle').style.color="#333";
         document.getElementById('header').style.backgroundColor="#333";
+        document.getElementById('header').classList.remove('darker-header');
+        document.getElementById('header').classList.add('dark-header');
         document.getElementById('wrapper').style.color="#333";
         document.getElementById('wrapper').style.backgroundColor="#eee";
         let notes = document.getElementsByClassName('projectNote');
