@@ -5,19 +5,17 @@ if (!checkValid(localStorage.getItem('isLight'))) {
 let lightMode = localStorage.getItem('isLight');
 // console.log('lightMode set to ' + lightMode);
 
-// Set initial theme
-window.onload = function() {
-    if (lightMode == 1) {
-        // console.log('Setting up page with light theme');
-        setLightTheme();
-        document.getElementById('toggle').checked = 0; // Make sure checkbox is (un)checked appropriately
-    } else if (lightMode == 0) {
-        // console.log('Setting up page with dark theme');
-        setDarkTheme();
-        document.getElementById('toggle').checked = 1; // Make sure checkbox is (un)checked appropriately
-    } else {
-        console.log('lightMode is ' + lightMode + ', you shouldn\'t be here wtf');
-    }
+// Set up initial theme
+if (lightMode == 1) {
+    // console.log('Setting up page with light theme');
+    setLightTheme();
+    document.getElementById('toggle').checked = 0; // Make sure checkbox is (un)checked appropriately
+} else if (lightMode == 0) {
+    // console.log('Setting up page with dark theme');
+    setDarkTheme();
+    document.getElementById('toggle').checked = 1; // Make sure checkbox is (un)checked appropriately
+} else {
+    console.log('lightMode is ' + lightMode + ', you shouldn\'t be here wtf');
 }
 
 // Toggle theme when switch pressed
