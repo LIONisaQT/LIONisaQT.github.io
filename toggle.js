@@ -1,36 +1,34 @@
-let lightMode;
-localStorage.clear();
-
 if (!checkValid(localStorage.getItem('isLight'))) {
-    localStorage.setItem('isLight', 0); // Set initial value of isLight if invalid
+    localStorage.setItem('isLight', 1); // Set initial value of isLight if invalid
 }
 
-lightMode = localStorage.getItem('isLight');
-console.log('lightMode set to ' + lightMode);
+let lightMode = localStorage.getItem('isLight');
+// console.log('lightMode set to ' + lightMode);
 
 // Set initial theme
 window.onload = function() {
     if (lightMode == 1) {
-        console.log('Setting up page with light theme');
+        // console.log('Setting up page with light theme');
         setLightTheme();
+        document.getElementById('toggle').checked = 0; // Make sure checkbox is (un)checked appropriately
     } else if (lightMode == 0) {
-        console.log('Setting up page with dark theme');
+        // console.log('Setting up page with dark theme');
         setDarkTheme();
+        document.getElementById('toggle').checked = 1; // Make sure checkbox is (un)checked appropriately
     } else {
         console.log('lightMode is ' + lightMode + ', you shouldn\'t be here wtf');
     }
-    document.getElementById('toggle').checked = lightMode; // Make sure checkbox is appropriated (un)checked
 }
 
 // Toggle theme when switch pressed
 function toggleMode() {
     if (lightMode == 0) {
-        console.log('Switching to light theme');
+        // console.log('Switching to light theme');
         setLightTheme();
         lightMode = 1;
         localStorage.setItem('isLight', lightMode);
     } else if (lightMode == 1) {
-        console.log('Switching to dark theme');
+        // console.log('Switching to dark theme');
         setDarkTheme();
         lightMode = 0;
         localStorage.setItem('isLight', lightMode);
@@ -65,7 +63,7 @@ function setLightTheme() {
 function setDarkTheme() {
     document.body.style.backgroundColor="#333";
     document.getElementById('nameTitle').style.color="#eee";
-    // document.getElementById('header').style.backgroundColor="#222";
+    document.getElementById('header').style.backgroundColor="#222";
     document.getElementById('header').classList.remove('dark-header');
     document.getElementById('header').classList.add('darker-header');
     document.getElementById('wrapper').style.color="#eee";
