@@ -38,10 +38,10 @@ function toggleMode() {
 // Checks if isLight exists and is a valid value
 function checkValid(item) {
     if (item === null || (item != 1 && item != 0)) {
-        console.log('isLight does not exist or does not have a valid value');
+        // console.log('isLight does not exist or does not have a valid value');
         return false;
     } else {
-        console.log('isLight does exist and has a valid value');
+        // console.log('isLight does exist and has a valid value');
         return true;
     }
 }
