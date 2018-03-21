@@ -1,54 +1,130 @@
+<!DOCTYPE html>
+<html>
 <head>
-    <title>Ryan Shee | Home</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400|Roboto:400,900" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/styles.css">
+  <title>Ryan Shee</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:100|Ubuntu:700" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/styles2.css">
 </head>
 <body>
-  <div id="wrapper">
-    <div class="top">
-      <div id="nameTitle">
-        <h1 class="name">RYAN<span class="middle">Z</span><span class="last">SHEE</span></h1>
-        <h3 class="title"><i>I JUST NEED A JOB PLS</i></h3>
-      </div>
-      <label class="switch">
-        <input id="toggle" type="checkbox" onclick="toggleMode()">
-        <span class="slider round"></span>
-      </label>
-      <div id="header">
-        <ul class="centerUL">
-          <li><a class="headerLink active" href="../">Home</a></li>
-          <li><a class="headerLink" href="/portfolio/">Portfolio</a></li>
-          <li><a class="headerLink" href="/resume/">Resume</a></li>
-          <li><a class="headerLink" href="/about/">About</a></li>
-        </ul>
-      </div>
-    </div>
+  <div class="top-container">
+    <h1 class="name">RYAN Z SHEE</h1>
+    <p class="title">Game Design and Development</p>
+    <!-- <label class="switch">
+      <input id="toggle" type="checkbox" onclick="toggleMode()">
+      <span class="slider round"></span> -->
+    </label>
+  </div>
 
-    <div class="entry">
-      <h3>Hello! I'm currently looking for any new opportunities!</h3>
+  <div class="header" id="myHeader">
+    <ul class="centerUL">
+      <li><a class="headerLink" href="#home">Home</a></li>
+      <li><a class="headerLink" href="#game-projects">Game Projects</a></li>
+      <li><a class="headerLink" href="#engineering-projects">Engineering Projects</a></li>
+      <li><a class="headerLink" href="#resume">Resume</a></li>
+      <li><a class="headerLink" href="#about">About</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <div id="home" class="anchor"></div>
+    <div id="home-actual">
+      <h1 class="section-title">Hello! I'm currently looking for any new opportunities!</h1>
       <p>
         My name is Ryan Shee and I major in Computer Science: Computer Game Design at the University of California, Santa Cruz!
         I'll be graduating June 2018.
       </p>
       <p>
-        I have experience instructing game design and development, and I've made games with Unity, Unreal, PhaserJS, and libGDX.
+        I have experience instructing game design and development, and I've made games with Unity, Unreal Engine, PhaserJS, and libGDX.
         I've also made simple apps with Android Studio.
-        You can check all of them out by clicking <a href="/portfolio" style="text-decoration: none; color: #e79100">here</a>.
+        I also have experience with back-end web development, thanks to Food Now!, a recent web application project.
+        You can check out my game projects by clicking <a href="#game-projects" style="text-decoration: none; color: #e79100">here</a>.
       </p>
       <p>
-        Everything on my website is currently under construction!
+        Everything on my website is currently under construction! Mobile view support will come soon!
       </p>
     </div>
 
-    <br />
-    <hr class="bottomLine"/>
-    <div>
-      <h4 style="text-align:center">
-        <a class="otherLinks" href="https://github.com/lionisaqt" target="_blank">GitHub</a>
-        <a class="otherLinks" href="https://www.linkedin.com/in/ryanzshee/" target="_blank">LinkedIn</a>
-        <a class="otherLinks" href="https://twitter.com/ryanzshee" target="_blank">Twitter</a>
-      </h4>
+    <div id="game-projects" class="anchor"></div>
+    <div id="game-projects-actual">
+      <h1 class="section-title">Game Design and Development Projects</h1>
+      <div id="shroommates">
+        <div class="project-header">
+          <h2 class="project-title">Shroommates</h2>
+          <h3 class="project-note"><i>Made with Unreal Engine (currently work in progress)</i></h3>
+        </div>
+        <div class="project-entry">
+          <p>
+            <a href="/shroommates" style="text-decoration: none; color: #e79100">Shroommates</a> is stealth game where users play as a sentient mushroom trying to grow in secret in a UCSC student's apartment.
+            The mushroom can grow by consuming food and staying out of direct sunlight.
+            Players must adapt to different sizes, as size dynamically alters speed and hiding ability.
+            Complete the objectives while trying to keep out of sight of the AI human!
+            Check out the Shroommates repository on <a href="https://github.com/LIONisaQT/Shroommates" style="text-decoration: none; color: #e79100">GitHub</a>.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Lead developer: Leading and delegating tasks to six other programmers.</li>
+            <li>AI programmer: Quickly implemented working temporary AI sufficient for prototyping purposes within a few days. Currently porting old AI functions and behaviors into newer, more robust AI, who contains an improved behavior tree.
+            <li>Generalist programmer: Implementing game behaviors as needed in various areas.</li>
+            <li>Point person for communication and question-answering with professors</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <img src="/img/sm_living_couch-desk.png" alt="Shroommates image 1" width=33% height=33%>
+          <img src="/img/sm_bathroom.png" alt="Shroommates image 1" width=33% height=33%>
+          <img src="/img/sm_living.png" alt="Shroommates image 1" width=33% height=33%>
+        </div>
+      </div>
+      <br>
+      <div id="min-shmup">
+        <div class="project-header">
+          <h2 class="project-title">MinShmup</h2>
+          <h3 class="project-note"><i>Written in Java using libGDX and Android Studio (currently on hiatus)</i></h3>
+        </div>
+        <div class="project-entry">
+          <p>
+             MinShmup is a simple, minimalistic shoot-em up for Android.
+             The intention of the project is for me to learn in-depth about and play with various methods and functions libGDX has to offer through a simple game.
+             For the player, I want to make a game that looks aethetically pleasing, satisfying to play, and easy to pick up and play whenever they hav some time to kill.
+             As a developer, I want to make a light-weight game with robust, easy-to-read code, as well as use the project to exercise good game development practices.
+             MinShmup currently doesn't have a public repository on GitHub, but will in the upcoming weeks.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Feels great to play, even in its prototype stage &ndash; the player receives pleasing and appropriate visual and audio feedback for various in-game actions.</li>
+            <li>Fully takes advantage of libGDX's object pooling system to handle disposable objects, thus preventing any memory leaks and decreasing overall memory usage.</li>
+            <li>More libGDX methods to be implemented to optimize the game even further in the future.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <h3>Pictures soon!</h3>
+        </div>
+      </div>
+    </div>
+
+    <div id="engineering-projects" class="anchor"></div>
+    <div id="engineering-projects-actual">
+      <h1 class="section-title">Engineering Projects</h1>
+    </div>
+
+    <div id="resume" class="anchor"></div>
+    <div id="resume-actual">
+      <h1 class="section-title">Resume</h1>
+    </div>
+    <div id="about" class="anchor"></div>
+    <div id="about-actual">
+      <h1 class="section-title">About</h1>
     </div>
   </div>
+
+  <br />
+  <hr class="bottomLine"/>
+  <div>
+    <h4 style="text-align:center">
+      <a class="otherLinks" href="https://github.com/lionisaqt" target="_blank">GitHub</a>
+      <a class="otherLinks" href="https://www.linkedin.com/in/ryanzshee/" target="_blank">LinkedIn</a>
+      <a class="otherLinks" href="https://twitter.com/ryanzshee" target="_blank">Twitter</a>
+    </h4>
+  </div>
 </body>
-<script type='text/javascript' src='/toggle.js' ></script>
+<script type='text/javascript' src='/sticky.js'></script>
+<!-- <script type='text/javascript' src='/toggle.js' ></script> -->
+</html>

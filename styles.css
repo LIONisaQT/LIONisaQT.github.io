@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  margin: 0;
+  /*margin: 0;*/
   color: #333;
   background-color: #eee;
 }
@@ -29,10 +29,30 @@ span.last {
   bottom: 5;
 }
 
+.top-container {
+  text-align: center;
+  padding: 30px;
+}
+
+.header {
+  padding: 10px 16px;
+  background: #555;
+  color: #f1f1f1;
+}
+
 div#header {
   width: 100%;
   text-align: center;
   background-color: #333;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+}
+
+.sticky + .entry {
+  padding-top: 102px;
 }
 
 a.otherLinks {
