@@ -4,6 +4,7 @@
 @import "projects.css";
 @import "name.css";
 @import "scrollbar.css";
+/*@import "toggle.css";*/
 
 body {
   margin: 0;
@@ -22,6 +23,7 @@ body {
   text-align: center;
   font-size: 40px;
   color: white;
+  text-shadow: 0px 0px 10px black;
 }
 
 .name {
@@ -32,6 +34,14 @@ body {
 .title {
   padding: 0px 0px 30px;
   font-family: 'Roboto', sans-serif;
+}
+
+span.middle {
+  color: gray;
+}
+
+span.last {
+  color: var(--highlight);
 }
 
 .section-title {
