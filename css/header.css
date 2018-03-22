@@ -1,0 +1,47 @@
+/* Sticky header */
+.header {
+  width: 100%;
+  padding: 1px 0px;
+  background: var(--header-gray);
+  text-align: center;
+  z-index: 1;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+}
+
+.sticky + .content {
+  padding-top: 70px;
+}
+
+/* Header links */
+ul.centerUL {
+  list-style-type: none;
+  margin: 2px auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+.centerUL li {
+    display: inline-block;
+    text-align: center;
+    margin: 0 5%;
+}
+
+li a.headerLink {
+  display: block;
+  color: var(--off-white);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  color: var(--highlight);
+}
+
+li a.active {
+  color: var(--highlight);
+}

@@ -4,7 +4,7 @@
   <title>Ryan Shee</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:100|Ubuntu:700" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="/styles2.css">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
   <div class="top-container">
@@ -38,7 +38,7 @@
         I have experience instructing game design and development, and I've made games with Unity, Unreal Engine, PhaserJS, and libGDX.
         I've also made simple apps with Android Studio.
         I also have experience with back-end web development, thanks to Food Now!, a recent web application project.
-        You can check out my game projects by clicking <a href="#game-projects" style="text-decoration: none; color: #e79100">here</a>.
+        You can check out my game projects by clicking <a class="small-link" href="#game-projects">here</a>.
       </p>
       <p>
         Everything on my website is currently under construction! Mobile view support will come soon!
@@ -55,36 +55,36 @@
         </div>
         <div class="project-entry">
           <p>
-            <a href="/shroommates" style="text-decoration: none; color: #e79100">Shroommates</a> is stealth game where users play as a sentient mushroom trying to grow in secret in a UCSC student's apartment.
+            <a class="small-link" href="/shroommates" target="_blank">Shroommates</a> is third-person stealth game where users play as a sentient mushroom trying to grow in secret in a UCSC student's apartment.
             The mushroom can grow by consuming food and staying out of direct sunlight.
             Players must adapt to different sizes, as size dynamically alters speed and hiding ability.
             Complete the objectives while trying to keep out of sight of the AI human!
-            Check out the Shroommates repository on <a href="https://github.com/LIONisaQT/Shroommates" style="text-decoration: none; color: #e79100">GitHub</a>.
+            Check out the Shroommates repository on <a class="small-link" href="https://github.com/LIONisaQT/Shroommates" target="_blank">GitHub</a>.
           </p>
           <ul style="list-style-type: disc">
             <li>Lead developer: Leading and delegating tasks to six other programmers.</li>
             <li>AI programmer: Quickly implemented working temporary AI sufficient for prototyping purposes within a few days. Currently porting old AI functions and behaviors into newer, more robust AI, who contains an improved behavior tree.
             <li>Generalist programmer: Implementing game behaviors as needed in various areas.</li>
-            <li>Point person for communication and question-answering with professors</li>
+            <li>Point person for communication and technical QA with professors</li>
           </ul>
         </div>
         <div class="gallery">
-          <img src="/img/sm_living_couch-desk.png" alt="Shroommates image 1" width=33% height=33%>
-          <img src="/img/sm_bathroom.png" alt="Shroommates image 1" width=33% height=33%>
-          <img src="/img/sm_living.png" alt="Shroommates image 1" width=33% height=33%>
+          <img class="image" src="/static/img/sm_living_couch-desk.png" alt="Shroommates image 1" width=33% height=33%>
+          <img class="image" src="/static/img/sm_bathroom.png" alt="Shroommates image 2" width=33% height=33%>
+          <img class="image" src="/static/img/sm_living.png" alt="Shroommates image 3" width=33% height=33%>
         </div>
       </div>
       <br />
       <div id="min-shmup">
         <div class="project-header">
           <h2 class="project-title">MinShmup</h2>
-          <h3 class="project-note"><i>Written in Java using libGDX and Android Studio (currently on hiatus)</i></h3>
+          <h3 class="project-note"><i>Written in Java using libGDX and Android Studio (currently on hiatus due to school)</i></h3>
         </div>
         <div class="project-entry">
           <p>
              MinShmup is a simple, minimalistic shoot-em up for Android.
-             The intention of the project is for me to learn in-depth about and play with various methods and functions libGDX has to offer through a simple game.
-             For the player, I want to make a game that looks aethetically pleasing, satisfying to play, and easy to pick up and play whenever they hav some time to kill.
+             The intention of the project is for me to learn in-depth about and play with various methods and functions libGDX has to offer through a simple game. I also wanted to make a simple game feel amazing to play, taking inspriration from grapefrukt games' <a class="small-link" href="http://grapefrukt.com/f/games/juicy-breakout/" target="_blank">juicy-breakout</a>.
+             For the player, I want to make a game that looks aethetically pleasing, satisfying to play, and easy to pick up and play whenever they have some time to kill.
              As a developer, I want to make a light-weight game with robust, easy-to-read code, as well as use the project to exercise good game development practices.
              MinShmup currently doesn't have a public repository on GitHub, but will in the upcoming weeks.
           </p>
@@ -98,12 +98,122 @@
           <h3>Pictures soon!</h3>
         </div>
       </div>
+      <br />
+      <div id="battlegrounds">
+        <div class="project-header">
+          <h2 class="project-title">Battlegrounds</h2>
+          <h3 class="project-note"><i>The Board Game</i></h3>
+        </div>
+        <div class="project-entry">
+          <p>
+            A board game based off of the recent popular trend of battle royale games.
+            Manage a team of three units as you try to win that chicken dinner!
+            Each unit has up to ten actions points to use moving around the map, opening chests for loot, and shooting other players.
+            Last team standing wins!
+            View the presentation <a class="small-link" href="/static/battlegrounds_presentation.pdf" type="application/pdf" target="_blank">here</a>.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Contributed ideas for mechanical balacing purposes.</li>
+            <li>Created interactive game core loop using <a class="small-link" href="http://www.jorisdormans.nl/machinations/" target="_blank">Machinations</a>.</li>
+            <li>Transferred ideas, rules, and mechanics to visually clean documents for presentation.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <img class="image" src="/static/img/br_map.png" alt="Map" width=33% height=270px>
+          <img class="image" src="/static/img/br_machinations.png" alt="Machinations" width=33% height=270px>
+          <img class="image" src="/static/img/br_cards.png" alt="Weapons" width=33% height=270px>
+        </div>
+      </div>
+      <br />
+      <div id="beat-em-up">
+        <div class="project-header">
+          <h2 class="project-title">Beat 'Em Up!</h2>
+          <h3 class="project-note"><i>Prototyped with Unity</i></h3>
+        </div>
+        <div class="project-entry">
+          <p>
+            A rhythm-based fighting game prototype.
+            Play as fighters from various genres of music in a musical beatdown.
+            Players are incentivized to hit on the beat to deal more damage, rather than hitting off-beat and dealing minimal damage.
+            This game was three-week project for a senior game design studio class, just like Shroommates.
+            At the end of the quarter, the team voted to move on with Shroommates and abandon Beat 'Em Up!
+            Check out the repository <a class="small-link" href="http://github.com/LIONisaQT/beat-em-up" target="_blank">here</a>.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Project manager: Leading and delegating tasks to a team of programmers and artists.</li>
+            <li>Programmed base character class: Implemented player attacks and added animations from images provided by artists.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <h3>Pictures soon!</h3>
+        </div>
+      </div>
+      <br />
+      <div id="world-power">
+        <div class="project-header">
+          <h2 class="project-title">World Power</h2>
+          <h3 class="project-note"><i>The Board Game</i></h3>
+        </div>
+        <div class="project-entry">
+          <p>
+            A tabletop game with a satiracal look at international politics meant to represent our view of the utter insanity, childish incomprehensiblilty, and extensive cheating in the world.
+            It is a four-player game where each player takes on the role of a country's leader and become the world's superpower through use of war, famine, disease, and politicians.
+            Cheating is explicitly allowed and encouraged.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Collaborated on game design and balance.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <h3>Pictures soon!</h3>
+        </div>
+      </div>
+      <br />
+      <div id="snail-assalt">
+        <div class="project-header">
+          <h2 class="project-title">Snail Assalt</h2>
+          <h3 class="project-note"><i>Written in Java with libGDX and Android Studio</i></h3>
+        </div>
+        <div class="project-entry">
+          <p>
+            An Android defense shoot 'em up.
+            Play as little Jimmy as he defends his home against the onslaught of snails, each with their own special abilities.
+            Jimmy can purchase water gun and house upgrades with the shells of fallen enemies.
+            This was my first game created with a team at a Mission Bit summer class in 2014.
+            Check out the repository <a class="small-link" href="http://github.com/LIONisaQT/SnailAssalt" target="_blank">here</a>.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Programmed levels, state management, and health and water system.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <h3>Pictures soon!</h3>
+        </div>
+      </div>
     </div>
 
     <div id="engineering-projects" class="anchor"></div>
     <div id="engineering-projects-actual">
       <h1 class="section-title">Engineering Projects</h1>
-      <p>Under construction</p>
+      <div id="food-now">
+        <div class="project-header">
+          <h2 class="project-title">Food Now!</h2>
+          <h3 class="project-note"><i>Can't choose a place to eat? Get food now!</i></h3>
+        </div>
+        <div class="project-entry">
+          <p>
+            Project owner and back-end developer for a web application that takes in various user parameters and returns a random restaurant best fulfilling those parameters.
+            Check out the repository <a class="small-link" href="http://github.com/LIONisaQT/food-now" target="_blank">here</a>.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Led and delegated tasks to five other developers.</li>
+            <li>Took in user parameters from front-end, .</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <h3>Pictures soon!</h3>
+        </div>
+      </div>
     </div>
 
     <div id="resume" class="anchor"></div>
@@ -128,6 +238,6 @@
     </h4>
   </div>
 </body>
-<script type='text/javascript' src='/sticky.js'></script>
+<script type='text/javascript' src='scripts/sticky.js'></script>
 <!-- <script type='text/javascript' src='/toggle.js' ></script> -->
 </html>

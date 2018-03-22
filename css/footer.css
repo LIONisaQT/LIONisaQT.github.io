@@ -1,0 +1,9 @@
+hr.bottomLine {
+  margin: 0 15%;
+}
+
+a.otherLinks {
+  margin: 0 2%;
+  color: var(--highlight);
+  text-decoration: none;
+}

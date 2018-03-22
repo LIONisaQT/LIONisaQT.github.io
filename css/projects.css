@@ -1,0 +1,32 @@
+/* Used the the projects section of the page */
+.project-header {
+  line-height: 50%
+}
+
+.project-title {
+  color: var(--hightlight);
+}
+
+.project-note {
+  line-height: 100%;
+  color: var(--light-gray);
+}
+
+.gallery {
+  text-align: center;
+}
+
+.image {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.image:hover {
+  opacity: 0.7;
+}
+
+.small-link {
+  color: var(--highlight);
+  text-decoration: none;
+}
