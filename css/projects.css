@@ -1,13 +1,18 @@
 /* Used the the projects section of the page */
 .project-header {
-  line-height: 50%
+  line-height: 50%;
+  margin-top: 16px;
+  vertical-align: bottom;
 }
 
 .project-title {
+  display: inline;
   color: var(--hightlight);
 }
 
 .project-note {
+  display: inline;
+  /*margin-left: 12px;*/
   line-height: 100%;
   color: var(--light-gray);
 }
