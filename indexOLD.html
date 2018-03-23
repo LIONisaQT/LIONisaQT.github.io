@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ryan Shee</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:100|Ubuntu:700" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+  <div class="bg"></div>
+  
+  <div class="top-container">
+    <h1 class="name">RYAN <span class="middle">Z</span><span class="last"> SHEE</span></h1>
+    <p class="title">Game Design and Development</p>
+    <!-- <label class="switch">
+      <input id="toggle" type="checkbox" onclick="toggleMode()">
+      <span class="slider round"></span>
+    </label> -->
+  </div>
+
+  <div class="header" id="myHeader">
+    <ul class="centerUL">
+      <li><a class="headerLink" href="#home">Home</a></li>
+      <li><a class="headerLink" href="#game-projects">Game Projects</a></li>
+      <li><a class="headerLink" href="#engineering-projects">Engineering Projects</a></li>
+      <li><a class="headerLink" href="#resume">Resume</a></li>
+      <li><a class="headerLink" href="#about">About/Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <div id="home" class="anchor"></div>
+    <div id="home-actual">
+      <h1 class="section-title">Hello! I'm currently looking for any new opportunities!</h1>
+      <p>
+        My name is Ryan Shee and I major in Computer Science: Computer Game Design at the University of California, Santa Cruz!
+        I'll be graduating June 2018.
+      </p>
+      <p>
+        I have experience instructing game design and development, and I've made games with Unity, Unreal Engine, Phaser, and libGDX.
+        I've also made simple apps with Android Studio.
+        I also have experience with back-end web development, thanks to Food Now!, a recent web application project.
+        You can check out my game projects by clicking <a class="small-link" href="#game-projects">here</a>.
+      </p>
+      <p>
+        Everything on my website is currently under construction! Mobile view support will come soon!
+      </p>
+    </div>
+
+    <div id="game-projects" class="anchor"></div>
+    <div id="game-projects-actual">
+      <h1 class="section-title">Game Design and Development Projects</h1>
+      <div id="shroommates" class="project">
+        <div class="project-header">
+          <h2 class="project-title">Shroommates |</h2>
+          <h3 class="project-note"><i>Made with Unreal Engine (currently work in progress)</i></h3>
+          <p><i>"Housing isn't cheap here, you know."</i></p>
+        </div>
+        <div class="project-entry">
+          <p>
+            <a class="small-link" href="/shroommates" target="_blank">Shroommates</a> is third-person stealth game where users play as a sentient mushroom trying to grow in secret in a UCSC student's apartment.
+            The mushroom can grow by consuming food and staying out of direct sunlight.
+            Players must adapt to different sizes, as size dynamically alters speed, hiding ability, and places you can get to.
+            Complete objectives while trying to keep out of sight of the AI human!
+            Click <a class="small-link" href="https://github.com/LIONisaQT/Shroommates" target="_blank">here</a> to sneakily sneak into the repository.
+            I won't tell anyone you were there.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Lead developer: Leading and delegating tasks to six other programmers.</li>
+            <li>AI programmer: Quickly implemented working temporary AI sufficient for prototyping purposes within a few days. Currently porting old AI functions and behaviors into newer, more robust AI, who contains an improved behavior tree.
+            <li>Generalist programmer: Implementing game behaviors as needed in various areas.</li>
+            <li>Point person for communication and technical QA with professors.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <img class="image" src="/static/img/sm_living_couch-desk.png" alt="Shroommates image 1" width=33% height=33%>
+          <img class="image" src="/static/img/sm_bathroom.png" alt="Shroommates image 2" width=33% height=33%>
+          <img class="image" src="/static/img/sm_living.png" alt="Shroommates image 3" width=33% height=33%>
+        </div>
+      </div>
+      <br />
+      <div id="min-shmup">
+        <div class="project-header">
+          <h2 class="project-title">MinShmup |</h2>
+          <h3 class="project-note"><i>Written in Java using libGDX and Android Studio (currently on hiatus due to school)</i></h3>
+          <p><i>"Juicy."</i></p>
+        </div>
+        <div class="project-entry">
+          <p>
+             MinShmup is a simple, minimalistic shoot-em up for Android.
+             The intention of the project is for me to learn in-depth about and play with various methods and functions libGDX has to offer through a simple game. I also wanted to make a simple game feel amazing to play, taking inspriration from grapefrukt games' <a class="small-link" href="http://grapefrukt.com/f/games/juicy-breakout/" target="_blank">juicy-breakout</a>.
+             For the player, I want to make a game that looks aethetically pleasing, satisfying to play, and easy to pick up and play whenever they have some time to kill.
+             As a developer, I want to make a light-weight game with robust, easy-to-read code, as well as use the project to exercise good game development practices.
+             MinShmup currently doesn't have a public repository on GitHub, but will in the upcoming weeks.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Feels great to play, even in its prototype stage &ndash; the player receives pleasing and appropriate visual and audio feedback for various in-game actions.</li>
+            <li>Fully takes advantage of libGDX's object pooling system to handle disposable objects, thus preventing any memory leaks and decreasing overall memory usage.</li>
+            <li>More libGDX methods to be implemented to optimize the game even further in the future.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <h3>Pictures soon!</h3>
+        </div>
+      </div>
+      <br />
+      <div id="battlegrounds">
+        <div class="project-header">
+          <h2 class="project-title">Battlegrounds |</h2>
+          <h3 class="project-note">The board game</h3>
+          <p><i>"Where are we dropping, boys?" -Procrastinating student at 2AM</i></p>
+        </div>
+        <div class="project-entry">
+          <p>
+            A board game based off of the recent popular trend of battle royale games.
+            You've seen the millions of PUBG and Fortnite knock-offs for PC and smartphones, now check out the board game version!
+            Manage a team of three units as you try to win that chicken dinner!
+            Each unit has up to ten actions points to use moving around the map, opening chests for loot, and shooting other players.
+            Last team standing wins!
+            View the presentation <a class="small-link" href="/static/battlegrounds_presentation.pdf" type="application/pdf" target="_blank">here</a>.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Contributed ideas for mechanical balance.</li>
+            <li>Created interactive game core loop using <a class="small-link" href="http://www.jorisdormans.nl/machinations/" target="_blank">Machinations</a>.</li>
+            <li>Transferred ideas, rules, and mechanics to visually clean documents for presentation.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <img class="image" src="/static/img/br_map.png" alt="Map" width=33% height=270px>
+          <img class="image" src="/static/img/br_machinations.png" alt="Machinations" width=33% height=270px>
+          <img class="image" src="/static/img/br_cards.png" alt="Weapons" width=33% height=270px>
+        </div>
+      </div>
+      <br />
+      <div id="beat-em-up">
+        <div class="project-header">
+          <h2 class="project-title">Beat 'Em Up! |</h2>
+          <h3 class="project-note">Prototyped with Unity</h3>
+          <p><i>"So we could, like, have Mozart fight someone like Tupac?"</i></p>
+        </div>
+        <div class="project-entry">
+          <p>
+            A rhythm-based fighting game prototype.
+            Play as fighters from various genres of music in a musical beatdown.
+            Players are incentivized to hit on the beat to deal more damage, rather than hitting off-beat and dealing minimal damage.
+            This game was three-week project for a senior game design studio class, just like Shroommates.
+            At the end of the quarter, the team voted to move on with Shroommates and abandon Beat 'Em Up!
+            Click <a class="small-link" href="http://github.com/LIONisaQT/beat-em-up" target="_blank">here</a> to view the repository.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Project manager: Leading and delegating tasks to a team of programmers and artists.</li>
+            <li>Programmed base character class: Implemented player attacks and added animations from images provided by artists.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <h3>Pictures soon!</h3>
+        </div>
+      </div>
+      <br />
+      <div id="world-power">
+        <div class="project-header">
+          <h2 class="project-title">World Power |</h2>
+          <h3 class="project-note">The Board Game</h3>
+          <p><i>"Who doesn't cheat?"</i></p>
+        </div>
+        <div class="project-entry">
+          <p>
+            A tabletop game with a satiracal look at international politics meant to represent our view of the utter insanity, childish incomprehensiblilty, and extensive cheating in the world.
+            It is a four-player game where each player takes on the role of a country's leader and become the world's superpower through use of war, famine, disease, and politicians.
+            Cheating is explicitly allowed and encouraged.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Collaborated on game design and balance.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <h3>Pictures soon!</h3>
+        </div>
+      </div>
+      <br />
+      <div id="snail-assalt">
+        <div class="project-header">
+          <h2 class="project-title">Snail Assalt |</h2>
+          <h3 class="project-note">Written in Java with libGDX and Android Studio</h3>
+          <p><i>"You misspelled assaul- oh I get it haha."</i></p>
+        </div>
+        <div class="project-entry">
+          <p>
+            An Android defense shoot 'em up.
+            Play as little Jimmy as he defends his home against the onslaught of snails, each with their own special abilities.
+            Jimmy can purchase water gun and house upgrades with the shells of fallen enemies.
+            This was my first game created with a team at a Mission Bit summer class in 2014.
+            Check out what a noob I was at the Snail Assalt repository <a class="small-link" href="http://github.com/LIONisaQT/SnailAssalt" target="_blank">here</a>.
+            Also check out the <a class="small-link" href="https://vimeo.com/112938616" target="_blank">demo day video</a> at Pocket Gems!
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Programmed levels, state management, and health and water system.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <h3>Pictures soon!</h3>
+        </div>
+      </div>
+    </div>
+
+    <div id="engineering-projects" class="anchor"></div>
+    <div id="engineering-projects-actual">
+      <h1 class="section-title">Engineering Projects</h1>
+      <div id="food-now">
+        <div class="project-header">
+          <h2 class="project-title">Food Now! |</h2>
+          <h3 class="project-note">Can't choose a place to eat? Get food now!</h3>
+          <p><i>"Ew no I ate there a couple of days ago, choose another place." -Person who no longer has friends</i></p>
+        </div>
+        <div class="project-entry">
+          <p>
+            Project owner and back-end developer for a web application that takes in various user parameters and returns a random restaurant best fulfilling those parameters.
+            A MERN stack application exercise.
+            Check out the repository <a class="small-link" href="http://github.com/LIONisaQT/food-now" target="_blank">here</a>, and make sure to leave a review!
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Led and delegated tasks to five other developers.</li>
+            <li>Sent user parameters from front-end to Yelp, handled list of restaurants returned by Yelp, passed a random restaurant back to front-end to display to the user.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <h3>Pictures soon!</h3>
+        </div>
+      </div>
+      <br />
+      <div id="pick-up-boo">
+        <div class="project-header">
+          <h2 class="project-title">Pick Up Boo |</h2>
+          <h3 class="project-note">Transform a contact into your Uber/Lyft driver</h3>
+          <p><i>"Why? Because Uber and Lyft cost money of course."</i></p>
+        </div>
+        <div class="project-entry">
+          <p>
+            A personal transportation request app for Android.
+            Pick a contact or input a phone number, add an optional flavor message, and send a pick up request text to your contact!
+            Text body also includes a Google Maps pin of your location so your contact can easily route to you.
+            Created this app one weekend because I was at home with nothing better to do (who does homework?).
+            Transport yourself to the repository <a class="small-link" href="http://github.com/LIONisaQT/pick-up-boo" target="_blank">here</a>.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Used Google URL shortener on the Google Maps location pin link to keep text messages short.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <h3>Pictures soon!</h3>
+        </div>
+      </div>
+      <br />
+      <div id="gotcho-book">
+        <div class="project-header">
+          <h2 class="project-title">Gotcho Book |</h2>
+          <h3 class="project-note">HACK UCSC 2017: Creative Entrepreneurship category, 2nd place</h3>
+          <p><i>"Dolly Parton's Imagination Library needed an app."</i></p>
+        </div>
+        <div class="project-entry">
+          <p>
+            A book donation app prototype for Android.
+            Users can view a student's profile to see what books are on their wishlist and what genres they enjoy reading.
+            Users can then either donate a book they have, or buy a book from Amazon for them.
+            Books are sent to the student's school.
+            Read some code at the repository <a class="small-link" href="http://github.com/GotchoBook" target="_blank">here</a>.
+            Here's the <a class="small-link" href="https://devpost.com/software/gotcho-book" target="_blank">Devpost link</a> for proof.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Created main and student profile activities.</li>
+            <li>Handled transitions between activities.</li>
+            <li>2/2 placed hackathons!</li>
+          </ul>
+        </div>
+      </div>
+      <br />
+      <div id="gotcho-back">
+        <div class="project-header">
+          <h2 class="project-title">Gotcho Back |</h2>
+          <h3 class="project-note">HACK UCSC 2016: Tech Cares category, 1st place</h3>
+          <p><i>"Oh no, not Gotcho Back!" -Kidnapper</i></p>
+        </div>
+        <div class="project-entry">
+          <p>
+            A safety app prototype for Android.
+            Users pick a contact and set a timer to get home.
+            If the timer runs out, the phone will vibrate and prompt the user if they need more time.
+            If the user does not respond within a specific timeframe, the phone will send a text to the contact and ring.
+            After further lack of response, the app will call the contact.
+            The idea of the app came from a statistic that the majority of women feel it is unsafe for them to walk outside at night by themselves.
+            Feel safe at the repository <a class="small-link" href="http://github.com/GotchoBook" target="_blank">here</a>.
+            Here's the <a class="small-link" href="https://devpost.com/software/bulletin-board-chat-master" target="_blank">Devpost link</a> for proof.
+          </p>
+          <ul style="list-style-type: disc">
+            <li>Implemented vibration trigger.</li>
+            <li>My first hackathon win!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="resume" class="anchor"></div>
+    <div id="resume-actual">
+      <h1 class="section-title">Resume</h1>
+      <div id="resume-game" class="project-header">
+        <h2 class="project-title">Game Design and Development</h2>
+      </div>
+      <div class="project-entry">
+        <p>
+          <a class="small-link" href="/static/shee-ryan_resume_g.pdf" type="application/pdf" target="_blank">Click here to view</a>.
+        </p>
+      </div>
+      <div id="resume-work" class="project-header">
+        <h2 class="project-title">Engineering</h2>
+      </div>
+      <div class="project-entry">
+        <p>
+          <a class="small-link" href="/static/shee-ryan_resume_w.pdf" type="application/pdf" target="_blank">Click here to view</a>.
+        </p>
+      </div>
+    </div>
+    <div id="about" class="anchor"></div>
+    <div id="about-actual">
+      <h1 class="section-title">About/Contact</h1>
+      <div class="project-entry">
+        <div style="text-align:center">
+          <img title="My world" src="/static/img/world.jpg" width="50%" height="auto"/>
+        </div>
+        <p>
+          Hello!
+        </p>
+        <p>
+          I'm a Computer Science: Computer Game Design student at the University of California, Santa Cruz.
+          I've taken various game design and courses, ranging from programming game AI, to programming procedural content generation, to making games with a studio of talented interdisciplinary students.
+          I'm proficient at object-oriented programming in Java, using JavaScript for web development, and writing C# for Unity.
+          I also like to think I have a decent eye for design as well.
+          I've dabbled in a decent amount of C++, Lua, and Python as well, and I'm quick to pick up languages.
+          I'm currently creeping into the proficient/experienced phase for game engines such Unreal Engine and Unity.
+        </p>
+        <p>
+          I'm aiming to land a job as a game engineer or developer at any studio, but any software engineering job would be great as well.
+          I have experience instructing a class on game design and development for Android to high school students at <a class="small-link" href="https://www.missionbit.com/" target="_blank">Mission Bit</a>, which is a great org with lots of fun people and classes.
+          Although I will destroy almost anyone who challenges me in <i>Smash</i> there.
+          I led my team for my Food Now! project, and am currently the lead developer of Shroommates - my senior game design studio game - so I have plenty of experience in teams, leadership, and communication.
+        </p>
+        <p> 
+          Some online multiplayer games I'm hooked on are <a class="small-link" href="https://rainbow6.ubisoft.com/siege/en-us/home/index.aspx" target="_blank">Rainbow Six Siege</a> and
+          <a class="small-link" href="https://playoverwatch.com/en-us/" target="_blank">Overwatch</a>.
+          I also highly enjoy singleplayer games, most notably
+          <a class="small-link" href="https://xcom.com/xcom-enemy-unknown" target="_blank">XCOM: Enemy Unknown</a> and
+          <a class="small-link" href="https://xcom.com" target="_blank">XCOM 2</a>,
+          <a class="small-link" href="https://www.supergiantgames.com/games/bastion/" target="_blank">Bastion</a>,
+          <a class="small-link" href="https://www.konami.com/mg/mgsv/" target="_blank">Metal Gear Solid V: The Phantom Pain</a>,
+          <a class="small-link" href="http://thewitcher.com/en/witcher3" target="_blank">The Witcher 3: Wild Hunt</a>, and
+          <a class="small-link" href="https://www.zelda.com/breath-of-the-wild/" target="_blank">The Legend of Zelda: Breath of the Wild</a>. 
+          Of course, I have plenty of couch multiplayer games as well, like
+          <a class="small-link" href="http://www.ghosttowngames.com/overcooked/" target="_blank">Overcooked!</a>,
+          <a class="small-link" href="https://www.cleverendeavourgames.com/ultimate-chicken-horse/" target="_blank">Ultimate Chicken Horse</a>,
+          <a class="small-link" href="https://www.ssbwiki.com/Super_Smash_Bros._Melee" target="_blank">Super Smash Bros. Melee</a>, and
+          <a class="small-link" href="https://www.ssbwiki.com/Project_M" target="_blank">Project M</a>.
+        </p>
+        <div class="project-header" style="margin-top: 40px">
+          <h2 class="project-title">Contact</h2>
+        </div>
+        <div class="project-entry" style="line-height: 0.7">
+          <p>Email: ryan@missionbit.com</p>
+          <p>Phone: (415) 509-0990</p>
+          <p>LinkedIn: <a class="small-link" href="https://www.linkedin.com/in/ryanzshee/" target="_blank">Ryan Shee</a></p>
+          <p>GitHub: <a class="small-link" href="https://github.com/LIONisaQT" target="_blank">LIONisaQT</a></p>
+          <p>Steam: <a class="small-link" href="https://github.com/LIONisaQT" target="_blank">ryanisaqt</a></p>
+          <p>Twitter (I just stalk people on this, sorry): <a class="small-link" href="http://steamcommunity.com/id/ryanisaqt" target="_blank">@ryanzshee</a></p>
+        </div>
+        <div class="project-header" style="margin-top: 40px">
+          <h2 class="project-title">My Computers</h2>
+        </div>
+        <p>
+          My rig, which I built by myself with my own money after working!
+          <ul style="list-style-type: disc">
+            <li>EVGA GTX 970 SCC</li>
+            <li>Intel i5-6500</li>
+            <li>16 GB RAM</li>
+            <li>240 GB SSD</li>
+            <li>1 TB HDD</li>
+            <li>EVGA 600B PSU</li>
+            <li>MSI Intel Skylake H110 Micro ATX mobo</li>
+            <li>Windows 10 Education 64-bit (because free)</li>
+          </ul>
+        </p>
+        <p>
+          My aging laptop is running KDE Neon.
+          Gets about a solid 2-4 hours of work before the battery dies.
+          I will eventually switch to Arch + i3wm because I've always wanted to try using Arch and because <a class="small-link" href="https://www.reddit.com/r/unixporn" target="_blank">Unix porn is a thing</a> (and it's glorious).
+        </p>
+        <img src="/static/img/screenfetch.png" width="auto" height="auto"/>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <hr class="bottomLine"/>
+  <div>
+    <h4 style="text-align:center">
+      <a class="otherLinks" href="https://github.com/lionisaqt" target="_blank">GitHub</a>
+      <a class="otherLinks" href="https://www.linkedin.com/in/ryanzshee/" target="_blank">LinkedIn</a>
+      <a class="otherLinks" href="https://twitter.com/ryanzshee" target="_blank">Twitter</a>
+    </h4>
+  </div>
+  <div style="text-align: center; font-size: 14px">
+    <p>&copy; 2018 Ryan Shee </p>
+  </div>
+</body>
+<script type='text/javascript' src='scripts/sticky.js'></script>
+<!-- <script type='text/javascript' src='/toggle.js' ></script> -->
+</html>
