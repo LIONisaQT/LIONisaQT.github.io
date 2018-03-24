@@ -11,6 +11,7 @@ body, html {
 }
 
 body {
+  text-align: justify;
   margin: 0;
   width: 100%;
   color: var(--off-white);
@@ -57,17 +58,14 @@ span.last {
   color: var(--highlight);
 }
 
-.container {
-}
-
 .section-title {
+  text-align: left;
   color: var(--highlight);
   margin: 0 -1%;
   font-family: 'Roboto', sans-serif;
 }
 
 .content {
-  text-align: justify;
   line-height: 1.6;
   margin: 0 10%;
   padding: 16px;
