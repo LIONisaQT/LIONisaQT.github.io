@@ -1,9 +1,9 @@
-window.onscroll = function() {myFunction()};
+window.onscroll = function() {stickyToggle()};
 
-var header = document.getElementById("myHeader");
+var header = document.getElementById("myTopnav");
 var sticky = header.offsetTop;
 
-function myFunction() {
+function stickyToggle() {
   if (window.pageYOffset >= sticky) {
     header.classList.add("sticky");
   } else {
