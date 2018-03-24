@@ -1,7 +1,7 @@
 /* Sticky header */
 .header {
   background: var(--header-gray);
-  text-align: center;
+  /*text-align: center;*/
   z-index: 1;
 }
 
@@ -17,23 +17,24 @@
 
 .topnav {
   overflow: hidden;
+  text-align: center;
   background-color: var(--header-gray);
 }
 
 .topnav a {
-  float: left;
-  display: block;
+  /*float: left;*/
+  display: inline-block;
   color: var(--off-white);
-  text-align: center;
+  /*text-align: center;*/
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
 
-.active {
+/*.active {
   background-color: var(--highlight);
   color: white;
-}
+}*/
 
 .topnav .icon {
   display: none;
