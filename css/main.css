@@ -10,8 +10,12 @@ body, html {
   overflow-wrap: break-word;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  text-align: justify;
+  text-align: left;
   margin: 0;
   width: 100%;
   color: var(--off-white);
@@ -50,6 +54,19 @@ body {
   letter-spacing: 0.5vw;
 }
 
+@media screen and (max-width: 800px) {
+  .top-container {
+    font-size: 6vw;
+  }
+}
+
+/* Mobile device because hover is demanded */
+@media (hover:none), (hover:on-demand){ 
+  .top-container {
+    font-size: 8vw;
+  }
+}
+
 span.middle {
   color: gray;
 }
@@ -71,6 +88,12 @@ span.last {
   padding: 16px;
 }
 
+@media screen and (max-width: 800px) {
+  .content {
+    margin: 0 4px;
+  }
+}
+
 .content:a {
   color: var(--highlight);
 }
@@ -81,4 +104,26 @@ span.last {
   position: relative;
   top: -60px;
   visibility: hidden;
+}
+
+/* To top button */
+#to-top {
+  display: none;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 99;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  /*background-color: red;*/
+  opacity: 0.4;
+  color: var(--header-gray);
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+#to-top:hover {
+  opacity: 0.7;
 }

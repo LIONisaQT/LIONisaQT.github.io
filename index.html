@@ -8,6 +8,10 @@
   <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
+  <div>
+    <button onclick="toTop()" id="to-top" title="Go to top">Top</button>
+  </div>
+
   <div class="bg" onclick="closeMenu()">
     <div class="top-container">
       <h1 class="name">RYAN<span class="middle">Z</span><span class="last">SHEE</span></h1>
@@ -26,7 +30,7 @@
 
   <div class="content" onclick="closeMenu()">
     <div id="home" class="anchor"></div>
-    <div id="home-actual">
+    <div id="home-actual" style="text-align: justify">
       <h1 class="section-title">Hello! I'm currently looking for any new opportunities!</h1>
       <p>
         My name is Ryan Shee and I major in Computer Science: Computer Game Design at the University of California, Santa Cruz!
@@ -39,7 +43,7 @@
         You can check out my game projects by clicking <a class="small-link" href="#game-projects">here</a>.
       </p>
       <p>
-        Everything on my website is currently under construction! Mobile view support will come soon!
+        Some things on this site are still in progress, such as pictures for projects (most of them are on my desktop, which I won't have access to for the next week) and a modal for viewing images.
       </p>
     </div>
 
@@ -50,7 +54,7 @@
         <div class="project-header">
           <h2 class="project-title">Shroommates |</h2>
           <h3 class="project-note"><i>Made with Unreal Engine (currently work in progress)</i></h3>
-          <p><i>"Housing isn't cheap here, you know."</i></p>
+          <p><i>"Housing isn't cheap here, mate."</i></p>
         </div>
         <div class="project-entry">
           <p>
@@ -65,6 +69,7 @@
             <li>Lead developer: Leading and delegating tasks to six other programmers.</li>
             <li>AI programmer: Quickly implemented working temporary AI sufficient for prototyping purposes within a few days. Currently porting old AI functions and behaviors into newer, more robust AI, who contains an improved behavior tree.
             <li>Generalist programmer: Implementing game behaviors as needed in various areas.</li>
+            <li>Idenified, troubleshooted, and later explained to some team members Git issues and solutions.</li>
             <li>Point person for communication and technical QA with professors.</li>
           </ul>
         </div>
@@ -74,7 +79,6 @@
           <img class="image" src="/static/img/sm_living.png" alt="Shroommates image 3" width=33% height=33%>
         </div>
       </div>
-      <br />
       <div id="min-shmup">
         <div class="project-header">
           <h2 class="project-title">MinShmup |</h2>
@@ -99,7 +103,6 @@
           <h3>Pictures soon!</h3>
         </div>
       </div>
-      <br />
       <div id="battlegrounds">
         <div class="project-header">
           <h2 class="project-title">Battlegrounds |</h2>
@@ -127,7 +130,6 @@
           <img class="image" src="/static/img/br_cards.png" alt="Weapons" width=33% height=270px>
         </div>
       </div>
-      <br />
       <div id="beat-em-up">
         <div class="project-header">
           <h2 class="project-title">Beat 'Em Up! |</h2>
@@ -223,7 +225,6 @@
           <h3>Pictures soon!</h3>
         </div>
       </div>
-      <br />
       <div id="pick-up-boo">
         <div class="project-header">
           <h2 class="project-title">Pick Up Boo |</h2>
@@ -246,7 +247,6 @@
           <h3>Pictures soon!</h3>
         </div>
       </div>
-      <br />
       <div id="gotcho-book">
         <div class="project-header">
           <h2 class="project-title">Gotcho Book |</h2>
@@ -269,7 +269,6 @@
           </ul>
         </div>
       </div>
-      <br />
       <div id="gotcho-back">
         <div class="project-header">
           <h2 class="project-title">Gotcho Back |</h2>
@@ -321,7 +320,7 @@
         <h1 class="section-title">About/Contact</h1>
         <div class="project-entry">
           <div style="text-align:center">
-            <img title="My world" src="/static/img/world.jpg" width="50%" height="auto"/>
+            <img title="My world" class="image" src="/static/img/world.jpg" width="50%" height="auto"/>
           </div>
           <p>
             Hello!
@@ -337,7 +336,7 @@
           <p>
             I'm aiming to land a job as a game engineer or developer at any studio, but any software engineering job would be great as well.
             I have experience instructing a class on game design and development for Android to high school students at <a class="small-link" href="https://www.missionbit.com/" target="_blank">Mission Bit</a>, which is a great org with lots of fun people and classes.
-            Although I will destroy almost anyone who challenges me in <i>Smash</i> there.
+            Although I will destroy almost anyone who challenges me in Smash there.
             I led my team for my Food Now! project, and am currently the lead developer of Shroommates - my senior game design studio game - so I have plenty of experience in teams, leadership, and communication.
           </p>
           <p> 
@@ -359,7 +358,7 @@
           <div class="project-header" style="margin-top: 40px">
             <h2 class="project-title">Contact</h2>
           </div>
-          <div class="project-entry" style="line-height: 0.7">
+          <div class="project-entry" style="line-height: 1">
             <p>Email: ryan@missionbit.com</p>
             <p>Phone: (415) 509-0990</p>
             <p>LinkedIn: <a class="small-link" href="https://www.linkedin.com/in/ryanzshee/" target="_blank">Ryan Shee</a></p>
@@ -389,7 +388,7 @@
             I will eventually switch to Arch + i3wm because I've always wanted to try using Arch and because <a class="small-link" href="https://www.reddit.com/r/unixporn" target="_blank">Unix porn is a thing</a> (and it's glorious).
           </p>
           <div style="text-align: center">
-            <img src="/static/img/screenfetch.png" width="50%" height="auto"/>
+            <img class="image" src="/static/img/screenfetch.png" width="50%" height="auto"/>
           </div>
         </div>
       </div>
@@ -409,5 +408,5 @@
     <p>&copy; 2018 Ryan Shee </p>
   </div>
 </body>
-<script type='text/javascript' src='scripts/header.js'></script>
+<script type='text/javascript' src='scripts/scrollAndHeader.js'></script>
 </html>
