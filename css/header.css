@@ -31,11 +31,6 @@
   font-size: 17px;
 }
 
-/*.active {
-  background-color: var(--highlight);
-  color: white;
-}*/
-
 .topnav .icon {
   display: none;
 }

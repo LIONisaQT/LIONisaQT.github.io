@@ -2,7 +2,6 @@
 @import "header.css";
 @import "footer.css";
 @import "projects.css";
-/*@import "scrollbar.css";*/
 /*@import "toggle.css";*/
 
 body, html {
@@ -120,7 +119,6 @@ span.last {
   font-size: 14px;
   border: none;
   outline: none;
-  /*background-color: red;*/
   opacity: 0.4;
   color: var(--header-gray);
   cursor: pointer;
