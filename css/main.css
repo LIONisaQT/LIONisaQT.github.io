@@ -55,7 +55,7 @@ body {
 
 @media screen and (max-width: 800px) {
   .top-container {
-    font-size: 6vw;
+    font-size: 5.5vw;
   }
 }
 
@@ -63,11 +63,11 @@ body {
   Mobile device because hover is demanded
   https://stackoverflow.com/questions/12469875/how-to-code-css-media-queries-targeting-all-mobile-devices-and-tablets
 */
-@media (hover:none), (hover:on-demand){ 
+/*@media (hover:none), (hover:on-demand){ 
   .top-container {
-    font-size: 8vw;
+    font-size: 5.5vw;
   }
-}
+}*/
 
 span.middle {
   color: gray;

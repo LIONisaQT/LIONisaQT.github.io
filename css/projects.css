@@ -6,12 +6,11 @@
 
 .project-title {
   display: inline;
-  color: var(--hightlight);
 }
 
 .project-note {
   display: inline;
-  color: var(--light-gray);
+  color: var(--light-gray );
 }
 
 .project-entry > p {
