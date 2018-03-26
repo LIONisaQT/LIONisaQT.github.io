@@ -93,7 +93,7 @@ span.last {
 
 @media screen and (max-width: 800px) {
   .content {
-    margin: 0 4px;
+    margin: 0;
   }
 }
 
