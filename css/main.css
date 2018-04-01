@@ -129,3 +129,8 @@ span.last {
 #to-top:hover {
   opacity: 0.7;
 }
+
+ul {
+  list-style-type: disc;
+  margin-top: 0;
+}
