@@ -40,9 +40,13 @@ html, body {
 	padding-right: 50%;
 }
 
+#contents {
+  background-color: #eee;
+}
+
 .section-title {
 	padding: 2em 11em 1px;
-	background-color: #eee;
+  text-align: center;
 }
 
 .section-title h2 {
@@ -52,14 +56,16 @@ html, body {
 }
 
 .section {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 	padding: 2em 11em;
-	background-color: #eee;
 }
 
 .section-grid {
 	padding: 1em 8em;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
 	grid-gap: 1em;
 }
 
