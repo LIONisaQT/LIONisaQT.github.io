@@ -1,0 +1,47 @@
+@import "colors2.css";
+@import "header2.css";
+@import "projects2.css";
+
+html {
+	font-family: sans-serif;
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	background-color: #537895;
+	background: linear-gradient(315deg, #537895 0%, #09203f 74%);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+#banner {
+	padding: 140px 8em 80px;
+	color: white;
+}
+
+.pitch {
+	padding-right: 50%;
+	line-height: 1.5;
+}
+
+.section-title {
+	padding: 40px 8em 1px;
+	background-color: white;
+}
+
+.section-title h2 {
+	margin: 0;
+}
+
+.section {
+	padding: 40px 8em;
+	background-color: white;
+}
+
+.section-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+	grid-gap: 1em;
+}
