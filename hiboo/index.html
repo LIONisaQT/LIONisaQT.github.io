@@ -2,31 +2,34 @@
 <html>
 <head>
 	<title>Ryan Shee</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/main2.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body onscroll="checkTop()">
 	<div id="navbar" style="z-index: 9999">
-		<a href="#game-projects">GAMES</a>
-		<a href="#engineering-projects">ENGINEERING</a>
-		<a href="#">RYAN Z. SHEE</a>
-		<a href="#resume">RESUME</a>
-		<a href="#about-contact">ABOUT/CONTACT</a>
+		<a class="nav-links" href="#game-projects">GAMES</a>
+		<a class="nav-links" href="#engineering-projects">ENGINEERING</a>
+		<a class="nav-links" href="#">RYAN Z. SHEE</a>
+		<a class="nav-links" href="#resume">RESUME</a>
+		<a class="nav-links" href="#about-contact">ABOUT/CONTACT</a>
 	</div>
 	<div id="banner">
-		<h1 class="intro">
-			Hello
+		<h1 id="intro" class="intro">
+			Hello.
 		</h1>
 		<p class="pitch">
-			My name is Ryan Shee and I like designing and programming games.
-			I'm looking for any new opportunities!
+			I'm Ryan and I like designing games and programming stuff.
+			Check out my stuff.
+			Also please hire me.
+			This website is currently under construction in some areas.
 		</p>
 	</div>
 	<div id="contents">
-		<div class="section-title">
+		<div id="game-projects" class="section-title">
 			<h2>Game Projects</h2>
 		</div>
-		<div id="game-projects" class="section section-grid">
+		<div class="section section-grid">
 			<div class="card">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
@@ -76,10 +79,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="section-title">
+		<div id="engineering-projects" class="section-title">
 			<h2>Engineering Projects</h2>
 		</div>
-		<div id="engineer-projects" class="section section-grid">
+		<div class="section section-grid">
 			<div class="card">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
@@ -116,12 +119,73 @@
 		<div class="section-title">
 			<h2>Resumes</h2>
 		</div>
-		<div id="resume" class="section resume-box">
-			<a href="#">Game Design and Development resume</a>
-			<a href="#">Engineering resume</a>
+		<div id="resume" class="section section-grid">
+			<div class="card">
+				<img src="/static/img/sm_living_couch-desk.png"/>
+				<div class="card-container">
+					<h4 class="project-title">Games</h4>
+					<p class="project-note">&mdash; For game recruiters</p>
+					<p><i>"Most games are just colliders colliding with other colliders right?"</i></p>
+				</div>
+			</div>
+			<div class="card">
+				<img src="/static/img/sm_living_couch-desk.png"/>
+				<div class="card-container">
+					<h4 class="project-title">Engineering</h4>
+					<p class="project-note">&mdash; For engineering recruiters</p>
+					<p><i>"Literally for loops"</i></p>
+				</div>
+			</div>
+			<div></div>
 		</div>
 		<div id="about-contact" class="section-title">
 			<h2>About/Contact</h2>
+		</div>
+		<div class="section">
+			<div style="text-align:center">
+				<img title="My world" class="about-image" src="/static/img/world.jpg"/>
+			</div>
+			<p>
+				Hello!
+			</p>
+			<p>
+				I'm a Computer Science: Computer Game Design student at the University of California, Santa Cruz.
+				I've taken various game design and courses, ranging from programming game AI, to studying procedural content generation, to making games with a studio of talented interdisciplinary students.
+				I'm proficient at object-oriented programming in Java, utilizing libGDX for mobile game development, using JavaScript for web development, and writing C# for Unity games.
+				Additionally, I've dabbled in a decent amount of C++, Lua, and Python, and I'm quick to pick up languages.
+				I also like to think I have a decent eye for design.
+				I'm currently creeping into the proficient/experienced phase for game engines such Unreal Engine and Unity.
+			</p>
+			<p>
+				I'm aiming to land a job as a game engineer/developer or game systems designer at any studio, but any software engineering job would be great as well.
+				I have experience instructing a class on game design and development for Android to high school students at <a class="small-link" href="https://www.missionbit.com/" target="_blank">Mission Bit</a>, which is a great org with lots of fun people and classes.
+				I will destroy almost anyone who challenges me in Smash there.
+				I led my team for my Food Now! project, and am currently the lead developer of Shroommates&mdash;my senior game design studio project&mdash;so I have plenty of experience in teams, leadership, and communication.
+			</p>
+			<p> 
+				Some online multiplayer games I'm hooked on are <a class="small-link" href="https://rainbow6.ubisoft.com/siege/en-us/home/index.aspx" target="_blank">Tom Clancy's Rainbow Six Siege</a> and
+				<a class="small-link" href="https://playoverwatch.com/en-us/" target="_blank">Overwatch</a>.
+				I also highly enjoy singleplayer games, most notably
+				<a class="small-link" href="https://xcom.com/xcom-enemy-unknown" target="_blank">XCOM: Enemy Unknown</a> and
+				<a class="small-link" href="https://xcom.com" target="_blank">XCOM 2</a>,
+				<a class="small-link" href="https://www.supergiantgames.com/games/bastion/" target="_blank">Bastion</a>,
+				<a class="small-link" href="https://www.konami.com/mg/mgsv/" target="_blank">Metal Gear Solid V: The Phantom Pain</a>,
+				<a class="small-link" href="http://thewitcher.com/en/witcher3" target="_blank">The Witcher 3: Wild Hunt</a>, and
+				<a class="small-link" href="https://www.zelda.com/breath-of-the-wild/" target="_blank">The Legend of Zelda: Breath of the Wild</a>. 
+				Of course, I have plenty of couch multiplayer games too, like
+				<a class="small-link" href="http://www.ghosttowngames.com/overcooked/" target="_blank">Overcooked!</a>,
+				<a class="small-link" href="https://www.cleverendeavourgames.com/ultimate-chicken-horse/" target="_blank">Ultimate Chicken Horse</a>,
+				<a class="small-link" href="https://www.ssbwiki.com/Super_Smash_Bros._Melee" target="_blank">Super Smash Bros. Melee</a>, and
+				<a class="small-link" href="https://www.ssbwiki.com/Project_M" target="_blank">Project M</a>.
+			</p>
+			<h2 style="margin-bottom: 0">Contact</h2>
+			<p style="margin-top: 0">
+				Email: ryan@missionbit.com<br>
+				Phone: (415) 509-0990<br>
+				LinkedIn: <a class="small-link" href="https://www.linkedin.com/in/ryanzshee/" target="_blank">Ryan Shee</a><br>
+				GitHub: <a class="small-link" href="https://github.com/LIONisaQT" target="_blank">LIONisaQT</a><br>
+				Steam: <a class="small-link" href="https://github.com/LIONisaQT" target="_blank">ryanisaqt</a>
+			</p>
 		</div>
 	</div>
 </body>

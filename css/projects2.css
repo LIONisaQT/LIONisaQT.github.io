@@ -17,9 +17,9 @@ img {
 }
 
 .card-container {
-	margin-top: 16px;
+	margin-top: 1em;
 	line-height: 1;
-	padding: 2px 16px;
+	padding: 2px 1em;
 }
 
 .project-title {
@@ -28,4 +28,8 @@ img {
 
 .project-note {
 	display: inline;
+}
+
+.card p {
+	line-height: 1.25;
 }
