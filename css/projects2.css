@@ -3,13 +3,11 @@
 	transition: 0.3s;
 	width: 100%;
 	border-radius: 5px;
-	background-color: white;
+	background-color: var(--seesan);
 }
 
 .card:hover {
-  /* transform: perspective(300px) rotateX(3deg) rotateY(3deg) scale3d(1, 1, 1) scale(1.05); */
-	box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.4);
-	/* transform:scale(1.02); */
+	box-shadow: 0 15px 35px rgba(249, 158, 26, 0.2), 0 5px 15px rgba(229, 138, 6, 0.4);
 }
 
 img {
@@ -25,6 +23,7 @@ img {
 
 .project-title {
 	display: inline;
+	color: var(--tracer);
 }
 
 .project-note {

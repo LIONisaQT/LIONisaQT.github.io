@@ -16,11 +16,11 @@
 	</div>
 	<div id="banner">
 		<h1 id="intro" class="intro">
-			Hello.
+			Hi, I'm Ryan.
 		</h1>
 		<p class="pitch">
-			I'm Ryan and I like designing games and programming stuff.
-			Check out my stuff.
+			I like designing games and programming stuff.
+			You should check out my projects.
 			Also please hire me.
 			This website is currently under construction in some areas.
 		</p>
@@ -30,7 +30,7 @@
 			<h2>Game Projects</h2>
 		</div>
 		<div class="section section-grid">
-			<div id="shroommates" class="card" onmouseover="getCoords(event, this);">
+			<div id="shroommates" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Shroommates</h4>
@@ -38,7 +38,7 @@
 					<p><i>"Housing ain't cheap here, mate."</i></p>
 				</div>
 			</div>
-			<div class="card">
+			<div id="minshmup" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">MinShmup</h4>
@@ -46,7 +46,7 @@
 					<p><i>"Game juice." -Tad Leckman</i></p>
 				</div>
 			</div>
-			<div class="card">
+			<div id="battlegrounds" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Battlegrounds</h4>
@@ -54,7 +54,7 @@
 					<p><i>"Where are we dropping, boys?" -procrastinating student at 2AM</i></p>
 				</div>
 			</div>
-			<div class="card">
+			<div id="beat-em-up" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Beat 'Em Up!</h4>
@@ -62,7 +62,7 @@
 					<p><i>"So we could, like, have Mozart fight someone like Tupac?"</i></p>
 				</div>
 			</div>
-			<div class="card">
+			<div id="world-power" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">World Power</h4>
@@ -70,7 +70,7 @@
 					<p><i>"Wait, this board game is starting to look a little too realistic."</i></p>
 				</div>
 			</div>
-			<div class="card">
+			<div id="snail-assalt" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Snail Assalt</h4>
@@ -83,7 +83,7 @@
 			<h2>Engineering Projects</h2>
 		</div>
 		<div class="section section-grid">
-			<div class="card">
+			<div id="food-now" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Food Now!</h4>
@@ -91,7 +91,7 @@
 					<p><i>"Ew no I ate there a couple of days ago, choose another place." -person who no longer has friends</i></p>
 				</div>
 			</div>
-			<div class="card">
+			<div id="pick-up-boo" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Pick Up Boo</h4>
@@ -99,7 +99,7 @@
 					<p><i>"Why? Because Uber and Lyft cost money of course."</i></p>
 				</div>
 			</div>
-			<div class="card">
+			<div id="gotcho-book" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Gotcho Book</h4>
@@ -107,7 +107,7 @@
 					<p><i>Creative Entrepreneurship category, 2nd place</i></p>
 				</div>
 			</div>
-			<div class="card">
+			<div id="gotcho-back" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Gotcho Back</h4>
@@ -116,11 +116,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="section-title">
+		<div id="resume" class="section-title">
 			<h2>Resumes</h2>
 		</div>
-		<div id="resume" class="section section-grid">
-			<div class="card">
+		<div class="section section-grid">
+			<div id="game-resume" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Games</h4>
@@ -128,7 +128,7 @@
 					<p><i>"Most games are just colliders colliding with other colliders right?"</i></p>
 				</div>
 			</div>
-			<div class="card">
+			<div id="work-resume" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
 				<img src="/static/img/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Engineering</h4>
