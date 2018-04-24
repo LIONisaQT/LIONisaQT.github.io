@@ -9,14 +9,17 @@
 }
 
 .nav-links {
+  width: 15%;
 	transition: color 0.3s;
 	display: inline-block;
 	padding: 24px;
 	text-decoration: none;
-	color: rgba(255, 255, 255, 0.9);
+  color: var(--off-white);
+	/* color: rgba(255, 255, 255, 0.75); */
 }
 
 .nav-links:hover {
-	color: rgba(255, 255, 255, 1);
+  /* color: var(--darklight); */
+	/* color: rgba(255, 255, 255, 1); */
 	text-shadow: 0 0 20px rgba(255, 255, 255, 1);
 }

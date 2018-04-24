@@ -27,7 +27,7 @@ html, body {
 
 #banner {
 	padding: 7em 11em 5em;
-	color: white;
+	color: var(--off-white);
 }
 
 .intro {
@@ -41,18 +41,20 @@ html, body {
 }
 
 #contents {
-  background-color: #eee;
+  background-color: var(--off-white);
 }
 
 .section-title {
-	padding: 2em 11em 1px;
+	padding: 1em 11em;
   text-align: center;
+  background-color: var(--header-gray);
 }
 
 .section-title h2 {
 	margin: 0;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 2.5em;
+  color: var(--off-white);
 }
 
 .section {
