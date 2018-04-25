@@ -7,10 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+  <div>
+    <button onclick="toTop()" id="to-top" title="Go to top">Top</button>
+  </div>
 	<div id="navbar" style="z-index: 9999">
 		<a class="nav-links" href="#game-projects">GAMES</a>
 		<a class="nav-links" href="#engineering-projects">ENGINEERING</a>
-		<a class="nav-links" href="#">RYAN Z. SHEE</a>
+		<h2 class="header-name">RYAN<span class="middle">Z</span><span class="last">SHEE</span></h2>
 		<a class="nav-links" href="#resume">RESUME</a>
 		<a class="nav-links" href="#about-contact">ABOUT/CONTACT</a>
 	</div>
@@ -27,52 +30,200 @@
 		</p>
 	</div>
 	<div id="contents">
-    <div id="game-projects" class="section-title">
+    <div id="game-projects" class="anchor"></div>
+    <div id="game-projects-actual" class="section-title">
 			<h2>Game Projects</h2>
 		</div>
 		<div class="section section-grid">
-			<div id="shroommates" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
-				<img src="/static/img/sm_living_couch-desk.png"/>
+			<div id="shroommates" class="card overlay" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)" onclick="openModal(this)">
+				<img class="card-image" src="/static/img/0_shroommates/sm_living_couch-desk.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Shroommates</h4>
 					<p class="project-note">&mdash; Unreal Engine</p>
 					<p><i>"Housing ain't cheap here, mate."</i></p>
 				</div>
 			</div>
-			<div id="minshmup" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
-				<img src="/static/img/sm_living_couch-desk.png"/>
+      <div id="shroommates-modal" class="modal">
+        <div class="modal-content">
+          <span id="shroommates-close" class="close">&times;</span>
+          <div class="project-header">
+            <h2 class="project-title">Shroommates |</h2>
+            <h3 class="project-note">Made with Unreal Engine</h3>
+            <p><i>"Housing ain't cheap here, mate."</i></p>
+          </div>
+          <div class="project-entry">
+            <p>
+              <a class="small-link" href="/shroommates" target="_blank">Shroommates</a> is third-person stealth game where users play as a sentient mushroom trying to grow in secret in a UCSC student's apartment.
+              The mushroom can grow by consuming food and staying out of direct sunlight.
+              Players must adapt to different sizes, as size dynamically alters speed, hiding ability, and places you can get to.
+              Complete objectives while trying to keep out of sight of the AI human!
+              Click <a class="small-link" href="https://github.com/LIONisaQT/Shroommates" target="_blank">here</a> to sneakily sneak into the repository.
+              I won't tell anyone you were there.
+            </p>
+            <ul>
+              <li>Lead developer: Leading and delegating tasks to six other programmers.</li>
+              <li>AI programmer: Quickly implemented working temporary AI sufficient for prototyping purposes within a few days. Currently porting old AI functions and behaviors into newer, more robust AI, who is controled by an improved behavior tree.
+              <li>Generalist programmer: Implementing game behaviors as needed in various areas, such as state management and game objects.</li>
+              <li>Idenified, troubleshooted, and later explained to some team members Git issues and their solutions.</li>
+              <li>Point person for communication and technical QA with professors.</li>
+            </ul>
+            <h2>Screenshots</h2>
+          </div>
+          <div class="gallery">
+            <img class="modal-image" src="/static/img/0_shroommates/sm_living_couch-desk.png" width=33% height=33%>
+            <img class="modal-image" src="/static/img/0_shroommates/sm_bathroom.png" width=33% height=33%>
+            <img class="modal-image" src="/static/img/0_shroommates/sm_living.png" width=33% height=33%>
+          </div>
+        </div>
+      </div>
+			<div id="minshmup" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)" onclick="openModal(this)">
+				<img class="card-image" src="/static/img/1_minshmup/libgdx.png"/>
 				<div class="card-container">
 					<h4 class="project-title">MinShmup</h4>
 					<p class="project-note">&mdash; libGDX</p>
 					<p><i>"Game juice." -Tad Leckman</i></p>
 				</div>
 			</div>
-			<div id="battlegrounds" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
-				<img src="/static/img/sm_living_couch-desk.png"/>
+      <div id="minshmup-modal" class="modal">
+        <div class="modal-content">
+          <span id="minshmup-close" class="close">&times;</span>
+          <div class="project-header">
+            <h2 class="project-title">MinShmup |</h2>
+            <h3 class="project-note">Made with libGDX (currently on hiatus due to school)</h3>
+            <p><i>"Game juice." -Tad Leckman</i></p>
+          </div>
+          <div class="project-entry">
+            <p>
+              MinShmup is a simple, minimalistic shoot-em up for Android.
+              The intention of the project is for me to learn in-depth about and play with various methods and functions libGDX has to offer through a simple game. I also wanted to make a simple game feel amazing to play, taking inspriration from grapefrukt games' <a class="small-link" href="http://grapefrukt.com/f/games/juicy-breakout/" target="_blank">juicy-breakout</a>.
+              For the player, I want to make a game that looks aesthetically pleasing, satisfying to play, and easy to pick up to kill time with.
+              As a developer, I want to make a light-weight game with robust, easy-to-read code, as well as use the project to exercise good game development practices.
+              MinShmup currently doesn't have a public repository on GitHub, but will in the upcoming weeks.
+            </p>
+            <ul>
+              <li>Feels great to play, even in its prototype stage &ndash; the player receives pleasing and appropriate visual and audio feedback for various in-game actions.</li>
+              <li>Fully takes advantage of libGDX's object pooling system to handle disposable objects, thus preventing any memory leaks and decreasing overall memory usage.</li>
+              <li>More libGDX methods to be implemented to optimize and juice up the game even further in the future.</li>
+            </ul>
+            <h2>Screenshots</h2>
+          </div>
+          <div class="gallery">
+            <h3>Pictures soon! :(</h3>
+          </div>
+        </div>
+      </div>
+			<div id="battlegrounds" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)" onclick="openModal(this)">
+				<img class="card-image" src="/static/img/2_battlegrounds/br_map.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Battlegrounds</h4>
-					<p class="project-note">&mdash; the Board Game</p>
+					<p class="project-note">&mdash; The Board Game</p>
 					<p><i>"Where are we dropping, boys?" -procrastinating student at 2AM</i></p>
 				</div>
 			</div>
-			<div id="beat-em-up" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
-				<img src="/static/img/sm_living_couch-desk.png"/>
+      <div id="battlegrounds-modal" class="modal">
+        <div class="modal-content">
+          <span id="battlegrounds-close" class="close">&times;</span>
+          <div class="project-header">
+            <h2 class="project-title">Battlegrounds |</h2>
+            <h3 class="project-note">The Board Game</h3>
+            <p><i>"Where are we dropping, boys?" -procrastinating student at 2AM</i></p>
+          </div>
+          <div class="project-entry">
+            <p>
+              A board game based off of the recent popular trend of battle royale games and a systems design exercise.
+              You've seen the thousands of PUBG and Fortnite knock-offs for PC and smartphones, now check out the board game!
+              Manage a team of three units as you try to win that chicken dinner!
+              Each unit has up to ten actions points to use to move around the map, open chests for loot, and shoot other players.
+              Last team standing wins!
+              View the presentation <a class="small-link" href="/static/battlegrounds_presentation.pdf" type="application/pdf" target="_blank">here</a>.
+            </p>
+            <ul>
+              <li>Collaborated on game mechanics and balance.</li>
+              <li>
+                Created interactive game core loop using <a class="small-link" href="http://www.jorisdormans.nl/machinations/" target="_blank">Machinations</a>.
+                Download the XML <a class="small-link" href="/static/battle-royale.xml" download="battle-royale.xml">here</a>, and open it within Machinations.
+              </li>
+              <li>Transferred ideas, rules, and mechanics to visually clean documents for presentation.</li>
+            </ul>
+            <h2>Screenshots</h2>
+          </div>
+          <div class="gallery">
+            <img class="modal-image" src="/static/img/2_battlegrounds/br_map.png" width=33% height=270px>
+            <img class="modal-image" src="/static/img/2_battlegrounds/br_machinations.png" width=33% height=270px>
+            <img class="modal-image" src="/static/img/2_battlegrounds/br_cards.png" width=33% height=270px>
+          </div>
+        </div>
+      </div>
+			<div id="beat-em-up" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)" onclick="openModal(this)">
+				<img class="card-image" src="/static/img/3_beatemup/unity.jpg"/>
 				<div class="card-container">
 					<h4 class="project-title">Beat 'Em Up!</h4>
 					<p class="project-note">&mdash; Unity</p>
 					<p><i>"So we could, like, have Mozart fight someone like Tupac?"</i></p>
 				</div>
 			</div>
-			<div id="world-power" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
-				<img src="/static/img/sm_living_couch-desk.png"/>
+      <div id="beat-em-up-modal" class="modal">
+        <div class="modal-content">
+          <span id="beat-em-up-close" class="close">&times;</span>
+          <div class="project-header">
+            <h2 class="project-title">Beat 'Em Up! |</h2>
+            <h3 class="project-note">Prototyped with Unity</h3>
+            <p><i>"So we could, like, have Mozart fight someone like Tupac?"</i></p>
+          </div>
+          <div class="project-entry">
+            <p>
+              A rhythm-based fighting game prototype.
+              Play as fighters from various genres of music in a musical beatdown.
+              Players are incentivized to hit on the beat to deal more damage, rather than hitting off-beat and dealing minimal damage.
+              This game was three-week project for a senior game design studio class, just like Shroommates.
+              At the end of the quarter, the team voted to move on with Shroommates and abandon Beat 'Em Up!
+              Click <a class="small-link" href="http://github.com/LIONisaQT/beat-em-up" target="_blank">here</a> to view the repository.
+            </p>
+            <ul>
+              <li>Project manager: Leading and delegating tasks to a team of programmers and artists.</li>
+              <li>Programmed base character class: Implemented player attacks and added animations from images provided by artists.</li>
+            </ul>
+            <h2>Screenshots</h2>
+          </div>
+          <div class="gallery">
+            <h3>Pictures soon! :(</h3>
+          </div>
+        </div>
+      </div>
+			<div id="world-power" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)" onclick="openModal(this)">
+				<img class="card-image" src="/static/img/4_worldpower/wp_board.png"/>
 				<div class="card-container">
 					<h4 class="project-title">World Power</h4>
-					<p class="project-note">&mdash; the Board Game</p>
+					<p class="project-note">&mdash; The Board Game</p>
 					<p><i>"Wait, this board game is starting to look a little too realistic."</i></p>
 				</div>
 			</div>
-			<div id="snail-assalt" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
-				<img src="/static/img/sm_living_couch-desk.png"/>
+      <div id="world-power-modal" class="modal">
+        <div class="modal-content">
+          <span id="world-power-close" class="close">&times;</span>
+          <div class="project-header">
+            <h2 class="project-title">World Power |</h2>
+            <h3 class="project-note">The Board Game</h3>
+            <p><i>"Wait, this board game is starting to look a little too realistic."</i></p>
+          </div>
+          <div class="project-entry">
+            <p>
+              A tabletop game with a satirical look at international politics meant to represent our view of the utter insanity, childish incomprehensiblilty, and extensive cheating in the world.
+              It is a four-player game where each player takes on the role of a country's leader and become the world's superpower through use of war, famine, disease, and politicians.
+              Cheating is explicitly allowed and encouraged.
+            </p>
+            <ul>
+              <li>Collaborated on game design and balance.</li>
+            </ul>
+            <h2>Screenshots</h2>
+          </div>
+          <div class="gallery">
+            <img class="modal-image" src="/static/img/4_worldpower/wp_board.png" width=33% height=270px>
+          </div>
+        </div>
+      </div>
+			<div id="snail-assalt" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)" onclick="openModal(this)">
+				<img class="card-image" src="/static/img/6_snail/sa_start.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Snail Assalt</h4>
 					<p class="project-note">&mdash; libGDX</p>
@@ -80,36 +231,147 @@
 				</div>
 			</div>
 		</div>
-		<div id="engineering-projects" class="section-title">
+    <div id="snail-assalt-modal" class="modal">
+      <div class="modal-content">
+        <span id="snail-assalt-close" class="close">&times;</span>
+        <div class="project-header">
+          <h2 class="project-title">Snail Assalt |</h2>
+          <h3 class="project-note">Made with libGDX</h3>
+          <p><i>"You misspelled assaul- oh I get it haha."</i></p>
+        </div>
+        <div class="project-entry">
+          <p>
+            An Android defense shoot 'em up.
+            Play as little Jimmy as he defends his home against the onslaught of snails, each with their own special abilities.
+            Jimmy can purchase water gun and house upgrades with the shells of fallen enemies.
+            This was my first game created with a team at a Mission Bit summer class in 2014.
+            Check out what a noob I was at the Snail Assalt repository <a class="small-link" href="http://github.com/LIONisaQT/SnailAssalt" target="_blank">here</a>.
+            Also check out the <a class="small-link" href="https://vimeo.com/112938616" target="_blank">demo day video</a> at Pocket Gems!
+          </p>
+          <ul>
+            <li>Programmed levels, state management, and health and water system.</li>
+          </ul>
+          <h2>Screenshots</h2>
+        </div>
+        <div class="gallery">
+          <img class="modal-image" src="/static/img/6_snail/sa_start.png" width=33% height=270px>
+        </div>
+      </div>
+    </div>
+    <div id="engineering-projects" class="anchor"></div>
+		<div id="engineering-projects-actual" class="section-title">
 			<h2>Engineering Projects</h2>
 		</div>
 		<div class="section section-grid">
-			<div id="food-now" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
-				<img src="/static/img/sm_living_couch-desk.png"/>
+			<div id="food-now" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)" onclick="openModal(this)">
+				<img class="card-image" src="/static/img/7_food/yelp.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Food Now!</h4>
 					<p class="project-note">&mdash; Get food now!</p>
 					<p><i>"Ew no I ate there a couple of days ago, choose another place." -person who no longer has friends</i></p>
 				</div>
 			</div>
-			<div id="pick-up-boo" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
-				<img src="/static/img/sm_living_couch-desk.png"/>
+      <div id="food-now-modal" class="modal">
+        <div class="modal-content">
+          <span id="food-now-close" class="close">&times;</span>
+          <div class="project-header">
+            <h2 class="project-title">Food Now! (Project Owner) |</h2>
+            <h3 class="project-note">Can't choose a place to eat? Get food now!</h3>
+            <p><i>"Ew no I ate there a couple of days ago, choose another place." -person who no longer has friends</i></p>
+          </div>
+          <div class="project-entry">
+            <p>
+              Food Now! is a web application that aims to solve the problem of indecisive friends choosing a place to eat by being the final say in picking restaurants.
+              The app takes in everyone's food preferences, a distance and price maximum, and then returns a random restaurant that respects the distance and price limit while best fulfilling at least one of those preferences.
+              Uses React for front-end design, Express for the server framework, and Google Firebase for user login.
+              Check out the repository <a class="small-link" href="http://github.com/LIONisaQT/food-now" target="_blank">here</a>, and make sure to leave a review!
+            </p>
+            <ul>
+              <li>Project owner: Led and delegated tasks to five other developers.</li>
+              <li>Sent user parameters from front-end to Yelp, handled list of restaurants returned by Yelp, and passed a random restaurant back to front-end to display to the user.</li>
+            </ul>
+            <h2>Screenshots</h2>
+          </div>
+          <div class="gallery">
+            <h3>Pictures soon! :(</h3>
+          </div>
+        </div>
+      </div>
+			<div id="pick-up-boo" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)" onclick="openModal(this)">
+				<img class="card-image" src="/static/img/8_pickup/android-studio.png"/>
 				<div class="card-container">
 					<h4 class="project-title">Pick Up Boo</h4>
 					<p class="project-note">&mdash; Friend? You mean driver.</p>
 					<p><i>"Why? Because Uber and Lyft cost money of course."</i></p>
 				</div>
 			</div>
-			<div id="gotcho-book" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
-				<img src="/static/img/sm_living_couch-desk.png"/>
+      <div id="pick-up-boo-modal" class="modal">
+        <div class="modal-content">
+          <span id="pick-up-boo-close" class="close">&times;</span>
+          <div class="project-header">
+            <h2 class="project-title">Pick Up Boo |</h2>
+            <h3 class="project-note">Transform a contact into your Uber/Lyft driver</h3>
+            <p><i>"Why? Because Uber and Lyft cost money of course."</i></p>
+          </div>
+          <div class="project-entry">
+            <p>
+              A personal transportation request app for Android.
+              Pick a contact or input a phone number, add an optional flavor message, and send a pick up request text to your contact!
+              Text body also includes a Google Maps pin of your location so your contact can easily route to you via Google Maps.
+              Created this app one weekend because I was at home with nothing better to do (who does homework?).
+              Transport yourself to the repository <a class="small-link" href="http://github.com/LIONisaQT/pick-up-boo" target="_blank">here</a>.
+            </p>
+            <ul>
+              <li>Used Google URL shortener on the Google Maps location pin link to keep text messages short.</li>
+            </ul>
+            <h2>Screenshots</h2>
+          </div>
+          <div class="gallery">
+            <img class="modal-image" src="/static/img/8_pickup/pub_request.png" width=33% height=270px>
+            <img class="modal-image" src="/static/img/8_pickup/pub_wait.png" width=33% height=270px>
+            <img class="modal-image" src="/static/img/8_pickup/pub_text.png" width=33% height=270px>
+          </div>
+        </div>
+      </div>
+			<div id="gotcho-book" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)" onclick="openModal(this)">
+				<img class="card-image" src="/static/img/9_hack2017/hack2017-logo.jpg"/>
 				<div class="card-container">
 					<h4 class="project-title">Gotcho Book</h4>
 					<p class="project-note">&mdash; HACK UCSC 2017</p>
 					<p><i>Creative Entrepreneurship category, 2nd place</i></p>
 				</div>
 			</div>
-			<div id="gotcho-back" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
-				<img src="/static/img/sm_living_couch-desk.png"/>
+      <div id="gotcho-book-modal" class="modal">
+        <div class="modal-content">
+          <span id="gotcho-book-close" class="close">&times;</span>
+          <div class="project-header">
+            <h2 class="project-title">Gotcho Book |</h2>
+            <h3 class="project-note">HACK UCSC 2017: Creative Entrepreneurship category, 2nd place</h3>
+            <p><i>"Dolly Parton's Imagination Library needed an app."</i></p>
+          </div>
+          <div class="project-entry">
+            <p>
+              A book donation app prototype for Android.
+              Users can view a student's profile to see what books are on their wishlist and what genres they enjoy reading.
+              Users can then either donate a book they have, or purchase a book from Amazon for them.
+              Books are sent to the student's school.
+              Read some code at the repository <a class="small-link" href="http://github.com/GotchoBook" target="_blank">here</a>.
+              Click the <a class="small-link" href="https://devpost.com/software/gotcho-book" target="_blank">Devpost link</a> for win proof.
+            </p>
+            <ul>
+              <li>Created main and student profile activities.</li>
+              <li>Handled transitions between activities.</li>
+              <li>2/2 placed hackathons!</li>
+            </ul>
+            <h2>Screenshots</h2>
+          </div>
+          <div class="gallery">
+            <h3>Pictures soon! :(</h3>
+          </div>
+        </div>
+      </div>
+			<div id="gotcho-back" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)" onclick="openModal(this)">
+				<img class="card-image" src="/static/img/10_hack2016/hack2016-logo.jpg"/>
 				<div class="card-container">
 					<h4 class="project-title">Gotcho Back</h4>
 					<p class="project-note">&mdash; HACK UCSC 2016</p>
@@ -117,29 +379,65 @@
 				</div>
 			</div>
 		</div>
-		<div id="resume" class="section-title">
+    <div id="gotcho-back-modal" class="modal">
+      <div class="modal-content">
+        <span id="gotcho-back-close" class="close">&times;</span>
+        <div class="project-header">
+          <h2 class="project-title">Gotcho Back |</h2>
+          <h3 class="project-note">HACK UCSC 2016: Tech Cares category, 1st place</h3>
+          <p><i>"Oh no, not Gotcho Back!" -your potentional kidnapper</i></p>
+        </div>
+        <div class="project-entry">
+          <p>
+            According to multiple studies such as <a class="small-link" href="https://www.washingtonpost.com/news/wonk/wp/2014/05/28/this-is-how-women-feel-about-walking-alone-at-night-in-their-own-neighborhoods/?utm_term=.ec1ecee8b281" target="_blank">this one</a>, a good amount of women feel it is unsafe for them to walk outside at night by themselves.
+            Enter Gotcho Back, a safety app prototype for Android.
+            Users pick a contact and set a timer to get home.
+            If the timer runs out, the phone will vibrate and ask the user if they need more time.
+            If the user does not respond within a specific timeframe, the phone will send a text to the contact and ring.
+            After further lack of response, the app will call the contact.
+            Feel safe at the repository <a class="small-link" href="http://github.com/GotchoBook" target="_blank">here</a>.
+            Click the <a class="small-link" href="https://devpost.com/software/bulletin-board-chat-master" target="_blank">Devpost link</a> for win proof.
+          </p>
+          <ul>
+            <li>Implemented vibration trigger.</li>
+            <li>My first hackathon win!</li>
+          </ul>
+          <h2>Screenshots</h2>
+        </div>
+        <div class="gallery">
+          <h3>Pictures soon! :(</h3>
+        </div>
+      </div>
+    </div>
+    <div id="resume" class="anchor"></div>
+		<div id="resume-actual" class="section-title">
 			<h2>Resumes</h2>
 		</div>
 		<div class="section section-grid">
-			<div id="game-resume" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
-				<img src="/static/img/sm_living_couch-desk.png"/>
-				<div class="card-container">
-					<h4 class="project-title">Games</h4>
-					<p class="project-note">&mdash; For game recruiters</p>
-					<p><i>"Most games are just colliders colliding with other colliders right?"</i></p>
-				</div>
-			</div>
-			<div id="work-resume" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
-				<img src="/static/img/sm_living_couch-desk.png"/>
-				<div class="card-container">
-					<h4 class="project-title">Engineering</h4>
-					<p class="project-note">&mdash; For engineering recruiters</p>
-					<p><i>"Literally for loops"</i></p>
-				</div>
-			</div>
+      <a class="link-card" href="/static/shee-ryan_resume_g.pdf" type="application/pdf" target="_blank">
+        <div id="game-resume" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
+  				<img class="card-image" src="/static/img/pcmasterrace.png"/>
+  				<div class="card-container">
+  					<h4 class="project-title">Games</h4>
+  					<p class="project-note">&mdash; For game recruiters</p>
+  					<p><i>"Most games are just colliders colliding with other colliders right?"</i></p>
+  				</div>
+  			</div>
+      </a>
+      <a class="link-card" href="/static/shee-ryan_resume_w.pdf" type="application/pdf" target="_blank">
+        <div id="work-resume" class="card" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)">
+  				<img class="card-image" src="/static/img/cs.jpg"/>
+  				<div class="card-container">
+  					<h4 class="project-title">Engineering</h4>
+  					<p class="project-note">&mdash; For engineering recruiters</p>
+  					<p><i>"Literally for loops"</i></p>
+  				</div>
+  			</div>
+      </a>
 			<div></div>
 		</div>
-		<div id="about-contact" class="section-title">
+    <div id="about-contact" class="anchor"></div>
+		<div id="about-contact-actual" class="section-title">
 			<h2>About/Contact</h2>
 		</div>
 		<div class="section">
@@ -187,8 +485,36 @@
 				GitHub: <a class="small-link" href="https://github.com/LIONisaQT" target="_blank">LIONisaQT</a><br>
 				Steam: <a class="small-link" href="https://github.com/LIONisaQT" target="_blank">ryanisaqt</a>
 			</p>
+      <h2 style="margin-bottom: 0">Classes I've taken</h2>
+      <h3 style="margin: 0 auto; color: var(--dim-shadow)">Game Design</h3>
+      <ul style="margin-top: 0">
+        <li>Foundations of Video Game Design</li>
+        <li>Game AI</li>
+        <li>Game Platforms</li>
+        <li>Game Systems</li>
+        <li>Procedural Content Generation</li>
+        <li>Visual Communication and Interactive Design</li>
+      </ul>
+      <h3 style="margin: 0 auto; color: var(--dim-shadow)">Computer Science</h3>
+      <ul style="margin-top: 0">
+        <li>Data Structures</li>
+        <li>Algorithms and Abstract Data Types</li>
+        <li>Advanced Programming</li>
+        <li>Mobile Applications</li>
+        <li>Web Applications</li>
+        <li>Linear Algebra</li>
+        <li>Applied Discrete Mathematics</li>
+      </ul>
 		</div>
 	</div>
+  <div class="footer">
+    <a class="otherLinks" href="https://github.com/lionisaqt" target="_blank">GitHub</a>
+    <a class="otherLinks" href="https://www.linkedin.com/in/ryanzshee/" target="_blank">LinkedIn</a>
+    <a class="otherLinks" href="https://twitter.com/ryanzshee" target="_blank">Twitter</a>
+    <p style="color: var(--silver-wings)">&copy; 2018 Ryan Shee</p>
+  </div>
 </body>
 <script type='text/javascript' src='/scripts/cardHover.js'></script>
+<script type='text/javascript' src='/scripts/modal.js'></script>
+<script type='text/javascript' src='/scripts/scroll.js'></script>
 </html>

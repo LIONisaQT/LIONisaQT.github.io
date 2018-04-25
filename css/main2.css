@@ -1,6 +1,8 @@
 @import "colors2.css";
 @import "header2.css";
 @import "projects2.css";
+@import "modal.css";
+@import "footer2.css";
 
 html {
 	scroll-behavior: smooth;
@@ -10,8 +12,8 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	height: 100%;
 	margin: 0;
-	color: var(--silver-wings);
-	background-color: var(--dim-shadow);
+	color: black;
+	background-color: var(--offwhite);
 	/*background-image: linear-gradient(147deg, var(--highlight) 0%, var(--darklight) 74%);*/
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -22,17 +24,20 @@ body {
 }
 
 #banner {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 	height: 100vh;
-	color: var(--off-white);
+  background-color: var(--dim-shadow);
 	text-align: center;
 }
 
 .intro {
 	font-family: 'Open Sans Condensed', sans-serif;
+  margin-bottom: 0;
 	font-size: 4em;
-	margin-bottom: 0;
-	padding-top: 2em;
 	color: var(--tracer);
+  text-shadow: 0 0 48px rgba(249, 158, 26, 0.5);
 	/*text-shadow: 0 0 2px var(--tracer);*/
 }
 
@@ -40,11 +45,21 @@ body {
 	width: 500px;
 	margin-left: auto;
 	margin-right: auto;
+  margin-top: 0;
+  color: var(--silver-wings);
 	/*padding-right: 50%;*/
 }
 
 #contents {
-  background-color: var(--dim-shadow);
+  background-color: var(--off-white);
+}
+
+/* Invisible block for bookmarking to prevent navbar from blocking section title */
+.anchor {
+  display: block;
+  position: relative;
+  top: -61px;
+  visibility: hidden;
 }
 
 .section-title {
@@ -57,6 +72,8 @@ body {
 	margin: 0;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 2.5em;
+  color: var(--tracer);
+  text-shadow: 0 0 48px rgba(249, 158, 26, 0.5);
 }
 
 .section {
@@ -76,7 +93,7 @@ body {
 }
 
 .section-grid {
-	padding: 1em 8em 4em;
+	padding: 2em 8em;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
 	grid-gap: 1em;
@@ -85,13 +102,41 @@ body {
 .about-image {
 	width: 50%;
 	height: auto;
+  border-radius: 10px;
 }
 
 .small-link {
-  color: var(--tracer);
+  color: var(--arc-blue);
   text-decoration: none;
 }
 
 .small-link:hover {
-	text-shadow: 0 0 8px var(--tracer);
+	/* text-shadow: 0 0 1px var(--arc-blue); */
+  text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* To top button */
+#to-top {
+  display: none;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 99;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  opacity: 0.7;
+  background: var(--dim-shadow);
+  color: var(--silver-wings);
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+#to-top:hover {
+  opacity: 1;
 }

@@ -6,20 +6,42 @@
 	width: 100%;
 	text-align: center;
 	box-shadow: 0 18px 35px rgba(50, 50, 93, 0.15), 0 5px 15px rgba(0, 0, 0, 0.105);
+  color: var(--silver-wings);
 }
 
 .nav-links {
   width: 15%;
 	transition: color 0.3s;
 	display: inline-block;
-	padding: 24px;
+	padding: 12px;
 	text-decoration: none;
   color: var(--silver-wings);
-	/* color: rgba(255, 255, 255, 0.75); */
+  font-size: 1.2em;
 }
 
 .nav-links:hover {
-   color: var(--tracer); 
-	/* color: rgba(255, 255, 255, 1); */
+  color: var(--tracer);
 	text-shadow: 0 0 12px var(--tracer);
+}
+
+.header-name {
+  margin: 0;
+  width: 15%;
+	transition: color 0.3s;
+	display: inline-block;
+	padding: 12px;
+  font-size: 2em;
+  line-height: 1;
+}
+
+.header-name:hover {
+  cursor: default;
+}
+
+span.middle {
+  color: gray;
+}
+
+span.last {
+  color: var(--tracer);
 }
