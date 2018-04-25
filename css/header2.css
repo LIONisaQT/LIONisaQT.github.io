@@ -24,6 +24,10 @@
 	text-shadow: 0 0 12px var(--tracer);
 }
 
+.icon {
+  display: none;
+}
+
 .header-name {
   margin: 0;
   width: 15%;
@@ -44,4 +48,11 @@ span.middle {
 
 span.last {
   color: var(--tracer);
+}
+
+@media screen and (max-width: 1280px) {
+  .nav-links, .header-name {
+    display: none;
+  }
+
 }
