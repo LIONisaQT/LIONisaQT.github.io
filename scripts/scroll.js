@@ -1,6 +1,19 @@
 window.onscroll = function() {
+  stickyToggle();
   addTopButton();
 };
+
+const header = document.getElementById("navbar");
+let sticky = header.offsetTop;
+
+// Handle whether header is sticky
+function stickyToggle() {
+  if (window.pageYOffset >= sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
 
 // Check whether to top button is necessary
 function addTopButton() {

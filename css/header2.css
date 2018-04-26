@@ -38,6 +38,12 @@
   line-height: 1;
 }
 
+.sticky {
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
 .header-name:hover {
   cursor: default;
 }
@@ -54,5 +60,27 @@ span.last {
   .nav-links, .header-name {
     display: none;
   }
+  a.icon {
+    float: right;
+    display: block;
+  }
+}
 
+@media screen and (max-width: 1280px) {
+  .nav-links {
+    width: auto;
+  }
+  #navbar.responsive {
+    width: 100%;
+  }
+  #navbar.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  #navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
 }
