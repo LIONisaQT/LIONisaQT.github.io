@@ -1,3 +1,5 @@
+// https://stackoverflow.com/questions/25347946/add-fade-effect-in-slideshow-javascript
+
 var imgArray = [
 	'/static/img/boo/boardwalk.jpg',
 	'/static/img/boo/great-america.jpg',
