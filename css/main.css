@@ -1,136 +1,156 @@
 @import "colors.css";
 @import "header.css";
-@import "footer.css";
 @import "projects.css";
-/*@import "toggle.css";*/
-
-body, html {
-  height: 100%;
-  overflow-wrap: break-word;
-}
-
+@import "modal.css";
+@import "footer.css";
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-  text-align: left;
-  margin: 0;
-  width: 100%;
-  color: var(--off-white);
-  font-family: 'Open Sans', sans-serif;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  background-color: var(--background-gray);
+	font-family: 'Open Sans', sans-serif;
+	height: 100%;
+	margin: 0;
+	color: black;
+	background-color: var(--offwhite);
+	/*background-image: linear-gradient(147deg, var(--highlight) 0%, var(--darklight) 74%);*/
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	line-height: 1.75;
+	overflow-wrap: break-word;
+	overflow-x: hidden;
 }
 
-.bg {
-  background-image: url("/static/img/sm_living_blur.png");
-  height: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+#banner {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	height: 100vh;
+	background-color: var(--dim-shadow);
+	text-align: center;
 }
 
-.top-container {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: center;
-  font-size: 3.5vw;
-  color: white;
-  text-shadow: 0px 0px 10px black;
+.intro {
+	font-family: 'Open Sans Condensed', sans-serif;
+	margin-bottom: 0;
+	font-size: 4em;
+	color: var(--tracer);
+	text-shadow: 0 0 48px rgba(249, 158, 26, 0.5);
 }
 
-.name {
-  margin: 0;
-  font-family: 'Ubuntu', sans-serif;
+.pitch {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	color: var(--silver-wings);
+	/*padding-right: 50%;*/
 }
 
-.title {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 0.5vw;
+@media screen and (max-width: 1280px) {
+	.pitch {
+		width: auto;
+		margin: 0 16px;
+	}
 }
 
-@media screen and (max-width: 800px) {
-  .top-container {
-    font-size: 5.5vw;
-  }
+#contents {
+	background-color: var(--off-white);
 }
 
-/* 
-  Mobile device because hover is demanded
-  https://stackoverflow.com/questions/12469875/how-to-code-css-media-queries-targeting-all-mobile-devices-and-tablets
-*/
-/*@media (hover:none), (hover:on-demand){ 
-  .top-container {
-    font-size: 5.5vw;
-  }
-}*/
+/* Invisible block for bookmarking to prevent navbar from blocking section title */
 
-span.middle {
-  color: gray;
-}
-
-span.last {
-  color: var(--highlight);
+.anchor {
+	display: block;
+	position: relative;
+	top: -61px;
+	visibility: hidden;
 }
 
 .section-title {
-  text-align: left;
-  color: var(--highlight);
-  margin: 0 -1%;
-  line-height: 1;
-  font-family: 'Roboto', sans-serif;
+	padding: 1em 11em;
+	text-align: center;
+	background-color: var(--seesan);
 }
 
-.content {
-  line-height: 1.6;
-  margin: 0 10%;
-  padding: 16px;
+.section-title h2 {
+	margin: 0;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 2.5em;
+	color: var(--tracer);
+	text-shadow: 0 0 48px rgba(249, 158, 26, 0.5);
 }
 
-@media screen and (max-width: 800px) {
-  .content {
-    margin: 0;
-  }
+.section {
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 2em 0;
 }
 
-.content:a {
-  color: var(--highlight);
+.section-grid {
+	padding: 2em 8em;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+	grid-gap: 1em;
 }
 
-/* Invisible block for bookmarking to prevent header from blocking section title */
-.anchor {
-  display: block;
-  position: relative;
-  top: -60px;
-  visibility: hidden;
+@media screen and (max-width: 1280px) {
+	.anchor {
+		top: -50px;
+	}
+	.section {
+		width: auto;
+		padding: 1em 16px;
+		margin: 0;
+	}
+	.section-grid {
+		grid-template-columns: repeat(auto-fit, 100%);
+	}
+	.section-title {
+		padding: 0;
+	}
+}
+
+.about-image {
+	width: 50%;
+	height: auto;
+	border-radius: 10px;
+}
+
+.small-link {
+	color: var(--arc-blue);
+	text-decoration: none;
+}
+
+.small-link:hover {
+	/* text-shadow: 0 0 1px var(--arc-blue); */
+	text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+	display: none;
 }
 
 /* To top button */
+
 #to-top {
-  display: none;
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 99;
-  font-size: 14px;
-  border: none;
-  outline: none;
-  opacity: 0.4;
-  color: var(--header-gray);
-  cursor: pointer;
-  padding: 12px;
-  border-radius: 4px;
+	display: none;
+	position: fixed;
+	bottom: 16px;
+	right: 16px;
+	z-index: 99;
+	font-size: 14px;
+	border: none;
+	outline: none;
+	opacity: 0.7;
+	background: var(--dim-shadow);
+	color: var(--silver-wings);
+	cursor: pointer;
+	padding: 12px;
+	border-radius: 4px;
 }
 
 #to-top:hover {
-  opacity: 0.7;
-}
-
-ul {
-  list-style-type: disc;
-  margin-top: 0;
+	opacity: 1;
 }
