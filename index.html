@@ -24,12 +24,12 @@
 	</div>
 	<div id="banner" onclick="closeMenu()">
 		<h1 id="intro" class="intro">
-			Technical Designer
+			Gameplay Programmer
 		</h1>
 		<p class="pitch">
 			Hi, I'm <span class="last">Ryan</span>, and I like designing games and programming stuff.
 			I have experience with various <span class="last">game engines and platforms</span>.
-			My primary role on teams is <span class="last">technical designer</span>, although I can handle <span class="last">gameplay programming</span> and <span class="last">game designer</span> roles as well.
+			My primary role on teams is <span class="last">gameplay programmer</span>, although I can handle <span class="last">technical design</span> and <span class="last">game designer</span> roles as well.
 			I want the games I make to be mechanically engaging.
 			You should definitely check out my projects.
 			Also please hire me.
@@ -54,7 +54,7 @@
 					<span id="shroommates-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">Shroommates |</h2>
-						<h3 class="project-note">Lead developer, made with Unreal Engine</h3>
+						<h3 class="project-note">Made with Unreal Engine (Lead Developer)</h3>
 						<p><i>"Housing ain't cheap here, mate."</i></p>
 					</div>
 					<div class="project-entry">
@@ -105,7 +105,7 @@
 					<span id="minshmup-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">MinShmup |</h2>
-						<h3 class="project-note">Solo project, made with libGDX (currently on hiatus due to school)</h3>
+						<h3 class="project-note">Made with libGDX (currently on hiatus due to school) (solo project)</h3>
 						<p><i>"Game juice." -Tad Leckman</i></p>
 					</div>
 					<div class="project-entry">
@@ -113,12 +113,14 @@
 							MinShmup is a simple, minimalistic shoot-em up for Android.
 							The intention of the project is for me to learn in-depth about and play with various methods and functions libGDX has to offer through a simple game.
 							I also want to make a simple game feel amazing to play, taking inspriration from grapefrukt games' <a class="small-link" href="http://grapefrukt.com/f/games/juicy-breakout/" target="_blank">juicy-breakout</a>.
-							For the player, I want to make a game that looks aesthetically pleasing, satisfying to play, and easy to pick up to kill time with.
-							As a developer, I want to make a light-weight game with robust, easy-to-read code, as well as use the project to exercise good game development practices.
+							My goal as a designer is to reimagine a simple game that feels amazing to play.
 							MinShmup currently doesn't have a public repository on GitHub, but will in the upcoming weeks.
 						</p>
 						<ul>
-							<li>Programming pleasing and appropriate visual and audio feedback for various in-game actions.</li>
+							<li>Programming engaging visual feedback for some in-game actions through a camera shake manager.</li>
+							<ul>
+								<li>Getting hit and destroying enemies adds “trauma”, which the manager uses to scale both rotational and translational shake in a natural and impactful way.</li>
+							</ul>
 							<li>Fully takes advantage of libGDX's object pooling system to handle disposable objects, thus preventing any memory leaks and decreasing overall memory usage.</li>
 							<li>More libGDX methods to be implemented to optimize and juice up the game even further in the future.</li>
 						</ul>
@@ -136,7 +138,7 @@
 				<img class="card-image" src="/static/img/2_battlegrounds/br_map.png" />
 				<div class="card-container">
 					<h4 class="project-title">Battlegrounds</h4>
-					<p class="project-note">&mdash; The Board Game</p>
+					<p class="project-note">&mdash; the Board Game</p>
 					<p><i>"Where are we dropping, boys?" -procrastinating student at 2AM</i></p>
 				</div>
 			</div>
@@ -145,7 +147,7 @@
 					<span id="battlegrounds-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">Battlegrounds |</h2>
-						<h3 class="project-note">The Board Game</h3>
+						<h3 class="project-note">the Board Game (Systems Designer)</h3>
 						<p><i>"Where are we dropping, boys?" -procrastinating student at 2AM</i></p>
 					</div>
 					<div class="project-entry">
@@ -154,12 +156,12 @@
 							You've seen the thousands of PUBG and Fortnite knock-offs for PC and smartphones, now check out the board game!
 							Manage a team of three units as you try to win that chicken dinner!
 							Each unit has up to ten actions points to use to move around the map, open chests for loot, and shoot other players.
-							To help players getting shot at, our game uses a reaction point system that lets players react however they need to depending on the caliber of the weapon used against them.
 							Last team standing wins!
 							View the presentation <a class="small-link" href="/static/battlegrounds_presentation.pdf" type="application/pdf" target="_blank">here</a>.
 						</p>
 						<ul>
-							<li>Collaborated on game mechanics and balance.</li>
+							<li>Balanced reaction point system, which helps units getting shot at by granting them immediately spendable action points to prevent immediate death.</li>
+							<li>Balanced damage, range, accuracy (determined with die roll), and usage cost for 4 different weapons.</li>
 							<li>
 								Programmed interactive game core loop using <a class="small-link" href="http://www.jorisdormans.nl/machinations/" target="_blank">Machinations</a>. Download the XML <a class="small-link" href="/static/battle-royale.xml" download="battle-royale.xml">here</a>,
 								and open it within Machinations.
@@ -191,7 +193,7 @@
 					<span id="beat-em-up-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">Beat 'Em Up! |</h2>
-						<h3 class="project-note">Technical designer, prototyped with Unity</h3>
+						<h3 class="project-note">prototyped with Unity (Technical Designer)</h3>
 						<p><i>"So we could, like, have Mozart fight someone like Tupac?"</i></p>
 					</div>
 					<div class="project-entry">
@@ -221,7 +223,7 @@
 				<img class="card-image" src="/static/img/4_worldpower/wp_board.png"/>
 				<div class="card-container">
 					<h4 class="project-title">World Power</h4>
-					<p class="project-note">&mdash; The Board Game</p>
+					<p class="project-note">&mdash; the Board Game</p>
 					<p><i>"Wait, this board game is starting to look a little too realistic."</i></p>
 				</div>
 			</div>
@@ -230,7 +232,7 @@
 					<span id="world-power-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">World Power |</h2>
-						<h3 class="project-note">The Board Game</h3>
+						<h3 class="project-note">the Board Game (Systems Designer)</h3>
 						<p><i>"Wait, this board game is starting to look a little too realistic."</i></p>
 					</div>
 					<div class="project-entry">
@@ -266,7 +268,7 @@
 				<span id="snail-assalt-close" class="close">&times;</span>
 				<div class="project-header">
 					<h2 class="project-title">Snail Assalt |</h2>
-					<h3 class="project-note">Technical designer, made with libGDX</h3>
+					<h3 class="project-note">made with libGDX (Technical Designer)</h3>
 					<p><i>"You misspelled assaul- oh I get it haha."</i></p>
 				</div>
 				<div class="project-entry">
@@ -310,7 +312,7 @@
 					<span id="food-now-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">Food Now! |</h2>
-						<h3 class="project-note">Project owner and back-end developer, a MERN stack application</h3>
+						<h3 class="project-note">A MERN stack application (Project Owner and back-end developer)</h3>
 						<p><i>"Ew no I ate there a couple of days ago, choose another place." -person who no longer has friends</i></p>
 					</div>
 					<div class="project-entry">
@@ -347,7 +349,7 @@
 					<span id="pick-up-boo-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">Pick Up Boo |</h2>
-						<h3 class="project-note">Solo project, for Android</h3>
+						<h3 class="project-note">Android (solo project)</h3>
 						<p><i>"Why? Because Uber and Lyft cost money of course."</i></p>
 					</div>
 					<div class="project-entry">
@@ -386,7 +388,7 @@
 					<span id="gotcho-book-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">Gotcho Book |</h2>
-						<h3 class="project-note">HACK UCSC 2017: Creative Entrepreneurship category, 2nd place</h3>
+						<h3 class="project-note">HACK UCSC 2017: Creative Entrepreneurship category, 2nd place (Developer)</h3>
 						<p><i>"Dolly Parton's Imagination Library needed an app."</i></p>
 					</div>
 					<div class="project-entry">
@@ -427,7 +429,7 @@
 				<span id="gotcho-back-close" class="close">&times;</span>
 				<div class="project-header">
 					<h2 class="project-title">Gotcho Back |</h2>
-					<h3 class="project-note">HACK UCSC 2016: Tech Cares category, 1st place</h3>
+					<h3 class="project-note">HACK UCSC 2016: Tech Cares category, 1st place (Developer)</h3>
 					<p><i>"Oh no, not Gotcho Back!" -your potentional kidnapper</i></p>
 				</div>
 				<div class="project-entry">
