@@ -24,15 +24,15 @@
 	</div>
 	<div id="banner" onclick="closeMenu()">
 		<h1 id="intro" class="intro">
-			Gameplay Programmer
+			<span>Game Engineer</span>
 		</h1>
 		<p class="pitch">
-			Hi, I'm <span class="last">Ryan</span>, and I like designing games and programming stuff.
-			I have experience with <span class="last">various game engines and platforms</span>.
-			My primary role on teams is <span class="last">gameplay programmer</span>, although I can handle <span class="last">technical design</span> and <span class="last">game designer</span> roles as well.
-			I want the games I make to be mechanically engaging.
+			<span>Hi, I'm<span class="last">Ryan</span>and I like designing games and programming stuff.
+			I have experience with<span class="last">various game engines and platforms.</span>
+			I am a<span class="last">game engineer.</span>
+			Taking inspiration from Marie Kondo, I want the things I work on to spark joy.
 			You should definitely check out my projects.
-			Also please hire me.
+			Also please hire me.</span>
 		</p>
 	</div>
 	<div id="contents" onclick="closeMenu()">
@@ -41,11 +41,50 @@
 			<h2>PROJECTS</h2>
 		</div>
 		<div class="section section-grid">
+			<div id="magic-movers" class="card overlay" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)" onclick="openModal(this)">
+					<img class="card-image" src="/static/img/11_magicmovers/mm_title.jpg" />
+					<div class="card-container">
+						<h4 class="project-title">Magic Movers</h4>
+						<p class="project-note">&mdash; Game Engineer</p>
+						<p><i>Global Game Jam 2019 entry</i></p>
+					</div>
+				</div>
+				<div id="magic-movers-modal" class="modal">
+					<div class="modal-content">
+						<span id="magic-movers-close" class="close">&times;</span>
+						<div class="project-header">
+							<h2 class="project-title">Magic Movers |</h2>
+							<h3 class="project-note">Game Engineer (Unity, Global Game Jam 2019)</h3>
+							<p><i>"This sparks joy."</i></p>
+						</div>
+						<div class="project-entry">
+							<p>
+								Magic Movers is a game where you team up with a friend and play as wizards trying to tidy up and furnish a new apartment.
+								Click <a class="small-link" href="https://www.airconsole.com/#https://storage.googleapis.com/com.steve.magicmovers.cdn.airconsole.com/2019-01-27-23-23-06/s" target="_blank">here</a> to play with a buddy.
+								The game runs on AirConsole, so you'll need a phone for each of you to play.
+								This game was part of Global Game Jam 2019, and you can click <a class="small-link" href="https://globalgamejam.org/2019/games/magic-movers" target="_blank">here</a> to view the game entry.
+							</p>
+							<ul>
+								<li>Created furniture prefabs and their behaviors.</li>
+								<li>Worked with sound designer to add all sound into the game.</li>
+							</ul>
+							<h2>Screenshots</h2>
+						</div>
+						<div class="gallery">
+								<img class="modal-image" src="/static/img/11_magicmovers/mm_gameplay1.jpg" width=33% height=33%>
+								<img class="modal-image" src="/static/img/11_magicmovers/mm_gameplay2.jpg" width=33% height=33%>
+								<img class="modal-image" src="/static/img/11_magicmovers/mm_rekt.jpg" width=33% height=33%>
+							</div>
+						<div style="text-align: center">
+							<span id="magic-movers-close-btn" class="close-btn">Close</span>
+						</div>
+					</div>
+				</div>
 			<div id="shroommates" class="card overlay" onmousemove="tiltCard(event, this)" onmouseout="resetCard(this)" onclick="openModal(this)">
-				<img class="card-image" src="/static/img/0_shroommates/sm_living_couch-desk.png" />
+				<img class="card-image" src="/static/img/0_shroommates/sm_banner.png" />
 				<div class="card-container">
 					<h4 class="project-title">Shroommates</h4>
-					<p class="project-note">&mdash; Unreal Engine</p>
+					<p class="project-note">&mdash; Lead Developer</p>
 					<p><i>"Housing ain't cheap here, mate."</i></p>
 				</div>
 			</div>
@@ -54,7 +93,7 @@
 					<span id="shroommates-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">Shroommates |</h2>
-						<h3 class="project-note">Made with Unreal Engine (Lead Developer, Gameplay Programmer)</h3>
+						<h3 class="project-note">Lead Developer (Unreal Engine)</h3>
 						<p><i>"Housing ain't cheap here, mate."</i></p>
 					</div>
 					<div class="project-entry">
@@ -96,7 +135,7 @@
 				<img class="card-image" src="/static/img/1_minshmup/libgdx.png" />
 				<div class="card-container">
 					<h4 class="project-title">MinShmup</h4>
-					<p class="project-note">&mdash; libGDX</p>
+					<p class="project-note">&mdash; Game Engineer</p>
 					<p><i>"Game juice." -Tad Leckman</i></p>
 				</div>
 			</div>
@@ -105,7 +144,7 @@
 					<span id="minshmup-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">MinShmup |</h2>
-						<h3 class="project-note">Made with libGDX (currently on hiatus due to school) (solo project)</h3>
+						<h3 class="project-note">Game Engineer (libGDX)</h3>
 						<p><i>"Game juice." -Tad Leckman</i></p>
 					</div>
 					<div class="project-entry">
@@ -124,10 +163,6 @@
 							<li>Fully takes advantage of libGDX's object pooling system to handle disposable objects, thus preventing any memory leaks and decreasing overall memory usage.</li>
 							<li>More libGDX methods to be implemented to optimize and juice up the game even further in the future.</li>
 						</ul>
-						<h2>Screenshots</h2>
-					</div>
-					<div class="gallery">
-						<h3>Pictures soon! :(</h3>
 					</div>
 					<div style="text-align: center">
 						<span id="minshmup-close-btn" class="close-btn">Close</span>
@@ -138,7 +173,7 @@
 				<img class="card-image" src="/static/img/2_battlegrounds/br_map.png" />
 				<div class="card-container">
 					<h4 class="project-title">Battlegrounds</h4>
-					<p class="project-note">&mdash; the Board Game</p>
+					<p class="project-note">&mdash; Systems Designer</p>
 					<p><i>"Where are we dropping, boys?" -procrastinating student at 2AM</i></p>
 				</div>
 			</div>
@@ -147,7 +182,7 @@
 					<span id="battlegrounds-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">Battlegrounds |</h2>
-						<h3 class="project-note">the Board Game (Systems Designer)</h3>
+						<h3 class="project-note">Systems Designer (board game)</h3>
 						<p><i>"Where are we dropping, boys?" -procrastinating student at 2AM</i></p>
 					</div>
 					<div class="project-entry">
@@ -184,7 +219,7 @@
 				<img class="card-image" src="/static/img/3_beatemup/unity.jpg" />
 				<div class="card-container">
 					<h4 class="project-title">Beat 'Em Up!</h4>
-					<p class="project-note">&mdash; Unity</p>
+					<p class="project-note">&mdash; Lead Developer, Technical Designer</p>
 					<p><i>"So we could, like, have Mozart fight someone like Tupac?"</i></p>
 				</div>
 			</div>
@@ -193,7 +228,7 @@
 					<span id="beat-em-up-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">Beat 'Em Up! |</h2>
-						<h3 class="project-note">prototyped with Unity (Technical Designer)</h3>
+						<h3 class="project-note">Lead Developer, Technical Designer (Unity)</h3>
 						<p><i>"So we could, like, have Mozart fight someone like Tupac?"</i></p>
 					</div>
 					<div class="project-entry">
@@ -209,10 +244,6 @@
 							<li>Led and delegating tasks to a team of programmers and artists.</li>
 							<li>Implemented player attacks, movement, and added animations from images provided by artists.</li>
 						</ul>
-						<h2>Screenshots</h2>
-					</div>
-					<div class="gallery">
-						<h3>Pictures soon! :(</h3>
 					</div>
 					<div style="text-align: center">
 						<span id="beat-em-up-close-btn" class="close-btn">Close</span>
@@ -223,7 +254,7 @@
 				<img class="card-image" src="/static/img/4_worldpower/wp_board.png"/>
 				<div class="card-container">
 					<h4 class="project-title">World Power</h4>
-					<p class="project-note">&mdash; the Board Game</p>
+					<p class="project-note">&mdash; Systems Designer</p>
 					<p><i>"Wait, this board game is starting to look a little too realistic."</i></p>
 				</div>
 			</div>
@@ -232,7 +263,7 @@
 					<span id="world-power-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">World Power |</h2>
-						<h3 class="project-note">the Board Game (Systems Designer)</h3>
+						<h3 class="project-note">Systems Designer (board game)</h3>
 						<p><i>"Wait, this board game is starting to look a little too realistic."</i></p>
 					</div>
 					<div class="project-entry">
@@ -258,7 +289,7 @@
 				<img class="card-image" src="/static/img/6_snail/sa_start.png" />
 				<div class="card-container">
 					<h4 class="project-title">Snail Assalt</h4>
-					<p class="project-note">&mdash; libGDX</p>
+					<p class="project-note">&mdash; Game Engineer, Technical Designer</p>
 					<p><i>"You misspelled assaul- oh I get it haha."</i></p>
 				</div>
 			</div>
@@ -268,7 +299,7 @@
 				<span id="snail-assalt-close" class="close">&times;</span>
 				<div class="project-header">
 					<h2 class="project-title">Snail Assalt |</h2>
-					<h3 class="project-note">made with libGDX (Technical Designer)</h3>
+					<h3 class="project-note">Game Engineer, Technical Designer (libGDX)</h3>
 					<p><i>"You misspelled assaul- oh I get it haha."</i></p>
 				</div>
 				<div class="project-entry">
@@ -284,10 +315,6 @@
 						<li>Implemented simple scaling difficulty levels.</li>
 						<li>Programmed state management, and health and water (ammo) system.</li>
 					</ul>
-					<h2>Screenshots</h2>
-				</div>
-				<div class="gallery">
-					<img class="modal-image" src="/static/img/6_snail/sa_start.png" width=33% height=270px>
 				</div>
 				<div style="text-align: center">
 					<span id="snail-assalt-close-btn" class="close-btn">Close</span>
@@ -303,7 +330,7 @@
 				<img class="card-image" src="/static/img/7_food/yelp.png" />
 				<div class="card-container">
 					<h4 class="project-title">Food Now!</h4>
-					<p class="project-note">&mdash; a MERN stack application</p>
+					<p class="project-note">&mdash; Project Owner, Back-End Engineer</p>
 					<p><i>"Ew no I ate there a couple of days ago, choose another place." -person who no longer has friends</i></p>
 				</div>
 			</div>
@@ -312,7 +339,7 @@
 					<span id="food-now-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">Food Now! |</h2>
-						<h3 class="project-note">A MERN stack application (Project Owner and back-end developer)</h3>
+						<h3 class="project-note">Project Owner and Back-End Engineer (MERN stack application)</h3>
 						<p><i>"Ew no I ate there a couple of days ago, choose another place." -person who no longer has friends</i></p>
 					</div>
 					<div class="project-entry">
@@ -323,13 +350,9 @@
 							Check out the repository <a class="small-link" href="http://github.com/LIONisaQT/food-now" target="_blank">here</a>, and make sure to leave a review!
 						</p>
 						<ul>
-							<li>Led and delegated tasks to five other developers.</li>
+							<li>Led and delegated tasks to five other engineers.</li>
 							<li>Sent user parameters from front-end to Yelp, handled list of restaurants returned by Yelp, and passed a random restaurant back to front-end to display to the user.</li>
 						</ul>
-						<h2>Screenshots</h2>
-					</div>
-					<div class="gallery">
-						<h3>Pictures soon! :(</h3>
 					</div>
 					<div style="text-align: center">
 						<span id="food-now-close-btn" class="close-btn">Close</span>
@@ -340,7 +363,7 @@
 				<img class="card-image" src="/static/img/8_pickup/android-studio.png" />
 				<div class="card-container">
 					<h4 class="project-title">Pick Up Boo</h4>
-					<p class="project-note">&mdash; for Android</p>
+					<p class="project-note">&mdash; Android Engineer</p>
 					<p><i>"Why? Because Uber and Lyft cost money of course."</i></p>
 				</div>
 			</div>
@@ -349,7 +372,7 @@
 					<span id="pick-up-boo-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">Pick Up Boo |</h2>
-						<h3 class="project-note">Android (solo project)</h3>
+						<h3 class="project-note">Android Engineer</h3>
 						<p><i>"Why? Because Uber and Lyft cost money of course."</i></p>
 					</div>
 					<div class="project-entry">
@@ -379,7 +402,7 @@
 				<img class="card-image" src="/static/img/9_hack2017/hack2017-logo.jpg" />
 				<div class="card-container">
 					<h4 class="project-title">Gotcho Book</h4>
-					<p class="project-note">&mdash; HACK UCSC 2017</p>
+					<p class="project-note">&mdash; Android Engineer</p>
 					<p><i>Creative Entrepreneurship category, 2nd place</i></p>
 				</div>
 			</div>
@@ -388,7 +411,7 @@
 					<span id="gotcho-book-close" class="close">&times;</span>
 					<div class="project-header">
 						<h2 class="project-title">Gotcho Book |</h2>
-						<h3 class="project-note">HACK UCSC 2017: Creative Entrepreneurship category, 2nd place (Developer)</h3>
+						<h3 class="project-note">Android Engineer (HACK UCSC 2017: Creative Entrepreneurship category, 2nd place)</h3>
 						<p><i>"Dolly Parton's Imagination Library needed an app."</i></p>
 					</div>
 					<div class="project-entry">
@@ -419,7 +442,7 @@
 				<img class="card-image" src="/static/img/10_hack2016/hack2016-logo.jpg" />
 				<div class="card-container">
 					<h4 class="project-title">Gotcho Back</h4>
-					<p class="project-note">&mdash; HACK UCSC 2016</p>
+					<p class="project-note">&mdash; Android Engineer</p>
 					<p><i>Tech Cares category, 1st place</i></p>
 				</div>
 			</div>
@@ -429,7 +452,7 @@
 				<span id="gotcho-back-close" class="close">&times;</span>
 				<div class="project-header">
 					<h2 class="project-title">Gotcho Back |</h2>
-					<h3 class="project-note">HACK UCSC 2016: Tech Cares category, 1st place (Developer)</h3>
+					<h3 class="project-note">Android Engineer (HACK UCSC 2016: Tech Cares category, 1st place)</h3>
 					<p><i>"Oh no, not Gotcho Back!" -your potentional kidnapper</i></p>
 				</div>
 				<div class="project-entry">
@@ -491,37 +514,35 @@
 		</div>
 		<div class="section">
 			<div style="text-align:center">
+				<img id="slider" src="/static/img/portrait.JPG">
 			</div>
 			<p>
 				Hello!
 			</p>
 			<p>
-				I'm a Computer Science: Computer Game Design student at the University of California, Santa Cruz.
-				I've taken various game design and courses, ranging from programming game AI, to studying procedural content generation, to making games with a studio of talented interdisciplinary students.
-				I'm proficient at object-oriented programming in Java, utilizing libGDX for mobile game development, using JavaScript for web development, and writing C# for Unity games.
+				I am currently a live operations game engineer at Lumosity.
+				As a live ops engineer, I dig into legacy codebases to fix bugs and make improvements, so far to six live games.
+				I also helped port over 10 Flash games over to a WebGL base.
+			</p>
+			<p>
+				I'm proficient at programming in Java, JavaScript, and C#.
 				Additionally, I've dabbled in a decent amount of C++, Lua, and Python, and I'm quick to pick up languages.
 				I also like to think I have a decent eye for design.
-				I'm currently creeping into the proficient/experienced phase for game engines such Unreal Engine and Unity.
+				I've used engines like Unreal, Unity, and Cocos Creator, as well as frameworks like libGDX and Phaser.
 			</p>
 			<p>
-				I'm aiming to land a job as a game engineer/developer or game systems designer, but a software engineering job would be great as well.
-				I have experience instructing a class on game design and development for Android to high school students at <a class="small-link" href="https://www.missionbit.com/" target="_blank">Mission Bit</a>, which is a great org with lots of fun people and classes.
+				I'm also a Computer Science: Computer Game Design graduate from the University of California, Santa Cruz.
+				I've taken various game design and courses, ranging from programming game AI, to studying procedural content generation, to making games with a studio of talented interdisciplinary students.
+			</p>
+			<p>
+				Other than game engineering, I have experience instructing a class on game design and development for Android to high school students at <a class="small-link" href="https://www.missionbit.com/" target="_blank">Mission Bit</a>, which is a great org with lots of fun people and classes.
 				I will destroy almost anyone who challenges me in Smash there.
-				I led my team for my Food Now! project, and am currently the lead developer of Shroommates&mdash;my senior game design studio project&mdash;so I have plenty of experience in teams, leadership, and communication.
+				I led my team for my Food Now! project, and am the lead developer of Shroommates&mdash;my senior game design studio project&mdash;so I have plenty of experience in teams, leadership, and communication.
 			</p>
 			<p>
-				Some online multiplayer games I'm hooked on are <a class="small-link" href="https://rainbow6.ubisoft.com/siege/en-us/home/index.aspx" target="_blank">Tom Clancy's Rainbow Six Siege</a> and
-				<a class="small-link" href="https://playoverwatch.com/en-us/" target="_blank">Overwatch</a>. I also highly enjoy singleplayer games, most notably
-				<a class="small-link" href="https://xcom.com/xcom-enemy-unknown" target="_blank">XCOM: Enemy Unknown</a> and
-				<a class="small-link" href="https://xcom.com" target="_blank">XCOM 2</a>,
-				<a class="small-link" href="https://www.supergiantgames.com/games/bastion/" target="_blank">Bastion</a>,
-				<a class="small-link" href="https://www.konami.com/mg/mgsv/" target="_blank">Metal Gear Solid V: The Phantom Pain</a>,
-				<a class="small-link" href="http://thewitcher.com/en/witcher3" target="_blank">The Witcher 3: Wild Hunt</a>, and
-				<a class="small-link" href="https://www.zelda.com/breath-of-the-wild/" target="_blank">The Legend of Zelda: Breath of the Wild</a>. Of course, I have plenty of couch multiplayer games too, like
-				<a class="small-link" href="http://www.ghosttowngames.com/overcooked/" target="_blank">Overcooked!</a>,
-				<a class="small-link" href="https://www.cleverendeavourgames.com/ultimate-chicken-horse/" target="_blank">Ultimate Chicken Horse</a>,
-				<a class="small-link" href="https://www.ssbwiki.com/Super_Smash_Bros._Melee" target="_blank">Super Smash Bros. Melee</a>, and
-				<a class="small-link" href="https://www.ssbwiki.com/Project_M" target="_blank">Project M</a>.
+				I'm currently playing a lot of Apex Legends, Rainbow Six Siege, The Division 2, and Overwatch.
+				Besides those games, I highly enjoy singleplayer games like XCOM, Bastion, Metal Gear Solid, The Witcher, The Legend of Zelda, and Sekiro.
+				Of course, I can also play any Super Smash Bros. game competently (1v1 me anytime).
 			</p>
 			<h2 style="margin-bottom: 0">Contact</h2>
 			<p style="margin-top: 0">
