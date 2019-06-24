@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Three Houses Countdown</title>
+	<link rel="shortcut icon" type="image/png" href="/static/img/favicon.png"/>
+	<link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/css/countdown/fe3h-main.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#F99E1A" />
+</head>
+
+<body style="background-color: gray;margin: 0;overflow: hidden;">
+	<div id="background">
+		<img id="slider" src="/static/img/fe3h/01.jpg">
+	</div>
+	<div id="main" class="contents">
+		<p class="title">Fire Emblem</p>
+		<p class="subtitle">Three Houses</p>
+		<p id="timer" class="timer"></p>
+	</div>
+</body>
+<script>
+    let countDownDate = new Date("July 26, 2019 00:00:00").getTime();
+    
+    setInterval(function() {
+        let now = new Date().getTime();
+        let distance = countDownDate - now;
+    
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+    
+        if (distance < 0) {
+			clearInterval(x);
+			document.getElementById("timer").innerHTML = "EXPIRED";
+        }
+    }, 1);
+</script>
+<script type='text/javascript' src='/scripts/slideshow.js'></script>
