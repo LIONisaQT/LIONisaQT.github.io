@@ -1,0 +1,128 @@
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+#navbar {
+	display: block;
+	background-color: transparent;
+	padding: 10px 16px;
+}
+
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: white;
+}
+
+.centered {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	height: 72vh;
+	width: auto;
+	/* background-color: #1cb7bd; */
+	background-image: url(https://www.lumosity.com/static/eclipse_hero_background-dfb016799d13c25cf694694deef30bb9.svg);
+	background-position-x: 50%;
+	background-position-y: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.title {
+	color: white;
+	font-family: 'Pacifico', cursive;
+	/* font-family: 'Satisfy', cursive; */
+	font-size: 8em;
+}
+
+.subtitle {
+	color: white;
+	width: 600px;
+	margin: 1rem auto;
+	font-size: 1.2em;
+}
+
+.button {
+	background-color: #F1693C;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-size: 20px;
+	line-height: 30px;
+	width: fit-content;
+	min-width: 264px;
+	margin: 2rem auto 200px;
+	padding: 12px;
+	border-radius: 55px;
+	cursor: pointer;
+}
+
+.appstore-button {
+	margin: 2rem 0 200px;
+}
+
+.section {
+	padding: 4rem 2rem;
+}
+
+.off-color {
+	background-color: #f3f3f5;
+}
+
+.section-content {
+	width: 1000px;
+	margin: auto;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 2rem;
+	column-count: 2;
+	height: min-content;
+}
+
+.section-text {
+	color: black;
+}
+
+.section-header {
+	color: rgba(0, 0, 0, 0.89);
+	font-size: 26px;
+}
+
+.section-body {
+	color: rgba(0, 0, 0, 0.62);
+	font-family: 'Karla', sans-serif;
+	font-size: 20px;
+	line-height: 1.5em;
+}
+
+.light-body {
+	color: rgba(256, 256, 256, 0.98);
+}
+
+.dark-body {
+	color: rgba(0, 0, 0, 0.89);
+}
+
+.section-media {
+	display: flex;
+	justify-content: center;
+}
+
+.section-media img {
+	width: 100%;
+	height: auto;
+}
+
+.section-image {
+	max-width: 40%;
+	padding: 0 8px;
+}
