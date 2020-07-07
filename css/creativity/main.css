@@ -1,3 +1,8 @@
+@font-face {
+	font-family: "MuseoSans";
+	src: url(/static/creativity/fonts/MuseoSans/MuseoSans-500.ttf) format("truetype");
+}
+
 html {
 	scroll-behavior: smooth;
 }
@@ -5,20 +10,7 @@ html {
 body {
 	height: 100%;
 	margin: 0;
-	font-family: 'Noto Sans JP', sans-serif;
-}
-
-#navbar {
-	display: block;
-	background-color: transparent;
-	padding: 10px 16px;
-}
-
-.sticky {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	background-color: white;
+	font-family: 'MuseoSans', sans-serif;
 }
 
 .centered {
@@ -29,7 +21,7 @@ body {
 	height: 72vh;
 	width: auto;
 	/* background-color: #1cb7bd; */
-	background-image: url(https://www.lumosity.com/static/eclipse_hero_background-dfb016799d13c25cf694694deef30bb9.svg);
+	background-image: url(/static/creativity/img/eclipse-hero.svg);
 	background-position-x: 50%;
 	background-position-y: 50%;
 	background-repeat: no-repeat;
@@ -39,14 +31,14 @@ body {
 .title {
 	color: white;
 	font-family: 'Pacifico', cursive;
-	/* font-family: 'Satisfy', cursive; */
 	font-size: 8em;
+	margin-top: 0.5em;
 }
 
 .subtitle {
 	color: white;
 	width: 600px;
-	margin: 1rem auto;
+	margin: 0.5em auto;
 	font-size: 1.2em;
 }
 
@@ -64,6 +56,11 @@ body {
 	padding: 12px;
 	border-radius: 55px;
 	cursor: pointer;
+	transition-duration: 0.2s;
+}
+
+.button:hover {
+	background-color: #c55b38;
 }
 
 .appstore-button {
@@ -99,7 +96,6 @@ body {
 
 .section-body {
 	color: rgba(0, 0, 0, 0.62);
-	font-family: 'Karla', sans-serif;
 	font-size: 20px;
 	line-height: 1.5em;
 }
@@ -115,6 +111,7 @@ body {
 .section-media {
 	display: flex;
 	justify-content: center;
+	filter: drop-shadow(0 0 10px gray)
 }
 
 .section-media img {
@@ -125,4 +122,26 @@ body {
 .section-image {
 	max-width: 40%;
 	padding: 0 8px;
+}
+
+#slider {
+	height: 100%;
+	width: auto;
+	max-height: 400px;
+	max-width: 350px;
+	object-fit: cover;
+}
+
+.fade-in {
+	animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }
