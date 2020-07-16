@@ -10,6 +10,12 @@ function setup() {
 	resetCanvas();
 }
 
+function askToResetCanvas() {
+	if (confirm("Are you sure? Your canvas will be wiped clean, colors will be randomly reassigned, and prompt line will be redrawn.")) {
+		resetCanvas();
+	}
+}
+
 function resetCanvas() {
 	background(255);
 	strokeWeight(4);

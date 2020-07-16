@@ -11,6 +11,11 @@ body {
 	height: 100%;
 	margin: 0;
 	font-family: 'MuseoSans', sans-serif;
+	background-color: #fdfdfd;
+}
+
+body::-webkit-scrollbar {
+	display: none;
 }
 
 .centered {
@@ -18,9 +23,10 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
-	height: 72vh;
+	height: 100vh;
 	width: auto;
-	background-image: url(/static/creativity/img/eclipse-hero.svg);
+	/* background-image: url(/static/creativity/img/eclipse-hero.svg); */
+	background-color: rgb(218, 176, 71);
 	background-position-x: 50%;
 	background-position-y: 50%;
 	background-repeat: no-repeat;
@@ -28,17 +34,17 @@ body {
 }
 
 .title {
-	color: white;
+	color: black;
 	font-family: 'Pacifico', cursive;
-	font-size: 8em;
+	font-size: 10em;
 	margin-top: 0.5em;
 }
 
 .subtitle {
-	color: white;
-	width: 600px;
+	color: black;
+	width: 800px;
 	margin: 0.5em auto;
-	font-size: 1.2em;
+	font-size: 2em;
 }
 
 .button {
@@ -51,7 +57,6 @@ body {
 	line-height: 30px;
 	width: fit-content;
 	min-width: 264px;
-	margin: 2rem auto 200px;
 	padding: 12px;
 	border-radius: 55px;
 	cursor: pointer;
@@ -59,8 +64,19 @@ body {
 	outline: none;
 }
 
+.quote-button {
+	background-color: rgb(218, 176, 71);
+	border: 4px solid white;
+	color: black;
+	margin: 200px auto 100px;
+}
+
 .button:hover {
 	background-color: #c55b38;
+}
+
+.quote-button:hover {
+	background-color: rgba(0, 0, 0, 0.205);
 }
 
 .appstore-button {
@@ -68,18 +84,30 @@ body {
 }
 
 .section {
-	padding: 4rem 2rem;
+	padding: 8rem 2rem;
+}
+
+.section-theme {
+	padding: 2rem 2rem;
 }
 
 .off-color {
-	background-color: #f3f3f5;
+	background-color: #e2e2e2;
+}
+
+.header-color {
+	background-color: rgb(0, 59, 87);
+}
+
+.header-text {
+	color: white;
 }
 
 .section-content {
 	width: 1000px;
 	margin: auto;
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	column-gap: 2rem;
 	column-count: 2;
 	height: min-content;
@@ -89,6 +117,7 @@ body {
 	width: 1000px;
 	margin: auto;
 	height: min-content;
+	padding: -6rem;
 }
 
 .section-text {
@@ -98,6 +127,10 @@ body {
 .section-header {
 	color: rgba(0, 0, 0, 0.89);
 	font-size: 26px;
+}
+
+.section-header-text {
+	color: white;
 }
 
 .section-body {

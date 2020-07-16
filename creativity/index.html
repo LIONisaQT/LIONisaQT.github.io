@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Creativity! | Creative Training from Lumosity</title>
+	<title>Creativity! | Creative Training from Luminosity</title>
 	<link rel="shortcut icon" type="image/png" href="/static/img/favicon.png" />
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/creativity/main.css">
@@ -18,15 +18,50 @@
 			Creativity!
 		</div>
 		<div class="subtitle">
-			Get inspired, express yourself, and build creative confidence with Creativity! by Lumosity
+			Get inspired, express yourself, and build creative confidence with Creativity! by Luminosity
 		</div>
-		<a href="https://apps.apple.com/ca/app/creativity-creative-training/id1142719997" target="_blank" class="button fade-in">Get creative</a>
+		<a class="button quote-button fade-in" onClick="document.getElementById('explore').scrollIntoView();">Get creative</a>
 		<!-- <div class="appstore-button">
 			<img src="/static/creativity/img/appstore-us-wht.svg">
 		</div> -->
 	</div>
+	<div id="explore" class="section-theme header-color">
+		<div class="section-single">
+			<div class="section-text">
+				<div class="section-header-text section-header" style="text-align: center;">
+					Today's theme is
+					<br>
+					INSERT_THEME_HERE
+					<br>
+					INSERT_THEME_FLAVORTOWN_TEXT_HERE
+				</div>
+			</div>
+		</div>
+	</div>
 	<div>
 		<div class="section">
+			<div class="section-content">
+				<div class="section-text">
+					<h1 class="section-header">
+						Daily curated themes and activities
+					</h1>
+					<div class="section-body">
+						Get daily themes&mdash;carefully curated by our creativity professionals&mdash;to boost your creativity and imagination.
+						Every theme contains three unique activities, each of which challenge your creativity so you can flex your creative muscles.
+						<br><br>
+						Try a demo of one of <i>Incomplete Bezier Line</i>, one of our 14 creative activies within the app!
+						You get a blank canvas and a simple line to work off of, and the rest is up to you and your creativity.
+					</div>
+					<br><br><br>
+					<div style="text-align: center;">
+						<button class="button fade-in" onClick="askToResetCanvas()">Reload canvas</button>
+					</div>
+				</div>
+				<div id="sketchpad-div" class="section-media">
+				</div>
+			</div>
+		</div>
+		<div class="section off-color">
 			<div class="section-content">
 				<div class="section-text">
 					<h1 class="section-header">
@@ -46,7 +81,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="section off-color">
+		<div class="section">
 			<div class="section-content">
 				<div class="section-media">
 					<img id="slider" src="">
@@ -59,29 +94,13 @@
 						Create, discover, and share something new every day with our collection of creative exercises.
 						Use the Gallery as a creative journal to track your progress as you grow in a variety of creative areas.
 						<br><br>
+						Feeling uninspired?
 						Here are some creations from people like you!
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="section">
-			<div class="section-content">
-				<div class="section-text">
-					<h1 class="section-header">
-						Paint a picture!
-					</h1>
-					<div class="section-body">
-						Try a demo of one of <i>Finish Line</i>, one of our 14 creative activies within the app!
-						You get a blank canvas and a simple line to work off of, and the rest is up to you and your creativity.
-					</div>
-					<br>
-					<button class="button fade-in" onClick="resetCanvas()">Reset</button>
-				</div>
-				<div id="sketchpad-div" class="section-media">
-				</div>
-			</div>
-		</div>
-		<div class="section off-color" style="padding-bottom: 0;">
+		<div class="section-theme off-color" style="padding-top: 8rem;">
 			<div class="section-single">
 				<div class="section-text">
 					<div class="section-header" style="text-align: center;">
@@ -92,7 +111,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="section off-color">
+		<div class="section off-color" style="padding-top: 0;">
 			<div class="section-content">
 				<div class="section-text">
 					<div class="section-body">
