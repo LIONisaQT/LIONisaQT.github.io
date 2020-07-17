@@ -2,6 +2,11 @@ const animateClass = 'animate__animated';
 const randomQuotes = [
 	'<i>"Man, Ryan is so cool.</i>" -not Ryan',
 	'<i>"My I.Q. is one of the highest - and you all know it!"</i>" -45',
+	'<i>"An SSL error has occurred and a secure connection to the server could not be made"</i>" -Shakespeare',
+	'<i>"My hope is that this code is so awful I\'m never allowed to write UI code again"</i>" -Value programmer',
+	'<i>"This shit doesn\'t work!! Why? Has I ever?"</i>" -Valve programmer',
+	'<i>"All your base are belong to us"</i>" -CATS',
+	'<i>"This guy are sick"</i>" -Aerith',
 ]
 
 function creativeClick() {
