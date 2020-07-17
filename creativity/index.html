@@ -6,6 +6,7 @@
 	<link rel="shortcut icon" type="image/png" href="/static/img/favicon.png" />
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/creativity/main.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
 	<script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
 	<script src="/scripts/creativity/sketchpad.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,36 +15,39 @@
 
 <body>
 	<div class="centered">
-		<div class="title">
+		<div class="title animate__animated animate__fadeInRight">
 			Creativity!
 		</div>
-		<div class="subtitle">
+		<div class="subtitle animate__animated animate__fadeInLeft">
 			Get inspired, express yourself, and build creative confidence with Creativity! by Luminosity
 		</div>
-		<a class="button quote-button fade-in" onClick="document.getElementById('explore').scrollIntoView();">Get creative</a>
+		<a class="button quote-button animate__animated animate__fadeInUp animate__delay-1s" onClick="creativeClick()">Get creative</a>
+		<div id="quote" class="quote animate__animated animate__fadeIn animate__delay-1s">
+			QUOTE_OF_THE_DAY
+		</div>
 		<!-- <div class="appstore-button">
 			<img src="/static/creativity/img/appstore-us-wht.svg">
 		</div> -->
 	</div>
 	<div id="explore" class="section-theme header-color">
 		<div class="section-single">
-			<div class="section-text">
-				<div class="section-header-text section-header" style="text-align: center;">
-					Today's theme is
+			<div class="section-text animate__animated animate__fadeIn">
+				<div class="banner-text section-header-text section-header" style="text-align: center;">
+					<p>Today's theme is</p>
 					<br>
-					INSERT_THEME_HERE
+					<h1 id="theme-title">THEME_TITLE</h1>
 					<br>
-					INSERT_THEME_FLAVORTOWN_TEXT_HERE
+					<p id="theme-flavor">THEME_FLAVORTOWN_TEXT</p>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div>
-		<div class="section">
+		<div class="section" style="padding-top: 4rem;">
 			<div class="section-content">
 				<div class="section-text">
 					<h1 class="section-header">
-						Daily curated themes and activities
+						A daily curated workout
 					</h1>
 					<div class="section-body">
 						Get daily themes&mdash;carefully curated by our creativity professionals&mdash;to boost your creativity and imagination.
@@ -54,7 +58,7 @@
 					</div>
 					<br><br><br>
 					<div style="text-align: center;">
-						<button class="button fade-in" onClick="askToResetCanvas()">Reload canvas</button>
+						<button class="button" onClick="askToResetCanvas()">Reload canvas</button>
 					</div>
 				</div>
 				<div id="sketchpad-div" class="section-media">
@@ -63,6 +67,10 @@
 		</div>
 		<div class="section off-color">
 			<div class="section-content">
+				<div class="section-media">
+					<img class="section-image" src="/static/creativity/app-screenshots/home.jpg">
+					<img class="section-image" src="/static/creativity/app-screenshots/context.jpg">
+				</div>
 				<div class="section-text">
 					<h1 class="section-header">
 						Explore your creativity
@@ -75,20 +83,13 @@
 						We’re inviting you to explore and enjoy what your creative mind can do!
 					</div>
 				</div>
-				<div class="section-media">
-					<img class="section-image" src="/static/creativity/app-screenshots/home.jpg">
-					<img class="section-image" src="/static/creativity/app-screenshots/context.jpg">
-				</div>
 			</div>
 		</div>
 		<div class="section">
 			<div class="section-content">
-				<div class="section-media">
-					<img id="slider" src="">
-				</div>
 				<div class="section-text">
 					<h1 class="section-header">
-						Looking for a break from the routine or the mundane?
+						Looking for a break from your routine?
 					</h1>
 					<div class="section-body">
 						Create, discover, and share something new every day with our collection of creative exercises.
@@ -98,9 +99,12 @@
 						Here are some creations from people like you!
 					</div>
 				</div>
+				<div class="section-media">
+					<img id="slider" src="">
+				</div>
 			</div>
 		</div>
-		<div class="section-theme off-color" style="padding-top: 8rem;">
+		<div class="section-theme off-color" style="padding-top: 4rem;">
 			<div class="section-single">
 				<div class="section-text">
 					<div class="section-header" style="text-align: center;">
@@ -115,38 +119,58 @@
 			<div class="section-content">
 				<div class="section-text">
 					<div class="section-body">
-						"I really enjoy this app!
-						I love <b>waking up to creative activities</b> everyday and having fun with them.
-						I’ve <b>improved creativity skills</b> with them and I just enjoy it so much.
-						I think it’s really good for <b>generating ideas</b>."
+						<div class="card-bg">
+							<div class="card-text">
+								"I really enjoy this app!
+								I love <b>waking up to creative activities</b> everyday and having fun with them.
+								I’ve <b>improved creativity skills</b> with them and I just enjoy it so much.
+								I think it’s really good for <b>generating ideas</b>."
+								<br>
+								<i>- Jada!</i> 😍
+							</div>
+						</div>
 						<br>
-						<i>- Jada!</i> 😍
-						<br><br>
-						"Very <b>sexy</b> app.
-						<b>Would leave my wife for it</b>."
-						<br>
-						<i>- Anonymous</i>
+						<div class="card-bg">
+							<div class="card-text">
+								"Very <b>sexy</b> app.
+								<b>Would leave my wife for it</b>."
+								<br>
+								<i>- Anonymous</i>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="section-text">
 					<div class="section-body">
-						"I love all the apps this creator has made!
-						I love the song challenges they are <b>so fun</b>."
+						<div class="card-bg">
+							<div class="card-text">
+								"I love all the apps this creator has made!
+								I love the song challenges they are <b>so fun</b>."
+								<br>
+								<i>- dolans4life</i>
+							</div>
+						</div>
 						<br>
-						<i>- dolans4life</i>
-						<br><br>
-						"I was using it every day and loved how it <b>sparked the creative part of my brain</b>."
+						<div class="card-bg">
+							<div class="card-text">
+								"I was using it every day and loved how it <b>sparked the creative part of my brain</b>."
+								<br>
+								<i>- :RoomForSquares:</i>
+							</div>
+						</div>
 						<br>
-						<i>- :RoomForSquares:</i>
-						<br><br>
-						"This <b>Ryan Shee</b> guy is <b>pretty cool</b> 😎"
-						<br>
-						<i>- not Ryan Shee</i>
+						<div class="card-bg">
+							<div class="card-text">
+								"This <b>Ryan Shee</b> guy is <b>pretty cool</b> 😎"
+								<br>
+								<i>- not Ryan Shee</i>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="section">
+		<div class="section" style="background-color: #cacaca;">
 			<div class="section-single">
 				<div class="section-text">
 					<div class="section-body">
@@ -160,3 +184,4 @@
 
 </html>
 <script type='text/javascript' src='/scripts/slideshow.js'></script>
+<script type='text/javascript' src='/scripts/creativity/simpleEvents.js'></script>

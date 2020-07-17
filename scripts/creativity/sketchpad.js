@@ -1,5 +1,6 @@
 const swatchWidth = 40;
 const swatchHeight = 60;
+const confirmString = "Are you sure? Your canvas will be wiped clean, colors will be randomly reassigned, and your prompt line will be redrawn.";
 
 let canvas;
 let currentColor;
@@ -11,7 +12,7 @@ function setup() {
 }
 
 function askToResetCanvas() {
-	if (confirm("Are you sure? Your canvas will be wiped clean, colors will be randomly reassigned, and prompt line will be redrawn.")) {
+	if (confirm(confirmString)) {
 		resetCanvas();
 	}
 }
