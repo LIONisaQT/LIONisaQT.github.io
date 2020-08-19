@@ -1,7 +1,9 @@
 const TABLE = document.getElementById("sequencer");
-const NUM_ROWS = 10;
-const NUM_COLS = 10;
-const DELAY = 126;
+const SLIDER = document.getElementById("sequencerSlider");
+const SLIDER_VALUE = document.getElementById("sliderValue");
+const NUM_ROWS = 8;
+const NUM_COLS = 16;
+const DELAY = 120;
 const OFF_COLOR = "gray";
 const ON_COLOR = "lightseagreen";
 const FOCUS_COLOR = "lightblue";
@@ -10,11 +12,13 @@ const SOUND_ID = "sound";
 
 let currentColumn = 0;
 let board = [];
+let intervalId;
 
 class SequencerBeat {
-	constructor(row, col, beat, label) {
+	constructor(row, col, cell, beat, label) {
 		this.row = row;
 		this.col = col;
+		this.cell = cell;
 		this.beat = beat;
 		this.label = label;
 	}
@@ -40,11 +44,12 @@ function setupSequencer() {
 		for (var c = 0; c < NUM_COLS; c++) {
 			let col = row.insertCell(c);
 			col.classList.add("sequencerCell");
-			col.style.width = "30px";
+			col.style.height = "80px";
+			col.style.backgroundColor = "gray";
 			col.style.overflow = "hidden";
 			let beat = createBeatButton(r, c, col);
 			beat.beat.onclick = function () {
-				beatClicked(beat.beat, beat.label);
+				beatClicked(beat.beat, beat.label, beat.cell);
 			}
 			board.push(beat);
 		}
@@ -56,10 +61,12 @@ function createBeatButton(row, col, cell) {
 
 	let label = document.createElement("label");
 	label.classList.add("beat");
+	label.style.display = "block";
 	label.style.color = OFF_COLOR;
 	label.style.backgroundColor = OFF_COLOR;
+	label.style.width = "4vw";
+	label.style.height = "100%";
 	label.style.userSelect = "none";
-	label.innerHTML = "BEAT\nBEAT";
 	label.setAttribute("for", forIdAttribute);
 	cell.appendChild(label);
 
@@ -73,26 +80,33 @@ function createBeatButton(row, col, cell) {
 	beat.style.left = 0;
 	cell.appendChild(beat);
 
-	return new SequencerBeat(row, col, beat, label);
+	return new SequencerBeat(row, col, cell, beat, label);
 }
 
-function beatClicked(beat, label) {
+function beatClicked(beat, label, col) {
+	col.style.backgroundColor = beat.checked ? ON_COLOR : OFF_COLOR;
 	label.style.color = beat.checked ? ON_COLOR : OFF_COLOR;
 	label.style.backgroundColor = beat.checked ? ON_COLOR : OFF_COLOR;
 }
 
+function setupSlider() {
+	SLIDER_VALUE.innerHTML = SLIDER.value;
+	SLIDER.oninput = function () {
+		SLIDER_VALUE.innerHTML = this.value;
+		clearInterval(intervalId);
+		intervalId = runSequencer();
+	}
+}
+
 function runSequencer() {
-	setInterval(playColumnAudio, DELAY);
+	return setInterval(playColumnAudio, SLIDER_VALUE.innerHTML);
 }
 
 function playColumnAudio() {
 	for (var i = 0; i < board.length; i++) {
-		if (i % NUM_ROWS === currentColumn) {
-			console.log("CHECKING ROW " + (i % NUM_ROWS));
+		if (i % NUM_COLS === currentColumn) {
 			if (board[i].beat.checked) {
-				let formattedNumber = ("0" + i).slice(-2);
-				createjs.Sound.play(formattedNumber.toString()[0]);
-				console.log(i + " to be played!");
+				createjs.Sound.play(Math.floor(i / NUM_COLS));
 				board[i].setColor(PLAY_COLOR);
 			} else {
 				board[i].setColor(FOCUS_COLOR);
@@ -107,51 +121,21 @@ function playColumnAudio() {
 }
 
 setupSequencer();
-loadSound();
-runSequencer();
+loadSound("heavy-drum");
+setupSlider();
+intervalId = runSequencer();
 
-function loadSound() {
-	let audioPath = "/static/creativity/sounds/";
-	let sounds = [{
-			id: "0",
-			src: "piano-09.ogg"
-		},
-		{
-			id: "1",
-			src: "piano-08.ogg"
-		},
-		{
-			id: "2",
-			src: "piano-07.ogg"
-		},
-		{
-			id: "3",
-			src: "piano-06.ogg"
-		},
-		{
-			id: "4",
-			src: "piano-05.ogg"
-		},
-		{
-			id: "5",
-			src: "piano-04.ogg"
-		},
-		{
-			id: "6",
-			src: "piano-03.ogg"
-		},
-		{
-			id: "7",
-			src: "piano-02.ogg"
-		},
-		{
-			id: "8",
-			src: "piano-01.ogg"
-		},
-		{
-			id: "9",
-			src: "piano-00.ogg"
-		}
-	];
+function loadSound(instrument) {
+	let audioPath = "/static/creativity/sounds/" + instrument + "/";
+
+	let sounds = [];
+	for (var i = 0; i < NUM_ROWS; i++) {
+		let note = {
+			id: i.toString(),
+			src: i.toString() + ".mp3"
+		};
+		sounds.push(note);
+	}
+	createjs.Sound.alternateExtensions = ["mp3"];
 	createjs.Sound.registerSounds(sounds, audioPath);
 }

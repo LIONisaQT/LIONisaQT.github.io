@@ -5,7 +5,6 @@
 	<title>Beat Board</title>
 	<link rel="shortcut icon" type="image/png" href="/static/img/favicon.png" />
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="/css/creativity/main.css">
 	<link rel="stylesheet" type="text/css" href="/css/creativity/sequencer.css">
 	<script src="https://code.createjs.com/1.0.0/soundjs.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
@@ -16,8 +15,14 @@
 
 <body>
 	<div class="center sequencer">
+		<div class="title text">"UNTITLED"</div>
+		<div class="author text">by MUSICIAN</div>
 		<table id="sequencer">
 		</table>
+		<div class=slider>
+			<input type="range" min="100" max="1000" value="120" id="sequencerSlider">
+			<div id="sliderValue" class="text">-1</div>
+		</div>
 	</div>
 </body>
 <script src="/scripts/creativity/sequencer.js"></script>
