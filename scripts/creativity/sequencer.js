@@ -1,26 +1,35 @@
 const TABLE = document.getElementById("sequencer");
 const SLIDER = document.getElementById("sequencerSlider");
 const SLIDER_VALUE = document.getElementById("sliderValue");
+const TITLE = document.getElementById("title");
+const AUTHOR = document.getElementById("author");
+
 const NUM_ROWS = 8;
 const NUM_COLS = 16;
 const DELAY = 120;
-const OFF_COLOR = "gray";
-const ON_COLOR = "lightseagreen";
-const FOCUS_COLOR = "lightblue";
+
+const OFF_COLOR = "dimgray";
+const FOCUS_COLOR = "gray";
 const PLAY_COLOR = "white";
+const COLOR_ARRAY = [
+	"#63EB9A", "#51E8D9", "#55A9F2", "#5A58DB", "#B255F2", "#EB66C2", "#EB6C65", "#EBC169"
+]
+
 const SOUND_ID = "sound";
 
 let currentColumn = 0;
 let board = [];
 let intervalId;
+let currentInstrument;
 
 class SequencerBeat {
-	constructor(row, col, cell, beat, label) {
+	constructor(row, col, cell, beat, label, onColor) {
 		this.row = row;
 		this.col = col;
 		this.cell = cell;
 		this.beat = beat;
 		this.label = label;
+		this.onColor = onColor;
 	}
 
 	clicked() {
@@ -32,8 +41,8 @@ class SequencerBeat {
 			this.label.style.color = color;
 			this.label.style.backgroundColor = color;
 		} else {
-			this.label.style.color = this.beat.checked ? ON_COLOR : OFF_COLOR;
-			this.label.style.backgroundColor = this.beat.checked ? ON_COLOR : OFF_COLOR;
+			this.label.style.color = this.beat.checked ? this.onColor : OFF_COLOR;
+			this.label.style.backgroundColor = this.beat.checked ? this.onColor : OFF_COLOR;
 		}
 	}
 }
@@ -47,6 +56,7 @@ function setupSequencer() {
 			col.style.height = "80px";
 			col.style.backgroundColor = "gray";
 			col.style.overflow = "hidden";
+			col.style.padding = 0;
 			let beat = createBeatButton(r, c, col);
 			beat.beat.onclick = function () {
 				beatClicked(beat.beat, beat.label, beat.cell);
@@ -64,7 +74,7 @@ function createBeatButton(row, col, cell) {
 	label.style.display = "block";
 	label.style.color = OFF_COLOR;
 	label.style.backgroundColor = OFF_COLOR;
-	label.style.width = "4vw";
+	label.style.width = "5vw";
 	label.style.height = "100%";
 	label.style.userSelect = "none";
 	label.setAttribute("for", forIdAttribute);
@@ -80,26 +90,53 @@ function createBeatButton(row, col, cell) {
 	beat.style.left = 0;
 	cell.appendChild(beat);
 
-	return new SequencerBeat(row, col, cell, beat, label);
+	let color = COLOR_ARRAY[row];
+
+	return new SequencerBeat(row, col, cell, beat, label, color);
 }
 
 function beatClicked(beat, label, col) {
-	col.style.backgroundColor = beat.checked ? ON_COLOR : OFF_COLOR;
-	label.style.color = beat.checked ? ON_COLOR : OFF_COLOR;
-	label.style.backgroundColor = beat.checked ? ON_COLOR : OFF_COLOR;
+	col.style.backgroundColor = beat.checked ? beat.onColor : OFF_COLOR;
+	label.style.color = beat.checked ? beat.onColor : OFF_COLOR;
+	label.style.backgroundColor = beat.checked ? beat.onColor : OFF_COLOR;
 }
 
 function setupSlider() {
 	SLIDER_VALUE.innerHTML = SLIDER.value;
 	SLIDER.oninput = function () {
-		SLIDER_VALUE.innerHTML = this.value;
-		clearInterval(intervalId);
-		intervalId = runSequencer();
+		setSliderValue(this.value);
 	}
+}
+
+function setSliderValue(bpm) {
+	SLIDER.value = bpm;
+	SLIDER_VALUE.innerHTML = bpm;
+	clearInterval(intervalId);
+	intervalId = runSequencer();
 }
 
 function runSequencer() {
 	return setInterval(playColumnAudio, SLIDER_VALUE.innerHTML);
+}
+
+function loadCreation(callback) {
+	let xObj = new XMLHttpRequest();
+	xObj.overrideMimeType("application/json");
+	xObj.open('GET', '/static/creativity/creations/sequencer/creation0.json', true);
+	xObj.onreadystatechange = function () {
+		if (xObj.readyState == 4 && xObj.status == "200") {
+			callback(JSON.parse(xObj.responseText));
+		}
+	};
+	xObj.send(null);
+}
+
+function loadBeats(notes) {
+	notes.forEach(note => checkBeat(note));
+}
+
+function checkBeat(note) {
+	if (!board[note].beat.checked) board[note].clicked();
 }
 
 function playColumnAudio() {
@@ -120,12 +157,25 @@ function playColumnAudio() {
 	if (currentColumn >= NUM_COLS) currentColumn = 0;
 }
 
+function loadData() {
+	loadCreation(function (json) {
+		TITLE.innerHTML = json.title;
+		AUTHOR.innerHTML = "by " + json.author;
+		loadSound(json.data.instrument);
+		setSliderValue(json.data.bpm);
+		loadBeats(json.data.notes);
+	});
+
+	return "data loaded!";
+}
+
 setupSequencer();
 loadSound("heavy-drum");
 setupSlider();
 intervalId = runSequencer();
 
 function loadSound(instrument) {
+	currentInstrument = instrument;
 	let audioPath = "/static/creativity/sounds/" + instrument + "/";
 
 	let sounds = [];
@@ -138,4 +188,13 @@ function loadSound(instrument) {
 	}
 	createjs.Sound.alternateExtensions = ["mp3"];
 	createjs.Sound.registerSounds(sounds, audioPath);
+}
+
+function switchInstruments() {
+	if (currentInstrument == "heavy-drum")
+		loadSound("vibraphone");
+	else if (currentInstrument == "vibraphone")
+		loadSound("big-room-drum");
+	else
+		loadSound("heavy-drum");
 }
