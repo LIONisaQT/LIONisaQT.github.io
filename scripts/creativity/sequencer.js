@@ -53,7 +53,7 @@ function setupSequencer() {
 		for (var c = 0; c < NUM_COLS; c++) {
 			let col = row.insertCell(c);
 			col.classList.add("sequencerCell");
-			col.style.height = "70px";
+			col.style.height = "60px";
 			col.style.backgroundColor = "gray";
 			col.style.overflow = "hidden";
 			col.style.padding = 0;
