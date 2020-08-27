@@ -139,6 +139,10 @@ function checkBeat(note) {
 	if (!board[note].beat.checked) board[note].clicked();
 }
 
+function clearAllBeats() {
+	board.forEach(beat => beat.beat.checked = false);
+}
+
 function playColumnAudio() {
 	for (var i = 0; i < board.length; i++) {
 		if (i % NUM_COLS === currentColumn) {
@@ -158,6 +162,7 @@ function playColumnAudio() {
 }
 
 function loadData() {
+	clearAllBeats();
 	loadCreation(function (json) {
 		TITLE.innerHTML = json.title;
 		AUTHOR.innerHTML = "by " + json.author;
