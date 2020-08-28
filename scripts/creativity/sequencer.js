@@ -139,8 +139,13 @@ function checkBeat(note) {
 	if (!board[note].beat.checked) board[note].clicked();
 }
 
-function clearAllBeats() {
+function resetBoard() {
 	board.forEach(beat => beat.beat.checked = false);
+	setSliderValue(120);
+	TITLE.placeholder = "UNTITLED";
+	TITLE.value = "";
+	TITLE.disabled = false;
+	AUTHOR.innerHTML = "by YOU";
 }
 
 function playColumnAudio() {
@@ -162,9 +167,10 @@ function playColumnAudio() {
 }
 
 function loadData() {
-	clearAllBeats();
+	resetBoard();
 	loadCreation(function (json) {
-		TITLE.innerHTML = json.title;
+		TITLE.value = json.title;
+		TITLE.disabled = true;
 		AUTHOR.innerHTML = "by " + json.author;
 		loadSound(json.data.instrument);
 		setSliderValue(json.data.bpm);
