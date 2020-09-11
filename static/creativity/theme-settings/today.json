@@ -1,9 +1,11 @@
 {
-	"title": "Ryan's theme",
+	"theme": "Ryan's theme",
 	"subtitle": "Ryan made this for funsies",
-	"activities:" [
-		"inside-the-lines",
-		"beat-board",
-		"coloring"
-	]
+	"activities": [
+		"inside-the-lines_house-shape",
+		"beat-board_drumkit",
+		"coloring_bird"
+	],
+	"quote": "Ryan is pretty cool",
+	"quoteAuthor": "Ryan"
 }
