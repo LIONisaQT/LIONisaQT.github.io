@@ -22,21 +22,25 @@ const musicActivities = [
 	"Composer"
 ]
 
-var allActivities = writingActivities.concat(visualActivities).concat(musicActivities);
+const allActivities = writingActivities.concat(visualActivities).concat(musicActivities);
 
 function generateList() {
-	const daysToPopulate = 7;
-	const numActivitiesInDay = 3;
+	let daysToPopulate = getDayCount();
+	let numActivitiesInDay = getActivityCount();
 
 	let div = document.getElementById("theme-day-parent");
 	div.innerHTML = "";
 
 	let occurrenceMap = [];
+	let activityPool = [...allActivities];
 	
 	for (let i = 0; i < daysToPopulate; i++)
 	{
 		for (let j = 0; j < numActivitiesInDay; j++) {
-			let activity = getRandomActivityFromAll();
+			let activity = getRandomActivityFromPool(activityPool);
+			if (activityPool.length <= 0) {
+				activityPool = [...allActivities];
+			}
 			addActivityOccurrenceToMap(occurrenceMap, activity);
 			div.innerHTML += activity + ", ";
 		}
@@ -46,8 +50,21 @@ function generateList() {
 	plotGraph(occurrenceMap);
 }
 
-function getRandomActivityFromAll() {
-	return allActivities[Math.floor(Math.random() * allActivities.length)];
+function getDayCount() {
+	let dayCount = document.getElementById("day-count");
+	return dayCount.value == "" ? dayCount.getAttribute("placeholder") : dayCount.value; 
+}
+
+function getActivityCount() {
+	let activityCount = document.getElementById("activity-count");
+	return activityCount.value == "" ? activityCount.getAttribute("placeholder") : activityCount.value; 
+}
+
+function getRandomActivityFromPool(activityPool) {
+	let activity = activityPool[Math.floor(Math.random() * activityPool.length)];
+	let index = activityPool.indexOf(activity);
+	activityPool.splice(index, 1);
+	return activity;
 }
 
 function addActivityOccurrenceToMap(map, activity)
