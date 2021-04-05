@@ -8,8 +8,8 @@ iframe {
 	background: #000;
 	border: none;
 	height: 100vh;
-	width: 100vw;
-	margin-left: 20%;
+	width: 80vw;
+	margin-left: 20vw;
 }
 
 .sidebar {
@@ -20,7 +20,6 @@ iframe {
 	top: 0;
 	left: 0;
 	background: #facade;
-	/* background: linear-gradient(-135deg, #c850c0, #4158d0); */
 	overflow-x: hidden;
 	padding-top: 20px;
 }
@@ -39,6 +38,7 @@ iframe {
 	}
 
 	iframe {
+		width: calc(100vw - 300px);
 		margin-left: 300px;
 	}
 }
