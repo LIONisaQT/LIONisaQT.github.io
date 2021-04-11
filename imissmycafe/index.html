@@ -5,28 +5,44 @@
 	<title>I Miss My Cafe</title>
 	<link rel="shortcut icon" type="image/png" href="/static/img/favicon.png" />
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato&display=swap" rel="stylesheet"> 	<link rel="stylesheet" type="text/css" href="/css/imissmycafe/main.css">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" type="text/css" href="/css/imissmycafe/main.css">
 	<script src="/scripts/imissmycafe/main.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#1cb7bd" />
 </head>
 
 <body>
-	<div class="sidebar">
-		<div class="sidebar-contents">
-			<div class="title">
-				<h1>I Miss<br>My Cafe</h1>
-				<h3>Take a seat and stay awhile.</h3>
-			</div>
-			<br>
-			<div class="playlist-id">
-				<input id="input" type="text" onkeypress="submit(event)" required>
-				<div class="underline"></div>
-				<label>Playlist ID</label>
+	<div class="contents">
+		<div class="header">
+			<div class="grid">
+				<div class="left">
+					share
+				</div>
+				<div class="middle centered">
+					<div class="title">
+						<h1>Chill Mood Club</h1>
+					</div>
+				</div>
+				<div class="right header-right">
+					about
+				</div>
 			</div>
 		</div>
-	</div>
-	<div>
-		<iframe id="playlist" src="https://www.youtube.com/embed?autoplay=1&listType=playlist&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<div class="main-element">
+			<div class="grid">
+				<div class="left">
+					<h2>01. Choose a playlist</h2>
+				</div>
+				<div class="middle centered">
+					<div>
+						<iframe id="playlist" src="https://www.youtube.com/embed?autoplay=1&listType=playlist&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
+				</div>
+				<div class="right">
+					<h2>02. Add BG sound</h2>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
