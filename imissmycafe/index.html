@@ -33,8 +33,8 @@
 			<div class="grid">
 				<div class="left">
 					<h2>01. Choose a playlist</h2>
-					<div class="dropdown">
-						<button id="playlist-select" class="dropdown-button">Lo-fi</button>
+					<div id="playlist-area" class="dropdown">
+						<button id="playlist-select" class="dropdown-button" onclick="dropdownClicked('playlist')">Lo-fi</button>
 						<div id="playlist-dropdown" class="dropdown-content">
 							<a id="Lo-fi" onclick="playlistSelected('Lo-fi')">Lo-fi</a>
 							<a id="K-pop" onclick="playlistSelected('K-pop')">K-pop</a>
@@ -55,15 +55,14 @@
 				</div>
 				<div class="right">
 					<h2>02. Add BG sound</h2>
-					<div class="dropdown">
-						<button id="background-select" class="dropdown-button">Rain</button>
+					<div id="background-area" class="dropdown">
+						<button id="background-select" class="dropdown-button" onclick="dropdownClicked('background')">Rain</button>
 						<div id="background-dropdown" class="dropdown-content">
-							<a onclick="backgroundSelected('Rain')">Rain</a>
-							<a onclick="backgroundSelected('Forest')"">Forest</a>
-							<a onclick="backgroundSelected('Beach')">Beach</a>
-							<a onclick="backgroundSelected('Fireplace')">Fireplace</a>
-							<a onclick="backgroundSelected('Flight')">In-flight</a>
-							<a onclick="backgroundSelected('Office')">Office</a>
+							<a id="Rain" onclick="backgroundSelected('Rain')">Rain</a>
+							<a id="Forest" onclick="backgroundSelected('Forest')">Forest</a>
+							<a id="Beach" onclick="backgroundSelected('Beach')">Beach</a>
+							<a id="Fireplace" onclick="backgroundSelected('Fireplace')">Fireplace</a>
+							<a id="Flight" onclick="backgroundSelected('Flight')">In-flight</a>
 						</div>
 					</div>
 				</div>

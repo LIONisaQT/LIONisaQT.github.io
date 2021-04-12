@@ -85,14 +85,14 @@ h2 {
 	background-color: #a7bfff;
 }
 
-.dropdown:hover>.dropdown-button {
+/* .dropdown:hover>.dropdown-button {
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
-}
+} */
 
-.dropdown:hover .dropdown-content {
+/* .dropdown:hover .dropdown-content {
 	display: block;
-}
+} */
 
 .playlist-parent {
 	color: white;
