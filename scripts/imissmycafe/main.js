@@ -1,5 +1,9 @@
 const embedLink = "https://www.youtube.com/embed?autoplay=1&listType=playlist&list=";
 
+var currentPlaylist = "lofi";
+var currentIndex = 0;
+var currentBackground = "rain";
+
 window.onload = function() {
 	let lastId = localStorage.getItem("lastPlaylistId");
 	if (lastId != null) {
@@ -26,4 +30,26 @@ function refreshPlaylist(playlistId) {
 	input.value = "";
 
 	localStorage.setItem("lastPlaylistId", playlistId);
+}
+
+function playlistSelected(playlist) {
+	currentPlaylist = playlist;
+	buildURL();
+}
+
+function backgroundSelected(background) {
+	currentBackground = background;
+	buildURL();
+}
+
+function buildURL() {
+	let url = window.location.href;
+	let args = currentPlaylist + "," + currentIndex + "," + currentBackground;
+
+	if (url.includes('#')) {
+		let baseURL = url.substr(0, url.indexOf('#'));
+		window.location.href = baseURL + "#" + args;
+	} else {
+		window.location.href += "#" + args;
+	}
 }
