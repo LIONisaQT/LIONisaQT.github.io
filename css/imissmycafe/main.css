@@ -18,7 +18,7 @@ body {
 }
 
 .header {
-	height: 100px;
+	margin-bottom: 80px;
 }
 
 .header-right {
@@ -42,6 +42,53 @@ h2 {
 
 .grid {
 	display: grid;
-	grid-template-columns: 1fr 4fr 1fr;
+	grid-template-columns: 1fr 5fr 1fr;
 	gap: 50px;
+}
+
+.dropdown-button {
+	background-color: #2f3d85;
+	text-align: left;
+	width: 100%;
+	font-size: 16px;
+	color: white;
+	padding: 8px 16px;
+	border: 2px solid #a7bfff;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.dropdown {
+	margin: 20px 0px;
+}
+
+.dropdown-content {
+	display: none;
+	margin: 0px 2px 2px 2px;
+	background-color: #2f3d85;
+	box-shadow: 0px 0px 0px 2px #a7bfff;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	z-index: 1;
+}
+
+.dropdown-content a {
+	padding: 12px 16px;
+	color: #a7bfff;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	color: #2f3d85;
+	background-color: #a7bfff;
+}
+
+.dropdown:hover>.dropdown-button {
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
 }
