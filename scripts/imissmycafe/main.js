@@ -42,6 +42,8 @@ var currentPlaylist = playlistHolder;
 var currentIndex = 1;
 var currentBackground = "Rain";
 
+var somethingOpen = false;
+
 window.onload = function() {
 	registerEvents();
 	manageURLArgs();
@@ -53,8 +55,6 @@ function playlistSelected(playlistName) {
 
 	// Save playlist name temporarily.
 	playlistHolder = playlistName;
-
-	changeButtonText('playlist', playlistName);
 
 	manageSelectedOption('playlist', playlistName);
 
@@ -110,14 +110,8 @@ function uncolorSubPlaylists(index) {
 function backgroundSelected(background) {
 	dropdownLeave(null, 'background');
 	currentBackground = background;
-	changeButtonText('background', background);
 	manageSelectedOption('background', background);
 	buildURL();
-}
-
-function changeButtonText(type, selection) {
-	let select = document.getElementById(type + '-select');
-	select.innerHTML = selection;
 }
 
 function submit(event) {
@@ -155,6 +149,8 @@ function registerEvents() {
 
 function dropdownLeave(event, type) {
 	if (type != undefined) {
+		somethingOpen = false;
+
 		let dropdown = document.getElementById(type + '-dropdown');
 		dropdown.style.display = "none";
 
@@ -165,12 +161,18 @@ function dropdownLeave(event, type) {
 }
 
 function dropdownClicked(type) {
-	let dropdown = document.getElementById(type + '-dropdown');
-	dropdown.style.display = 'block';
+	somethingOpen = !somethingOpen;
 
-	let select = document.getElementById(type + '-select');
-	select.style.borderBottomLeftRadius = '0px';
-	select.style.borderBottomRightRadius = '0px';
+	if (somethingOpen) {
+		let dropdown = document.getElementById(type + '-dropdown');
+		dropdown.style.display = 'block';
+
+		let select = document.getElementById(type + '-select');
+		select.style.borderBottomLeftRadius = '0px';
+		select.style.borderBottomRightRadius = '0px';
+	} else {
+		dropdownLeave(null, type);
+	}
 }
 
 function resizeDropdownWidth(event, element) {
