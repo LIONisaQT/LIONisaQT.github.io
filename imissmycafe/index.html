@@ -21,7 +21,7 @@
 				</div>
 				<div class="middle centered">
 					<div class="title">
-						<h1>Chill Mood Club</h1>
+						<h1>Chill<br>Mood<br>Club</h1>
 					</div>
 				</div>
 				<div class="right header-right">
@@ -34,15 +34,18 @@
 				<div class="left">
 					<h2>01. Choose a playlist</h2>
 					<div class="dropdown">
-						<button class="dropdown-button">Lo-fi</button>
-						<div class="dropdown-content">
-							<a onclick="playlistSelected('lofi')">Lo-fi</a>
-							<a onclick="playlistSelected('kpop')">K-pop</a>
-							<a onclick="playlistSelected('jpop')">J-pop</a>
-							<a onclick="playlistSelected('anime')">Anime</a>
-							<a onclick="playlistSelected('games')">Games</a>
-							<a onclick="playlistSelected('own')">Use My Own</a>
+						<button id="playlist-select" class="dropdown-button">Lo-fi</button>
+						<div id="playlist-dropdown" class="dropdown-content">
+							<a id="Lo-fi" onclick="playlistSelected('Lo-fi')">Lo-fi</a>
+							<a id="K-pop" onclick="playlistSelected('K-pop')">K-pop</a>
+							<a id="J-pop" onclick="playlistSelected('J-pop')">J-pop</a>
+							<a id="Anime" onclick="playlistSelected('Anime')">Anime</a>
+							<a id="Games" onclick="playlistSelected('Games')">Games</a>
+							<a id="Use My Own" onclick="playlistSelected('Use My Own')">Use My Own</a>
 						</div>
+					</div>
+					<div id="playlist-parent" class="playlist-parent">
+						<!-- This is where individual playlist options go -->
 					</div>
 				</div>
 				<div class="middle centered">
@@ -53,14 +56,14 @@
 				<div class="right">
 					<h2>02. Add BG sound</h2>
 					<div class="dropdown">
-						<button class="dropdown-button">Rain</button>
-						<div class="dropdown-content">
-							<a onclick="backgroundSelected('rain')">Rain</a>
-							<a onclick="backgroundSelected('forest')"">Forest</a>
-							<a onclick="backgroundSelected('beach')">Beach</a>
-							<a onclick="backgroundSelected('fireplace')">Fireplace</a>
-							<a onclick="backgroundSelected('flight')">In-flight</a>
-							<a onclick="backgroundSelected('office')">Office</a>
+						<button id="background-select" class="dropdown-button">Rain</button>
+						<div id="background-dropdown" class="dropdown-content">
+							<a onclick="backgroundSelected('Rain')">Rain</a>
+							<a onclick="backgroundSelected('Forest')"">Forest</a>
+							<a onclick="backgroundSelected('Beach')">Beach</a>
+							<a onclick="backgroundSelected('Fireplace')">Fireplace</a>
+							<a onclick="backgroundSelected('Flight')">In-flight</a>
+							<a onclick="backgroundSelected('Office')">Office</a>
 						</div>
 					</div>
 				</div>
