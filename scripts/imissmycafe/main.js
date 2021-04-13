@@ -1,4 +1,5 @@
 const embedLink = "https://www.youtube.com/embed?autoplay=1&listType=playlist&list=";
+const defaultList = "PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq";
 
 const lofiPlaylists = [
 	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
@@ -30,6 +31,8 @@ const gamesPlaylists = [
 	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list="
 ];
 
+const bgSounds = ["Rain", "Forest", "Beach", "Fireplace", "Flight"];
+
 const playlistMap = new Map();
 playlistMap.set('Lo-fi', lofiPlaylists);
 playlistMap.set('K-pop', kpopPlaylists);
@@ -37,14 +40,33 @@ playlistMap.set('J-pop', jpopPlaylists);
 playlistMap.set('Anime', animePlaylists);
 playlistMap.set('Games', gamesPlaylists);
 
-var playlistHolder = "Lo-fi";
-var currentPlaylist = playlistHolder;
-var currentIndex = 1;
-var currentBackground = "Rain";
+for (const playlist of playlistMap.keys()) {
+	const list = playlistMap.get(playlist);
+	const fragment = document.createDocumentFragment();
+	list.forEach((item, i) => {
+		let el = document.createElement('p');
+		el.id = i + 1;
+		let num = document.createTextNode(padWithZeroes(el.id, 2));
+		if (el.addEventListener) {
+			el.addEventListener('click', e => subPlaylistSelected(e, el.id), false);
+		} else {
+			el.attachEvent('onclick',  e => subPlaylistSelected(e, el.id));
+		}
+		el.appendChild(num);
+		fragment.appendChild(el);
+	})
+	playlistMap.set(playlist, fragment);
+}
 
-var somethingOpen = false;
+let playlistHolder = "Lo-fi";
+let currentPlaylist = playlistHolder;
+let currentIndex = 1;
+let currentBackground = "Rain";
+
+let somethingOpen = false;
 
 window.onload = function() {
+	changePlaylist(defaultList);
 	registerEvents();
 	manageURLArgs();
 };
@@ -59,26 +81,13 @@ function playlistSelected(playlistName) {
 	manageSelectedOption('playlist', playlistName);
 
 	// Clear div of all child elements.
-	let playlistParent = document.getElementById('playlist-parent');
-	while (playlistParent.lastElementChild) {
-		playlistParent.removeChild(playlistParent.lastElementChild);
-	}
+	const playlistParent = document.getElementById('playlist-parent');
+	playlistParent.innerHTML = '';
 
 	// Add playlists as children to div.
 	if (playlistName != "Use My Own") {
-		let playlists = playlistMap.get(playlistName);
-		for (let i = 1; i <= playlists.length; i++) {
-			let link = document.createElement('p');
-			link.id = i;
-			let num = document.createTextNode(padWithZeroes(i, 2));
-			if (link.addEventListener) {
-				link.addEventListener('click', e => subPlaylistSelected(e, i), false);
-			} else {
-				link.attachEvent('onclick',  e => subPlaylistSelected(e, i));
-			}
-			link.appendChild(num);
-			playlistParent.appendChild(link);
-		}
+		let lists = playlistMap.get(playlistName);
+		playlistParent.appendChild(lists);
 
 		if (playlistName == currentPlaylist) {
 			uncolorSubPlaylists(currentIndex);
@@ -255,4 +264,8 @@ function padWithZeroes(number, length) {
 	}
 
 	return paddedString;
+}
+
+function changePlaylist(playlist) {
+	document.getElementById("playlist").src = embedLink + playlist;
 }
