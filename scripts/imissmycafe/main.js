@@ -99,7 +99,7 @@ function uncolorSubPlaylists(index) {
 	let nodes = document.getElementById('playlist-parent').childNodes;
 	nodes.forEach(node => {
 		node.style.color = 'white';
-		node.style.borderBottom = '0px';
+		node.style.borderBottom = '2px solid transparent';
 	});
 
 	let subPlaylist = document.getElementById(index);
@@ -221,14 +221,16 @@ function manageSelectedOption(type, option) {
 	let nodes = document.getElementById(type + '-dropdown').childNodes;
 	nodes.forEach(node => {
 		if (node.style != undefined) {
-			node.innerHTML = node.innerHTML.substr(node.innerHTML.indexOf('✓ ') + 1);
-			node.style.fontWeight = "normal";
+			if (node.innerHTML.indexOf(' ✓') > -1) {
+				node.innerHTML = node.innerHTML.substr(0, node.innerHTML.indexOf(' ✓'));
+				node.style.fontWeight = "normal";
+			}
 		}
 	});
 
 	// Set style of selected background.
 	let selection = document.getElementById(option);
-	selection.innerHTML = '✓ ' + selection.innerHTML;
+	selection.innerHTML = selection.innerHTML + ' ✓';
 	selection.style.fontWeight = "bold";
 }
 

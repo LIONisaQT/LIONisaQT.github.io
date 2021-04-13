@@ -1,14 +1,26 @@
-iframe {
-	border: none;
-	height: 67vh;
+.video-container {
+	position: relative;
 	width: 100%;
+	overflow: hidden;
+	padding-top: 56.25%;
+}
+
+iframe {
+	position: absolute;
+	border: none;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
 }
 
 body {
 	font-family: 'Nunito', sans-serif;
 	background: #2f3d85;
 	color: #a7bfff;
-	margin: 50px 100px;
+	margin: 50px 80px;
 	overflow: hidden;
 }
 
@@ -78,6 +90,7 @@ h2 {
 	color: #a7bfff;
 	text-decoration: none;
 	display: block;
+	cursor: pointer;
 }
 
 .dropdown-content a:hover {
@@ -95,6 +108,7 @@ h2 {
 	margin-bottom: 20px;
 	display: inline;
 	float: left;
+	border-bottom: 2px solid transparent;
 }
 
 .playlist-parent>p:hover {
