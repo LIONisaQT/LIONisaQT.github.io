@@ -60,8 +60,8 @@ function playlistSelected(playlistName) {
 
 	// Clear div of all child elements.
 	let playlistParent = document.getElementById('playlist-parent');
-	while (playlistParent.firstChild) {
-		playlistParent.removeChild(playlistParent.lastChild);
+	while (playlistParent.lastElementChild) {
+		playlistParent.removeChild(playlistParent.lastElementChild);
 	}
 
 	// Add playlists as children to div.
@@ -98,8 +98,10 @@ function subPlaylistSelected(event, index) {
 function uncolorSubPlaylists(index) {
 	let nodes = document.getElementById('playlist-parent').childNodes;
 	nodes.forEach(node => {
-		node.style.color = 'white';
-		node.style.borderBottom = '2px solid transparent';
+		if (node.style != undefined) {
+			node.style.color = 'white';
+			node.style.borderBottom = '2px solid transparent';
+		}
 	});
 
 	let subPlaylist = document.getElementById(index);
