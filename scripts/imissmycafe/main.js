@@ -34,29 +34,8 @@ const gamesPlaylists = [
 const bgSounds = ["Rain", "Forest", "Beach", "Fireplace", "Flight"];
 
 const playlistMap = new Map();
-playlistMap.set('Lo-fi', lofiPlaylists);
-playlistMap.set('K-pop', kpopPlaylists);
-playlistMap.set('J-pop', jpopPlaylists);
-playlistMap.set('Anime', animePlaylists);
-playlistMap.set('Games', gamesPlaylists);
-
-for (const playlist of playlistMap.keys()) {
-	const list = playlistMap.get(playlist);
-	const fragment = document.createDocumentFragment();
-	list.forEach((item, i) => {
-		let el = document.createElement('p');
-		el.id = i + 1;
-		let num = document.createTextNode(padWithZeroes(el.id, 2));
-		if (el.addEventListener) {
-			el.addEventListener('click', e => subPlaylistSelected(e, el.id), false);
-		} else {
-			el.attachEvent('onclick',  e => subPlaylistSelected(e, el.id));
-		}
-		el.appendChild(num);
-		fragment.appendChild(el);
-	})
-	playlistMap.set(playlist, fragment);
-}
+initializeMap();
+createFragments();
 
 let playlistHolder = "Lo-fi";
 let currentPlaylist = playlistHolder;
@@ -88,6 +67,8 @@ function playlistSelected(playlistName) {
 	if (playlistName != "Use My Own") {
 		let lists = playlistMap.get(playlistName);
 		playlistParent.appendChild(lists);
+		initializeMap();
+		createFragments();
 
 		if (playlistName == currentPlaylist) {
 			uncolorSubPlaylists(currentIndex);
@@ -144,6 +125,34 @@ function refreshPlaylist(playlistId) {
 }
 
 // TODO: Utility methods, move to another JS file.
+function initializeMap() {
+	playlistMap.set('Lo-fi', lofiPlaylists);
+	playlistMap.set('K-pop', kpopPlaylists);
+	playlistMap.set('J-pop', jpopPlaylists);
+	playlistMap.set('Anime', animePlaylists);
+	playlistMap.set('Games', gamesPlaylists);
+}
+
+function createFragments() {
+	for (const playlist of playlistMap.keys()) {
+		const list = playlistMap.get(playlist);
+		const fragment = document.createDocumentFragment();
+		list.forEach((item, i) => {
+			let el = document.createElement('p');
+			el.id = i + 1;
+			let num = document.createTextNode(padWithZeroes(el.id, 2));
+			if (el.addEventListener) {
+				el.addEventListener('click', e => subPlaylistSelected(e, el.id), false);
+			} else {
+				el.attachEvent('onclick',  e => subPlaylistSelected(e, el.id));
+			}
+			el.appendChild(num);
+			fragment.appendChild(el);
+		})
+		playlistMap.set(playlist, fragment);
+	}
+}
+
 function registerEvents() {
 	let playlistParent = document.getElementById('playlist-select');
 	playlistParent.addEventListener('mouseover', e => resizeDropdownWidth(e, 'playlist'));
