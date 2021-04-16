@@ -63,6 +63,8 @@ function playlistSelected(playlistName) {
 	const playlistParent = document.getElementById('playlist-parent');
 	playlistParent.innerHTML = '';
 
+	const input = document.getElementById('playlist-input');
+
 	// Add playlists as children to div.
 	if (playlistName != "Use My Own") {
 		let lists = playlistMap.get(playlistName);
@@ -73,8 +75,12 @@ function playlistSelected(playlistName) {
 		if (playlistName == currentPlaylist) {
 			uncolorSubPlaylists(currentIndex);
 		}
+		
+		playlistParent.style.display = 'inline-block'
+		input.style.display = 'none';
 	} else {
-		console.log('drop textbox here');
+		playlistParent.style.display = 'none';
+		input.style.display = 'block';
 	}
 }
 
@@ -83,6 +89,7 @@ function subPlaylistSelected(event, index) {
 	currentIndex = parseInt(index);
 	uncolorSubPlaylists(index);
 	buildURL();
+	changePlaylist(defaultList);
 }
 
 function uncolorSubPlaylists(index) {
