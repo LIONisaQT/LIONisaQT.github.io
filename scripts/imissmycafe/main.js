@@ -1,38 +1,42 @@
-const embedLink = "https://www.youtube.com/embed?autoplay=1&listType=playlist&list=";
-const defaultList = "PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq";
+const playlistEmbedLink = "https://www.youtube.com/embed?autoplay=1&listType=playlist&list=";
+const singleEmbedLink = "https://www.youtube.com/embed/";
+const singleAddParams = "?autoplay=1";
+
+const defaultPlaylist = "https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq";
 
 const lofiPlaylists = [
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list="
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
 ];
 
 const kpopPlaylists = [
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
 ];
 
 const jpopPlaylists = [
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
+	"https://www.youtube.com/watch?v=VGMrcfpg0h8",
+	"https://www.youtube.com/watch?v=sRiruE1FaIQ",
 ];
 
 const animePlaylists = [
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
 ];
 
 const gamesPlaylists = [
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list=",
-	"https://www.youtube.com/embed?autoplay=1&listType=playlist&list="
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
 ];
 
 const bgSounds = ["Rain", "Forest", "Beach", "Fireplace", "Flight"];
 
+const playlistUrlMap = new Map();
 const playlistMap = new Map();
 initializeMap();
 createFragments();
@@ -45,7 +49,7 @@ let currentBackground = "Rain";
 let somethingOpen = false;
 
 window.onload = function() {
-	changePlaylist(defaultList);
+	changePlaylist(defaultPlaylist);
 	registerEvents();
 	manageURLArgs();
 };
@@ -89,7 +93,7 @@ function subPlaylistSelected(event, index) {
 	currentIndex = parseInt(index);
 	uncolorSubPlaylists(index);
 	buildURL();
-	changePlaylist(defaultList);
+	changePlaylist(playlistUrlMap.get(currentPlaylist)[currentIndex - 1]);
 }
 
 function uncolorSubPlaylists(index) {
@@ -113,26 +117,14 @@ function backgroundSelected(background) {
 	buildURL();
 }
 
-function submit(event) {
-	if (event.keyCode === 13) {
-		let input = document.getElementById("input");
-		refreshPlaylist(input.value);
-	}
-}
-
-function refreshPlaylist(playlistId) {
-	let iframe = document.getElementById("playlist");
-	iframe.src = "";
-	iframe.src = embedLink + playlistId;
-
-	let input = document.getElementById("input");
-	input.value = "";
-
-	localStorage.setItem("lastPlaylistId", playlistId);
-}
-
 // TODO: Utility methods, move to another JS file.
 function initializeMap() {
+	playlistUrlMap.set('Lo-fi', lofiPlaylists);
+	playlistUrlMap.set('K-pop', kpopPlaylists);
+	playlistUrlMap.set('J-pop', jpopPlaylists);
+	playlistUrlMap.set('Anime', animePlaylists);
+	playlistUrlMap.set('Games', gamesPlaylists);
+
 	playlistMap.set('Lo-fi', lofiPlaylists);
 	playlistMap.set('K-pop', kpopPlaylists);
 	playlistMap.set('J-pop', jpopPlaylists);
@@ -282,6 +274,36 @@ function padWithZeroes(number, length) {
 	return paddedString;
 }
 
+function submit(event) {
+	if (event.keyCode === 13) {
+		let input = document.getElementById("input");
+		refreshPlaylist(input.value);
+	}
+}
+
+function refreshPlaylist(playlistId) {
+	let iframe = document.getElementById("playlist");
+	iframe.src = "";
+	iframe.src = playlistEmbedLink + playlistId;
+
+	let input = document.getElementById("input");
+	input.value = "";
+
+	localStorage.setItem("lastPlaylistId", playlistId);
+}
+
 function changePlaylist(playlist) {
-	document.getElementById("playlist").src = embedLink + playlist;
+	const videoData = getYoutubeId(playlist);
+	console.log(videoData);
+	let iframe = document.getElementById("playlist");
+	iframe.src = "";
+	iframe.src = (videoData[0] ? playlistEmbedLink : singleEmbedLink) + videoData[1];
+}
+
+function getYoutubeId(playlist) {
+	if (playlist.includes('&list=')) {
+		return [true, playlist.substr(playlist.indexOf('&list=') + 6)];
+	}
+
+	return [false, playlist.substr(playlist.indexOf('watch?v=') + 8) + singleAddParams];
 }
