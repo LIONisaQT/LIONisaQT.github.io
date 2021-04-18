@@ -1,6 +1,6 @@
-const playlistEmbedLink = "https://www.youtube.com/embed?autoplay=1&listType=playlist&list=";
+const playlistEmbedLink = "https://www.youtube.com/embed?autoplay=1&loop=1&listType=playlist&list=";
 const singleEmbedLink = "https://www.youtube.com/embed/";
-const singleAddParams = "?autoplay=1";
+const singleAddParams = "?autoplay=1&loop=1";
 
 const defaultPlaylist = "https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq";
 
@@ -37,7 +37,7 @@ const gamesPlaylists = [
 const bgSounds = ["Rain", "Forest", "Beach", "Fireplace", "Flight"];
 
 const playlistUrlMap = new Map();
-const playlistMap = new Map();
+const playlistFragmentMap = new Map();
 initializeMap();
 createFragments();
 
@@ -71,7 +71,7 @@ function playlistSelected(playlistName) {
 
 	// Add playlists as children to div.
 	if (playlistName != "Use My Own") {
-		let lists = playlistMap.get(playlistName);
+		let lists = playlistFragmentMap.get(playlistName);
 		playlistParent.appendChild(lists);
 		initializeMap();
 		createFragments();
@@ -124,17 +124,11 @@ function initializeMap() {
 	playlistUrlMap.set('J-pop', jpopPlaylists);
 	playlistUrlMap.set('Anime', animePlaylists);
 	playlistUrlMap.set('Games', gamesPlaylists);
-
-	playlistMap.set('Lo-fi', lofiPlaylists);
-	playlistMap.set('K-pop', kpopPlaylists);
-	playlistMap.set('J-pop', jpopPlaylists);
-	playlistMap.set('Anime', animePlaylists);
-	playlistMap.set('Games', gamesPlaylists);
 }
 
 function createFragments() {
-	for (const playlist of playlistMap.keys()) {
-		const list = playlistMap.get(playlist);
+	for (const playlist of playlistUrlMap.keys()) {
+		const list = playlistUrlMap.get(playlist);
 		const fragment = document.createDocumentFragment();
 		list.forEach((item, i) => {
 			let el = document.createElement('p');
@@ -148,7 +142,7 @@ function createFragments() {
 			el.appendChild(num);
 			fragment.appendChild(el);
 		})
-		playlistMap.set(playlist, fragment);
+		playlistFragmentMap.set(playlist, fragment);
 	}
 }
 
@@ -294,16 +288,36 @@ function refreshPlaylist(playlistId) {
 
 function changePlaylist(playlist) {
 	const videoData = getYoutubeId(playlist);
-	console.log(videoData);
 	let iframe = document.getElementById("playlist");
 	iframe.src = "";
-	iframe.src = (videoData[0] ? playlistEmbedLink : singleEmbedLink) + videoData[1];
+
+	let source = (videoData[0] ? playlistEmbedLink : singleEmbedLink) + videoData[1];
+	
+	console.log('before: ' + source);
+	if (getLoopStatus()) {
+		source = source.replace('loop=0', 'loop=1');
+	} else {
+		source = source.replace('loop=1', 'loop=0')
+	}
+	console.log('after: ' + source);
+
+	iframe.src = source;
 }
 
 function getYoutubeId(playlist) {
+	let isPlaylist = false;
+	let videoId = "";
+
 	if (playlist.includes('&list=')) {
-		return [true, playlist.substr(playlist.indexOf('&list=') + 6)];
+		isPlaylist = true;
+		videoId = playlist.substr(playlist.indexOf('&list=') + 6);
+	} else {
+		videoId = playlist.substr(playlist.indexOf('watch?v=') + 8) + singleAddParams;
 	}
 
-	return [false, playlist.substr(playlist.indexOf('watch?v=') + 8) + singleAddParams];
+	return [isPlaylist, videoId];
+}
+
+function getLoopStatus() {
+	return document.getElementById('loop-checkbox').checked;
 }
