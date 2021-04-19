@@ -5,8 +5,8 @@ const singleAddParams = "?autoplay=1&loop=1";
 const defaultPlaylist = "https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq";
 
 const lofiPlaylists = [
-	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
-	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=gMZhRJ5354o&list=PLvlw_ICcAI4fShFuH9p4ugLuv75jyDjbu",
+	"https://www.youtube.com/playlist?list=PLcghjaDFUHglje0wiMUDMTrUV6z5wGGQq",
 	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
 	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
 ];
@@ -49,10 +49,43 @@ let currentBackground = "Rain";
 let somethingOpen = false;
 
 window.onload = function() {
-	changePlaylist(defaultPlaylist);
 	registerEvents();
-	manageURLArgs();
 };
+
+const tag = document.createElement('script');
+tag.id = 'iframe';
+tag.src = 'https://www.youtube.com/iframe_api';
+const firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+function onYouTubeIframeAPIReady() {
+	manageURLArgs();
+	playlistSelected(currentPlaylist);
+	backgroundSelected(currentBackground);
+	subPlaylistSelected(null, currentIndex);
+
+	const playlistData = getYoutubeId(playlistUrlMap.get(currentPlaylist)[currentIndex - 1]);
+	player = new YT.Player('player', {
+		playerVars: {
+			'loop': getLoopStatus() ? 1 : 0,
+			'listType': playlistData[0],
+			'list': playlistData[1],
+		},
+		events: {
+			'onReady': onPlayerReady,
+			'onStateChange': onPlayerStateChange
+		}
+	});
+}
+
+function onPlayerReady(event) {
+	changePlaylist(playlistUrlMap.get(currentPlaylist)[currentIndex - 1]);
+}
+
+function onPlayerStateChange(event) {
+	// Do stuff with on pause, on play, etc. here.
+}
 
 function playlistSelected(playlistName) {
 	// Close dropdown.
@@ -68,21 +101,25 @@ function playlistSelected(playlistName) {
 	playlistParent.innerHTML = '';
 
 	const input = document.getElementById('playlist-input');
-
-	// Add playlists as children to div.
 	if (playlistName != "Use My Own") {
+		// Add playlists as children to div.
 		let lists = playlistFragmentMap.get(playlistName);
 		playlistParent.appendChild(lists);
+
+		// Regenerate maps because fragment because JavaScript is shallow.
 		initializeMap();
 		createFragments();
 
+		// Update subplaylist styles to only highlight current subplaylist.
 		if (playlistName == currentPlaylist) {
-			uncolorSubPlaylists(currentIndex);
+			updateSubPlaylistStyle(currentIndex);
 		}
 		
+		// Hide input field and show subplaylist div.
 		playlistParent.style.display = 'inline-block'
 		input.style.display = 'none';
 	} else {
+		// Show input field and hide subplaylist div.
 		playlistParent.style.display = 'none';
 		input.style.display = 'block';
 	}
@@ -91,12 +128,12 @@ function playlistSelected(playlistName) {
 function subPlaylistSelected(event, index) {
 	currentPlaylist = playlistHolder;
 	currentIndex = parseInt(index);
-	uncolorSubPlaylists(index);
+	updateSubPlaylistStyle(index);
 	buildURL();
 	changePlaylist(playlistUrlMap.get(currentPlaylist)[currentIndex - 1]);
 }
 
-function uncolorSubPlaylists(index) {
+function updateSubPlaylistStyle(index) {
 	let nodes = document.getElementById('playlist-parent').childNodes;
 	nodes.forEach(node => {
 		if (node.style != undefined) {
@@ -200,28 +237,9 @@ function manageURLArgs() {
 	if (url.includes('#')) {
 		url = url.substr(url.indexOf('#') + 1);
 		const args = url.split(',');
-		let playlist = args[0];
-
-		// If we're using our own playlist, check localStorage for it. Play lo-fi if it doesn't exist.
-		if (playlist === 'Use My Own') {
-			let lastId = localStorage.getItem('lastPlaylistId');
-			if (lastId != null) {
-				let iframe = document.getElementById('playlist');
-				if (!iframe.src.includes(lastId)) {
-					refreshPlaylist(lastId);
-				}
-			} else {
-				playlistSelected(args[0]);
-			}
-		} else {
-			playlistSelected(args[0]);
-		}
-
-		subPlaylistSelected(null, parseInt(args[1]));
-		backgroundSelected(args[2]);
-	} else {
-		playlistSelected('Lo-fi');
-		backgroundSelected('Rain');
+		playlistHolder = args[0]; // currentPlaylist gets set from this later when we update subplaylist anyway.
+		currentIndex = args[1];
+		currentBackground = args[2];
 	}
 }
 
@@ -269,9 +287,19 @@ function padWithZeroes(number, length) {
 }
 
 function submit(event) {
-	if (event.keyCode === 13) {
-		let input = document.getElementById("input");
-		refreshPlaylist(input.value);
+	let input = document.getElementById("input");
+	let result;
+
+	if (event == null) {
+		result = getYoutubeId(input.value);
+	} else {
+		if (event.keyCode === 13) {
+			result = getYoutubeId(input.value);
+		}
+	}
+
+	if (result[1] != '') {
+		changePlaylist(input.value);
 	}
 }
 
@@ -287,35 +315,43 @@ function refreshPlaylist(playlistId) {
 }
 
 function changePlaylist(playlist) {
-	const videoData = getYoutubeId(playlist);
-	let iframe = document.getElementById("playlist");
-	iframe.src = "";
+	if (player == null) return;
 
-	let source = (videoData[0] ? playlistEmbedLink : singleEmbedLink) + videoData[1];
-	
-	console.log('before: ' + source);
-	if (getLoopStatus()) {
-		source = source.replace('loop=0', 'loop=1');
+	const playlistData = getYoutubeId(playlist);
+
+	// Optional, could remove and nothing changes. Put here in case YouTube wants it though.
+	let loadData = {
+		listType: playlistData[0] ? 'playlist' : 'user_uploads',
+	};
+
+	// This is the only thing that matters, single videos are put in list, playlists are put in playlists.
+	if (playlistData[0]) {
+		loadData.list = playlistData[1];
 	} else {
-		source = source.replace('loop=1', 'loop=0')
+		loadData.playlist = playlistData[1];
 	}
-	console.log('after: ' + source);
 
-	iframe.src = source;
+	player.loadPlaylist(loadData);
 }
 
 function getYoutubeId(playlist) {
 	let isPlaylist = false;
-	let videoId = "";
+	let youtubeId = "";
 
-	if (playlist.includes('&list=')) {
+	if (playlist.includes('list=')) {
 		isPlaylist = true;
-		videoId = playlist.substr(playlist.indexOf('&list=') + 6);
+		youtubeId = playlist.substr(playlist.indexOf('list=') + 5);
+	} else if (playlist.includes('watch?v=')) {
+		youtubeId = playlist.substr(playlist.indexOf('watch?v=') + 8);
 	} else {
-		videoId = playlist.substr(playlist.indexOf('watch?v=') + 8) + singleAddParams;
+		alert('Could not extract video/playlist ID from input, try another value.');
 	}
 
-	return [isPlaylist, videoId];
+	return [isPlaylist, youtubeId];
+}
+
+function setLoopStatus() {
+	player.setLoop(document.getElementById('loop-checkbox').checked);
 }
 
 function getLoopStatus() {

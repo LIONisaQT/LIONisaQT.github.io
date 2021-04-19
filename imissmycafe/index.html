@@ -48,19 +48,17 @@
 						<!-- This is where individual playlist options go -->
 					</div>
 					<div id="playlist-input" class="own-playlist">
-						<input type="text" id="input" class="playlist-input" placeholder="Enter playlist URL here">
-						<button id="input-button" class="input-button">Play now</button>
+						<input type="text" id="input" class="playlist-input" onkeypress="submit(event)" placeholder="Enter playlist URL here">
+						<button id="input-button" class="input-button" onclick="submit()">Play now</button>
 					</div>
 					<label class="loop-container">Loop
-						<input type="checkbox" id="loop-checkbox" class="checkbox" checked>
+						<input type="checkbox" id="loop-checkbox" class="checkbox" onclick="setLoopStatus()" checked>
 						<span class="checkmark"></span>
 					</label>
 				</div>
 				<div class="middle centered">
 					<div class="video-container">
-						<iframe id="playlist" src="" title="YouTube video player" frameborder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowfullscreen></iframe>
+						<div id="player"></div>
 					</div>
 				</div>
 				<div class="right">
