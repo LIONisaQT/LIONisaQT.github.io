@@ -1,7 +1,3 @@
-const playlistEmbedLink = "https://www.youtube.com/embed?autoplay=1&loop=1&listType=playlist&list=";
-const singleEmbedLink = "https://www.youtube.com/embed/";
-const singleAddParams = "?autoplay=1&loop=1";
-
 const defaultPlaylist = "https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq";
 
 const lofiPlaylists = [
@@ -45,6 +41,7 @@ let playlistHolder = "Lo-fi";
 let currentPlaylist = playlistHolder;
 let currentIndex = 1;
 let currentBackground = "Rain";
+let customUrl;
 
 let somethingOpen = false;
 
@@ -60,12 +57,18 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
 function onYouTubeIframeAPIReady() {
-	manageURLArgs();
+	manageLocalStorage();
 	playlistSelected(currentPlaylist);
 	backgroundSelected(currentBackground);
-	subPlaylistSelected(null, currentIndex);
 
-	const playlistData = getYoutubeId(playlistUrlMap.get(currentPlaylist)[currentIndex - 1]);
+	let playlistData;
+	if (currentPlaylist == "Use My Own" && (customUrl != null || customUrl != '')) {
+		playlistData = getYoutubeId(customUrl);
+	} else {
+		playlistData = getYoutubeId(playlistUrlMap.get(currentPlaylist)[currentIndex - 1]);
+		subPlaylistSelected(null, currentIndex);
+	}
+	
 	player = new YT.Player('player', {
 		playerVars: {
 			'loop': getLoopStatus() ? 1 : 0,
@@ -80,7 +83,14 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerReady(event) {
-	changePlaylist(playlistUrlMap.get(currentPlaylist)[currentIndex - 1]);
+	let playlistData;
+	if (currentPlaylist == "Use My Own" && (customUrl != null || customUrl != '')) {
+		playlistData = customUrl;
+	} else {
+		playlistData = playlistUrlMap.get(currentPlaylist)[currentIndex - 1];
+	}
+
+	changePlaylist(playlistData);
 }
 
 function onPlayerStateChange(event) {
@@ -129,7 +139,6 @@ function subPlaylistSelected(event, index) {
 	currentPlaylist = playlistHolder;
 	currentIndex = parseInt(index);
 	updateSubPlaylistStyle(index);
-	buildURL();
 	changePlaylist(playlistUrlMap.get(currentPlaylist)[currentIndex - 1]);
 }
 
@@ -143,15 +152,17 @@ function updateSubPlaylistStyle(index) {
 	});
 
 	let subPlaylist = document.getElementById(index);
-	subPlaylist.style.color = '#a7bfff';
-	subPlaylist.style.borderBottom = '2px solid #a7bfff';
+	if (subPlaylist != null) {
+		subPlaylist.style.color = '#a7bfff';
+		subPlaylist.style.borderBottom = '2px solid #a7bfff';
+	}
 }
 
 function backgroundSelected(background) {
 	dropdownLeave(null, 'background');
 	currentBackground = background;
 	manageSelectedOption('background', background);
-	buildURL();
+	saveData();
 }
 
 // TODO: Utility methods, move to another JS file.
@@ -232,14 +243,21 @@ function resizeDropdownWidth(event, element) {
 	dropdownParent.style.width = (buttonSize - 4) + 'px'; // -4 because the dropdown's box shadow is 2 pixels on both sides
 }
 
-function manageURLArgs() {
-	let url = window.location.href;
-	if (url.includes('#')) {
-		url = url.substr(url.indexOf('#') + 1);
-		const args = url.split(',');
-		playlistHolder = args[0]; // currentPlaylist gets set from this later when we update subplaylist anyway.
-		currentIndex = args[1];
-		currentBackground = args[2];
+function manageLocalStorage() {
+	if (localStorage.getItem('currentPlaylist') != null) {
+		currentPlaylist = localStorage.getItem('currentPlaylist');
+
+		if (currentPlaylist == 'Use My Own') {
+			customUrl = localStorage.getItem('customUrl');
+		}
+	}
+
+	if (localStorage.getItem('currentIndex') != null) {
+		currentIndex = localStorage.getItem('currentIndex');
+	}
+
+	if (localStorage.getItem('Background') != null) {
+		currentBackground = localStorage.getItem('currentBackground');
 	}
 }
 
@@ -265,18 +283,6 @@ function manageSelectedOption(type, option) {
 	selection.style.fontWeight = "bold";
 }
 
-function buildURL() {
-	let url = window.location.href;
-	let args = currentPlaylist + "," + currentIndex + "," + currentBackground;
-
-	if (url.includes('#')) {
-		let baseURL = url.substr(0, url.indexOf('#'));
-		window.location.href = baseURL + "#" + args;
-	} else {
-		window.location.href += "#" + args;
-	}
-}
-
 function padWithZeroes(number, length) {
 	let paddedString = '' + number;
 	while (paddedString.length < length) {
@@ -298,20 +304,14 @@ function submit(event) {
 		}
 	}
 
-	if (result[1] != '') {
-		changePlaylist(input.value);
+	if (result != null) {
+		if (result[1] != '') {
+			currentPlaylist = 'Use My Own';
+			customUrl = input.value;
+			localStorage.setItem('customUrl', customUrl);
+			changePlaylist(input.value);
+		}
 	}
-}
-
-function refreshPlaylist(playlistId) {
-	let iframe = document.getElementById("playlist");
-	iframe.src = "";
-	iframe.src = playlistEmbedLink + playlistId;
-
-	let input = document.getElementById("input");
-	input.value = "";
-
-	localStorage.setItem("lastPlaylistId", playlistId);
 }
 
 function changePlaylist(playlist) {
@@ -332,6 +332,13 @@ function changePlaylist(playlist) {
 	}
 
 	player.loadPlaylist(loadData);
+	saveData();
+}
+
+function saveData() {
+	localStorage.setItem('currentPlaylist', currentPlaylist);
+	localStorage.setItem('currentIndex', currentIndex);
+	localStorage.setItem('background', currentBackground);
 }
 
 function getYoutubeId(playlist) {
@@ -344,7 +351,7 @@ function getYoutubeId(playlist) {
 	} else if (playlist.includes('watch?v=')) {
 		youtubeId = playlist.substr(playlist.indexOf('watch?v=') + 8);
 	} else {
-		alert('Could not extract video/playlist ID from input, try another value.');
+		alert('Could not extract video/playlist ID from ' + playlist + ', try another value.');
 	}
 
 	return [isPlaylist, youtubeId];
