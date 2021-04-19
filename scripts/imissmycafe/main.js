@@ -46,7 +46,8 @@ initializeMap();
 createFragments();
 manageLocalStorage();
 // TODO: Right now sounds are independant of one another, we can have them all play at once when they're ready
-// by using YouTube's player state and createjs' sound load status.
+// by using YouTube's player state and createjs' sound load status. ALSO YouTube player requires focus before
+// autoplaying; sound does not; this might be something we want to change.
 loadSounds();
 
 let somethingOpen = false;
@@ -75,7 +76,10 @@ function onYouTubeIframeAPIReady() {
 	
 	player = new YT.Player('player', {
 		playerVars: {
+			'autoplay': 1,
+			'fs': 0,
 			'loop': getLoopStatus() ? 1 : 0,
+			'origin': 'https://ryanshee.com/',
 			'listType': playlistData[0],
 			'list': playlistData[1],
 		},
