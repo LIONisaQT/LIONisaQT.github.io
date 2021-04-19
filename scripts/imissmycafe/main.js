@@ -30,18 +30,24 @@ const gamesPlaylists = [
 	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
 ];
 
-const bgSounds = ["Rain", "Forest", "Beach", "Fireplace", "Flight"];
-
-const playlistUrlMap = new Map();
-const playlistFragmentMap = new Map();
-initializeMap();
-createFragments();
+const bgSounds = ["Rain", "Forest", "Beach", "Fireplace", "Flight", "Cafe"];
+let bgInstance;
 
 let playlistHolder = "Lo-fi";
 let currentPlaylist = playlistHolder;
 let currentIndex = 1;
 let currentBackground = "Rain";
 let customUrl;
+
+const playlistUrlMap = new Map();
+const playlistFragmentMap = new Map();
+
+initializeMap();
+createFragments();
+manageLocalStorage();
+// TODO: Right now sounds are independant of one another, we can have them all play at once when they're ready
+// by using YouTube's player state and createjs' sound load status.
+loadSounds();
 
 let somethingOpen = false;
 
@@ -57,9 +63,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
 function onYouTubeIframeAPIReady() {
-	manageLocalStorage();
 	playlistSelected(currentPlaylist);
-	backgroundSelected(currentBackground);
 
 	let playlistData;
 	if (currentPlaylist == "Use My Own" && (customUrl != null || customUrl != '')) {
@@ -162,6 +166,9 @@ function backgroundSelected(background) {
 	dropdownLeave(null, 'background');
 	currentBackground = background;
 	manageSelectedOption('background', background);
+	if (createjs.Sound.loadComplete(background)) {
+		playBackgroundAudio(background);
+	}
 	saveData();
 }
 
@@ -256,8 +263,8 @@ function manageLocalStorage() {
 		currentIndex = localStorage.getItem('currentIndex');
 	}
 
-	if (localStorage.getItem('Background') != null) {
-		currentBackground = localStorage.getItem('currentBackground');
+	if (localStorage.getItem('background') != null) {
+		currentBackground = localStorage.getItem('background');
 	}
 }
 
@@ -363,4 +370,37 @@ function setLoopStatus() {
 
 function getLoopStatus() {
 	return document.getElementById('loop-checkbox').checked;
+}
+
+// TODO: Load sounds as they are required instead of all at once.
+function loadSounds() {
+	const audioPath = '/static/imissmycafe/sounds/';
+	let sounds = [];
+	bgSounds.forEach(sound => {
+		let note = {
+			id: sound,
+			src: sound + '.mp3'
+		};
+		sounds.push(note);
+	});
+	createjs.Sound.alternateExtensions = ['mp3'];
+	createjs.Sound.on('fileload', ready);
+	createjs.Sound.registerSounds(sounds, audioPath);
+}
+
+function playBackgroundAudio(background) {
+	createjs.Sound.stop();
+	createjs.Sound.play(background);
+	createjs.Sound.loop = -1;
+}
+
+function ready(event) {
+	let source = event.src;
+	source = source.substr(source.lastIndexOf('/') + 1);
+	source = source.substr(0, source.length - 4);
+
+	if (currentBackground == source) {
+		manageSelectedOption('background', currentBackground);
+		playBackgroundAudio(currentBackground);
+	}
 }
