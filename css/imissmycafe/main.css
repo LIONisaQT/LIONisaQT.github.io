@@ -18,6 +18,7 @@ iframe {
 
 body {
 	font-family: 'Nunito', sans-serif;
+	font-weight: 600;
 	background: #2f3d85;
 	color: #a7bfff;
 	margin: 50px 80px;
@@ -54,7 +55,7 @@ h2 {
 
 .grid {
 	display: grid;
-	grid-template-columns: 295px 1fr 295px;
+	grid-template-columns: 245px 1fr 245px;
 	gap: 50px;
 }
 
@@ -69,6 +70,7 @@ h2 {
 	border: 2px solid #a7bfff;
 	border-radius: 6px;
 	cursor: pointer;
+	font-weight: bold;
 }
 
 .dropdown {
@@ -79,6 +81,7 @@ h2 {
 	display: none;
 	position: absolute;
 	margin: 0px 2px 2px 2px;
+	font-weight: 600;
 	background-color: #2f3d85;
 	box-shadow: 0px 0px 0px 2px #a7bfff;
 	border-bottom-left-radius: 6px;
@@ -91,6 +94,7 @@ h2 {
 	color: #a7bfff;
 	text-decoration: none;
 	display: block;
+	font-weight: bold;
 	cursor: pointer;
 }
 
@@ -128,6 +132,7 @@ h2 {
 	border: 0;
 	outline: none;
 	font-size: 16px;
+	font-weight: bold;
 	margin-left: 2px;
 	padding: 8px 16px;
 	box-shadow: 0px 0px 0px 2px #a7bfff;
@@ -140,6 +145,7 @@ h2 {
 
 .playlist-input::placeholder {
 	color: #a7bfff;
+	opacity: 0.4;
 }
 
 .input-button {
@@ -149,6 +155,8 @@ h2 {
 	border: 0;
 	padding: 8px 16px;
 	border-radius: 6px;
+	font-size: medium;
+	font-weight: bold;
 }
 
 .loop-container {
@@ -248,9 +256,11 @@ h2 {
 
 .background-slider::-webkit-slider-thumb {
 	-webkit-appearance: none;
-	appearance: none;
-	width: 6px;
-	height: 18px;
+	border: 3px solid #2f3d85;
+	background-color: #a7bfff;
+	border-radius: 6px;
+	width: 12px;
+	height: 26px;
 	cursor: pointer;
 }
 
@@ -272,4 +282,117 @@ h2 {
 
 .play-button {
 	width: 12x;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	margin-top: -50px;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	text-align: center;
+	border-radius: 16px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #a7bfff;
+	padding: 60px;
+	width: 25%;
+	color: #2f3d85;
+}
+
+.close-button {
+	color: #2f3d85;
+	position: absolute;
+	right: 20px;
+	top: 12px;
+	font-size: 28px;
+	font-weight: lighter;
+}
+
+.close-button:hover,
+.close-button:focus {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.modal-content h2 {
+	font-weight: bolder;
+	margin: 30px 0 20px;
+}
+
+.modal-content p {
+	font-size: 18px;
+	font-weight: normal;
+}
+
+.share-content {
+	text-align: left;
+	padding: 20px 40px 40px;
+}
+
+.black-header {
+	color: black;
+}
+
+.share-line {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 100px;
+	text-align: center;
+}
+
+.link-area {
+	display: inline;
+	text-align: left;
+	background-color: white;
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+	padding: 8px 24px;
+}
+
+.copy-button {
+	display: inline;
+	background-color: #2f3d85;
+	color: #a7bfff;
+	outline: none;
+	border: 0;
+	font-size: medium;
+	padding: 8px 16px;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	transition: 0.25s ease;
+	cursor: pointer;
+}
+
+.info-modal-main {
+	text-align: left;
+}
+
+.link {
+	color: #2f3d85;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.out {
+	text-decoration: underline;
+}
+
+.kudos {
+	margin: 40px 0 0;
+	text-align: center;
+}
+
+.modal-button:hover {
+	cursor: pointer;
+	filter: grayscale(100%) contrast(200%);
 }

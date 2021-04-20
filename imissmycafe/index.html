@@ -14,11 +14,34 @@
 </head>
 
 <body>
+	<div id="info-modal" class="modal">
+		<div class="modal-content">
+			<span id="info-close" class="close-button" onclick="closeInfoModal()">&times;</span>
+			<img src="/static/imissmycafe/img/InfoHeader.png">
+			<h2>Welcome to Chill Mood Club</h2>
+			<p class="info-modal-main">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at tellus non velit convallis pharetra. Cras volutpat rutrum volutpat. Suspendisse potenti. Donec volutpat turpis facilisis consectetur pulvinar. Suspendisse eget magna ac quam porttitor convallis. Quisque iaculis volutpat elit eget consequat. Ut sed libero quis ante facilisis tempor eu ut sem. Sed commodo leo et erat porttitor, ac eleifend justo placerat. Pellentesque gravida ante eget consectetur accumsan. Nullam tempus aliquam arcu eget posuere. </p>
+			<p class="kudos">
+				Created & built by <a class="name link" href="#">Annie Hu</a> & <a class="name link" href="https://ryanshee.com" target="_blank">Ryan Shee</a>
+				<br>
+				Inspired by <a class="out link" href="https://imissmycafe.com/" target="_blank">I Miss My Cafe</a> & <a class="out link" href="http://imissmybar.com/" target="_blank">I Miss My Bar</a>
+			</p>
+		</div>
+	</div>
+	<div id="share-modal" class="modal">
+		<div class="share-content modal-content">
+			<span id="share-close" class="close-button" onclick="closeShareModal()">&times;</span>
+			<h2 class="black-header">Share this with your friends!</h2>
+			<div class="share-line">
+				<div class="link-area">https://ryanshee.com/imissmycafe</div>
+				<button id="copy-button" class="copy-button" onclick="shareCopyClicked(this)">Copy</button>
+			</div>
+		</div>
+	</div>
 	<div class="contents">
 		<div class="header">
 			<div class="grid">
 				<div class="left">
-					<img src="../static/imissmycafe/img/Share.png">
+					<img class="modal-button" src="../static/imissmycafe/img/Share.png" onclick="shareClicked()">
 				</div>
 				<div class="middle centered">
 					<div class="title">
@@ -26,7 +49,7 @@
 					</div>
 				</div>
 				<div class="right header-right">
-					<img src="../static/imissmycafe/img/Info.png">
+					<img class="modal-button" src="../static/imissmycafe/img/Info.png" onclick="infoClicked()">
 				</div>
 			</div>
 		</div>

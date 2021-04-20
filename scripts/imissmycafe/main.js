@@ -41,7 +41,10 @@ let customUrl;
 
 let player;
 
-let somethingOpen = false;
+let somethingOpen = false; // Refers to dropdowns, not the modals.
+
+let infoModal;
+let shareModal;
 
 const playlistUrlMap = new Map();
 const playlistFragmentMap = new Map();
@@ -53,6 +56,8 @@ loadSounds();
 loadYouTubePlayer();
 
 window.onload = function() {
+	infoModal = document.getElementById('info-modal');
+	shareModal = document.getElementById('share-modal');
 	registerEvents();
 };
 
@@ -306,7 +311,6 @@ function manageSelectedOption(type, option) {
 		if (node.style != undefined) {
 			if (node.innerHTML.indexOf(' ✓') > -1) {
 				node.innerHTML = node.innerHTML.substr(0, node.innerHTML.indexOf(' ✓'));
-				node.style.fontWeight = "normal";
 			}
 		}
 	});
@@ -314,7 +318,6 @@ function manageSelectedOption(type, option) {
 	// Set style of selected background.
 	let selection = document.getElementById(option);
 	selection.innerHTML = selection.innerHTML + ' ✓';
-	selection.style.fontWeight = "bold";
 }
 
 function padWithZeroes(number, length) {
@@ -379,7 +382,7 @@ function saveData() {
 
 function getYoutubeId(playlist) {
 	let isPlaylist = false;
-	let youtubeId = "";
+	let youtubeId = '';
 
 	if (playlist.includes('list=')) {
 		isPlaylist = true;
@@ -387,7 +390,10 @@ function getYoutubeId(playlist) {
 	} else if (playlist.includes('watch?v=')) {
 		youtubeId = playlist.substr(playlist.indexOf('watch?v=') + 8);
 	} else {
-		alert('Could not extract video/playlist ID from ' + playlist + ', try another value.');
+		playlist = playlist.replace(/\s/g, '');
+		if (playlist != '') {
+			alert('Could not extract video/playlist ID from ' + playlist + ', try another value.');
+		}
 	}
 
 	return [isPlaylist, youtubeId];
@@ -431,7 +437,7 @@ function loadSoundFinished(event, sounds, audioPath) {
 
 	if (player != null) {
 		if (player.getPlayerState() == 1) {
-			playBackgroundAudio(currentBackground);
+			backgroundSelected(currentBackground);
 		}
 	}
 
@@ -452,4 +458,39 @@ function toggleBg(img) {
 	} else {
 		img.src = '/static/imissmycafe/img/Pause.png'
 	}
+}
+
+function shareClicked() {
+	shareModal.style.display = 'block';
+}
+
+function infoClicked() {
+	infoModal.style.display = 'block';
+}
+
+window.onclick = function(event) {
+	if (event.target == infoModal) {
+		closeInfoModal();
+	} else if (event.target == shareModal) {
+		closeShareModal();
+	}
+}
+
+function closeShareModal() {
+	shareModal.style.display = 'none';
+	
+	// Reset button state.
+	const copyButton = document.getElementById('copy-button');
+	copyButton.style.color = '#a7bfff';
+	copyButton.innerHTML = 'Copy';
+}
+
+function closeInfoModal() {
+	infoModal.style.display = 'none';
+}
+
+function shareCopyClicked(button) {
+	button.innerHTML = "Copied!";
+	button.style.color = 'white';
+	document.execCommand(window.location.href);
 }
