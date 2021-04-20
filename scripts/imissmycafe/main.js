@@ -109,8 +109,9 @@ function onPlayerStateChange(event) {
 		case 0: // Ended.
 			break;
 		case 1: // Playing.
-			// Play bg when playlist is playing too.
-			backgroundSelected(currentBackground);
+			if (bgInstance == null) {
+				playBackgroundAudio(currentBackground);
+			}
 			break;
 		case 2: // Paused
 			break;
@@ -119,7 +120,7 @@ function onPlayerStateChange(event) {
 		case 5: // Video cued.
 			break;
 		default:
-			console.log('state: ' + state + ' is unknown');
+			console.warn('State: ' + state + ' is unknown.');
 			break;
 	}
 }
@@ -404,6 +405,8 @@ function loadSounds() {
 	});
 	createjs.Sound.alternateExtensions = ['mp3'];
 	createjs.Sound.on('fileload', event => loadSoundFinished(event, sounds, audioPath));
+
+	// Load current background sound first.
 	createjs.Sound.registerSound(audioPath + currentBackground + '.mp3', currentBackground);
 }
 
@@ -420,14 +423,14 @@ function playBackgroundAudio(background) {
 }
 
 function loadSoundFinished(event, sounds, audioPath) {
-	createjs.Sound.registerSounds(sounds, audioPath);
+	createjs.Sound.removeAllEventListeners();
 
-	// Uncomment if you want to play sound as soon as sound data is ready.
-	// let source = event.src;
-	// source = source.substr(source.lastIndexOf('/') + 1);
-	// source = source.substr(0, source.length - 4);
-	// if (currentBackground == source) {
-	// 	manageSelectedOption('background', currentBackground);
-	// 	playBackgroundAudio(currentBackground);
-	// }
+	if (player != null) {
+		if (player.getPlayerState() == 1) {
+			playBackgroundAudio(currentBackground);
+		}
+	}
+
+	// Load the rest of the sounds.
+	createjs.Sound.registerSounds(sounds, audioPath);
 }
