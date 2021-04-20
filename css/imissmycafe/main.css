@@ -54,7 +54,7 @@ h2 {
 
 .grid {
 	display: grid;
-	grid-template-columns: 1fr 4fr 1fr;
+	grid-template-columns: 295px 1fr 295px;
 	gap: 50px;
 }
 
