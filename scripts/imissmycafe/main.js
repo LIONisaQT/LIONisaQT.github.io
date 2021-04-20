@@ -39,30 +39,31 @@ let currentIndex = 1;
 let currentBackground = "Rain";
 let customUrl;
 
+let player;
+
+let somethingOpen = false;
+
 const playlistUrlMap = new Map();
 const playlistFragmentMap = new Map();
 
 initializeMap();
 createFragments();
 manageLocalStorage();
-// TODO: Right now sounds are independant of one another, we can have them all play at once when they're ready
-// by using YouTube's player state and createjs' sound load status. ALSO YouTube player requires focus before
-// autoplaying; sound does not; this might be something we want to change.
 loadSounds();
-
-let somethingOpen = false;
+loadYouTubePlayer();
 
 window.onload = function() {
 	registerEvents();
 };
 
-const tag = document.createElement('script');
-tag.id = 'iframe';
-tag.src = 'https://www.youtube.com/iframe_api';
-const firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+function loadYouTubePlayer() {
+	const tag = document.createElement('script');
+	tag.id = 'iframe';
+	tag.src = 'https://www.youtube.com/iframe_api';
+	const firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
 
-var player;
 function onYouTubeIframeAPIReady() {
 	playlistSelected(currentPlaylist);
 
@@ -78,7 +79,6 @@ function onYouTubeIframeAPIReady() {
 		playerVars: {
 			'autoplay': 1,
 			'fs': 0,
-			'loop': getLoopStatus() ? 1 : 0,
 			'origin': 'https://ryanshee.com/',
 			'listType': playlistData[0],
 			'list': playlistData[1],
@@ -102,7 +102,26 @@ function onPlayerReady(event) {
 }
 
 function onPlayerStateChange(event) {
-	// Do stuff with on pause, on play, etc. here.
+	const state = event.data;
+	switch (state) {
+		case -1: // Unstarted.
+			break;
+		case 0: // Ended.
+			break;
+		case 1: // Playing.
+			// Play bg when playlist is playing too.
+			backgroundSelected(currentBackground);
+			break;
+		case 2: // Paused
+			break;
+		case 3: // Buffering.
+			break;
+		case 5: // Video cued.
+			break;
+		default:
+			console.log('state: ' + state + ' is unknown');
+			break;
+	}
 }
 
 function playlistSelected(playlistName) {
@@ -343,6 +362,7 @@ function changePlaylist(playlist) {
 	}
 
 	player.loadPlaylist(loadData);
+	setLoopStatus();
 	saveData();
 }
 
@@ -372,11 +392,6 @@ function setLoopStatus() {
 	player.setLoop(document.getElementById('loop-checkbox').checked);
 }
 
-function getLoopStatus() {
-	return document.getElementById('loop-checkbox').checked;
-}
-
-// TODO: Load sounds as they are required instead of all at once.
 function loadSounds() {
 	const audioPath = '/static/imissmycafe/sounds/';
 	let sounds = [];
@@ -388,23 +403,31 @@ function loadSounds() {
 		sounds.push(note);
 	});
 	createjs.Sound.alternateExtensions = ['mp3'];
-	createjs.Sound.on('fileload', ready);
-	createjs.Sound.registerSounds(sounds, audioPath);
+	createjs.Sound.on('fileload', event => loadSoundFinished(event, sounds, audioPath));
+	createjs.Sound.registerSound(audioPath + currentBackground + '.mp3', currentBackground);
 }
 
 function playBackgroundAudio(background) {
-	createjs.Sound.stop();
-	createjs.Sound.play(background);
+	if (bgInstance != null) {
+		bgInstance.stop();
+	}
+
+	bgInstance = createjs.Sound.play(background, {
+		loop: -1,
+		pan: 0 // Might have pan controls later
+	});
 	createjs.Sound.loop = -1;
 }
 
-function ready(event) {
-	let source = event.src;
-	source = source.substr(source.lastIndexOf('/') + 1);
-	source = source.substr(0, source.length - 4);
+function loadSoundFinished(event, sounds, audioPath) {
+	createjs.Sound.registerSounds(sounds, audioPath);
 
-	if (currentBackground == source) {
-		manageSelectedOption('background', currentBackground);
-		playBackgroundAudio(currentBackground);
-	}
+	// Uncomment if you want to play sound as soon as sound data is ready.
+	// let source = event.src;
+	// source = source.substr(source.lastIndexOf('/') + 1);
+	// source = source.substr(0, source.length - 4);
+	// if (currentBackground == source) {
+	// 	manageSelectedOption('background', currentBackground);
+	// 	playBackgroundAudio(currentBackground);
+	// }
 }
