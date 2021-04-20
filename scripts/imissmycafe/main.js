@@ -367,6 +367,7 @@ function changePlaylist(playlist) {
 
 	player.loadPlaylist(loadData);
 	setLoopStatus();
+	player.setVolume(50);
 	saveData();
 }
 
