@@ -237,6 +237,9 @@ function registerEvents() {
 
 	let backgroundArea = document.getElementById('background-area');
 	backgroundArea.addEventListener('mouseleave', e => dropdownLeave(e, 'background'));
+
+	let backgroundSlider = document.getElementById('background-slider');
+	backgroundSlider.addEventListener('input', updateSlider, false);
 }
 
 function dropdownLeave(event, type) {
@@ -433,4 +436,10 @@ function loadSoundFinished(event, sounds, audioPath) {
 
 	// Load the rest of the sounds.
 	createjs.Sound.registerSounds(sounds, audioPath);
+}
+
+function updateSlider() {
+	const sliderValue = document.getElementById('background-slider').value;
+	document.getElementById('background-slider-real').style.width = sliderValue + '%';
+	createjs.Sound.volume = sliderValue / 100;
 }
