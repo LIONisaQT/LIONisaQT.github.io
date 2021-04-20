@@ -444,3 +444,12 @@ function updateSlider() {
 	document.getElementById('background-slider-real').style.width = sliderValue + '%';
 	createjs.Sound.volume = sliderValue / 100;
 }
+
+function toggleBg(img) {
+	bgInstance.paused = !bgInstance.paused;
+	if (bgInstance.paused) {
+		img.src = '/static/imissmycafe/img/Play.png'
+	} else {
+		img.src = '/static/imissmycafe/img/Pause.png'
+	}
+}

@@ -208,15 +208,21 @@ h2 {
 
 .background-controls {
 	margin-top: 20px;
+	display: grid;
+	grid-template-columns: 25px 1fr 25px;
+	gap: 10px;
+}
+
+.slider-container {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	height: 4px;
 	width: calc(100% - 3px);
 	background-color: white;
 	border-radius: 15px;
 	outline: none;
-}
-
-.slider-container {
-	position: relative;
 }
 
 .background-slider-real {
@@ -254,4 +260,16 @@ h2 {
 	cursor: pointer;
 	border: solid #2f3d85;
 	background-color: #a7bfff;
+}
+
+.bg-control {
+	height: 20px;
+}
+
+.audio {
+	width: 26px;
+}
+
+.play-button {
+	width: 12x;
 }
