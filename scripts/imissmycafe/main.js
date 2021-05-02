@@ -17,7 +17,6 @@ const kpopPlaylists = [
 ];
 
 const jpopPlaylists = [
-	"https://www.youtube.com/watch?v=Q7odl3oyii0",
 	"https://www.youtube.com/watch?v=1gSe78TIEEk",
 	"https://www.youtube.com/watch?v=DXHgBUMnlvY",
 	"https://www.youtube.com/watch?v=9FvvbVI5rYA",
@@ -116,7 +115,7 @@ function onPlayerReady(event) {
 		playlistData = playlistUrlMap.get(currentPlaylist)[currentIndex - 1];
 	}
 
-	// changePlaylist(playlistData);
+	changePlaylist(playlistData, false);
 }
 
 function onPlayerStateChange(event) {
@@ -364,7 +363,7 @@ function submit(event) {
 	}
 }
 
-function changePlaylist(playlist) {
+function changePlaylist(playlist, autoplay) {
 	if (player == null) return;
 
 	const playlistData = getYoutubeId(playlist);
@@ -381,7 +380,12 @@ function changePlaylist(playlist) {
 		loadData.playlist = playlistData[1];
 	}
 
-	player.loadPlaylist(loadData);
+	if (autoplay || autoplay == null) {
+		player.loadPlaylist(loadData);
+	} else {
+		player.cuePlaylist(loadData);
+	}
+	
 	setLoopStatus();
 	player.setVolume(50);
 	saveData();

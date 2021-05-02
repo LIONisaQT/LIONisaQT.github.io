@@ -46,6 +46,10 @@ body {
 	text-align: right;
 }
 
+.logo {
+	transition: 0.25s ease;
+}
+
 .logo:hover {
 	filter: hue-rotate(225deg);
 }
@@ -271,6 +275,7 @@ h2 {
 	background: var(--light-purple);
 	border-radius: 15px;
 	outline: none;
+	cursor: pointer;
 }
 
 .background-slider {
@@ -281,6 +286,7 @@ h2 {
 	-webkit-appearance: none;
 	outline: none;
 	height: 0;
+	cursor: pointer;
 }
 
 .background-slider::-webkit-slider-thumb {
@@ -304,16 +310,18 @@ h2 {
 	height: 20px;
 }
 
-.bg-control:hover {
+.play-btn {
+	cursor: pointer;
+	width: 12x;
+	transition: 0.25s ease;
+}
+
+.play-btn:hover {
 	filter: sepia(100%);
 }
 
 .audio {
 	width: 26px;
-}
-
-.play-button {
-	width: 12x;
 }
 
 .modal {
@@ -348,6 +356,7 @@ h2 {
 	top: 14px;
 	font-size: 28px;
 	font-weight: lighter;
+	transition: 0.25s ease;
 }
 
 .close-button:hover,
