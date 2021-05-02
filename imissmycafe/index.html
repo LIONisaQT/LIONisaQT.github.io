@@ -10,20 +10,37 @@
 	<link rel="stylesheet" type="text/css" href="../css/imissmycafe/main.css">
 	<script src="../scripts/imissmycafe/main.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content="#1cb7bd" />
+	<meta name="theme-color" content="#aca7e8" />
 </head>
 
 <body>
 	<div id="info-modal" class="modal">
 		<div class="modal-content">
 			<span id="info-close" class="close-button" onclick="closeInfoModal()">&times;</span>
-			<img src="/static/imissmycafe/img/InfoHeader.png">
+			<img src="/static/imissmycafe/img/InfoHeader.png" width="195">
 			<h2>Welcome to Chill Mood Club</h2>
-			<p class="info-modal-main">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at tellus non velit convallis pharetra. Cras volutpat rutrum volutpat. Suspendisse potenti. Donec volutpat turpis facilisis consectetur pulvinar. Suspendisse eget magna ac quam porttitor convallis. Quisque iaculis volutpat elit eget consequat. Ut sed libero quis ante facilisis tempor eu ut sem. Sed commodo leo et erat porttitor, ac eleifend justo placerat. Pellentesque gravida ante eget consectetur accumsan. Nullam tempus aliquam arcu eget posuere. </p>
+			<p class="info-modal-main">
+				We know how challenging it can be to concentrate and destress during this time.
+				That's why we created Chill Mood Club, a music hub that combines music with soothing sounds for work, study, or rest time.
+				<br><br>
+				Choose from our selection of curated YouTube playlists, or play your own favaorite tunes.
+				For a more immersive experience, add a background sound and adjust the volume to your liking.
+				<br><br>
+				Welcome to the club, and we hope you enjoy your stay.
+			</p>
 			<p class="kudos">
-				Created & built by <a class="name link" href="#">Annie Hu</a> & <a class="name link" href="https://ryanshee.com" target="_blank">Ryan Shee</a>
+				Designed by <a class="name link" href="#">Annie Hu</a> & Built by <a class="name link" href="https://ryanshee.com" target="_blank">Ryan Shee</a>
 				<br>
 				Inspired by <a class="out link" href="https://imissmycafe.com/" target="_blank">I Miss My Cafe</a> & <a class="out link" href="http://imissmybar.com/" target="_blank">I Miss My Bar</a>
+				<br>
+				BG sound sources:
+				<a class="out link" href="#" target="_blank">1</a>
+				<a class="out link" href="#" target="_blank">2</a>
+				<a class="out link" href="#" target="_blank">3</a>
+				<a class="out link" href="#" target="_blank">4</a>
+				<a class="out link" href="#" target="_blank">5</a>
+				<a class="out link" href="#" target="_blank">6</a>
+				<a class="out link" href="#" target="_blank">7</a>
 			</p>
 		</div>
 	</div>
@@ -41,22 +58,22 @@
 		<div class="header">
 			<div class="grid">
 				<div class="left">
-					<img class="modal-button" src="../static/imissmycafe/img/Share.png" onclick="shareClicked()">
+					<img class="modal-button" src="../static/imissmycafe/img/Share.png" width="40" onclick="shareClicked()">
 				</div>
 				<div class="middle centered">
 					<div class="title">
-						<img src="../static/imissmycafe/img/Logo.png">
+						<img class="logo" src="../static/imissmycafe/img/Logo.png" width="400">
 					</div>
 				</div>
 				<div class="right header-right">
-					<img class="modal-button" src="../static/imissmycafe/img/Info.png" onclick="infoClicked()">
+					<img class="modal-button" src="../static/imissmycafe/img/Info.png" width="40" onclick="infoClicked()">
 				</div>
 			</div>
 		</div>
 		<div class="main-element">
 			<div class="grid">
 				<div class="left">
-					<h2>01. Choose a playlist</h2>
+					<h2 class="option-text">01. Choose a playlist</h2>
 					<div id="playlist-area" class="dropdown">
 						<button id="playlist-select" class="dropdown-button" onclick="dropdownClicked('playlist')">Lo-fi</button>
 						<div id="playlist-dropdown" class="dropdown-content">
@@ -72,7 +89,8 @@
 						<!-- This is where individual playlist options go -->
 					</div>
 					<div id="playlist-input" class="own-playlist">
-						<input type="text" id="input" class="playlist-input" onkeypress="submit(event)" placeholder="Enter playlist URL here">
+						<p class="own-instruction">Paste the YouTube URL below to start (*playlist must be public)</p>
+						<input type="text" id="input" class="playlist-input" onkeypress="submit(event)" placeholder="Enter URL">
 						<button id="input-button" class="input-button" onclick="submit()">Play now</button>
 					</div>
 					<label class="loop-container">Loop
@@ -86,13 +104,14 @@
 					</div>
 				</div>
 				<div class="right">
-					<h2>02. Add BG sound</h2>
+					<h2 class="option-text">02. Add BG sound</h2>
 					<div id="background-area" class="dropdown">
 						<button id="background-select" class="dropdown-button" onclick="dropdownClicked('background')">Rain</button>
 						<div id="background-dropdown" class="dropdown-content">
 							<a id="Rain" onclick="backgroundSelected('Rain')">Rain</a>
 							<a id="Forest" onclick="backgroundSelected('Forest')">Forest</a>
 							<a id="Beach" onclick="backgroundSelected('Beach')">Beach</a>
+							<a id="Cafe" onclick="backgroundSelected('Cafe')">Cafe</a>
 							<a id="Fireplace" onclick="backgroundSelected('Fireplace')">Fireplace</a>
 							<a id="Flight" onclick="backgroundSelected('Flight')">In-flight</a>
 						</div>
@@ -101,7 +120,7 @@
 						<img class="bg-control audio" src="/static/imissmycafe/img/Audio.png" alt="audio icon">
 						<div class="slider-container">
 							<div id="background-slider-real" class="background-slider-real"></div>
-							<input id="background-slider" class="background-slider" type="range" min="0" max="100" value="100">
+							<input id="background-slider" class="background-slider" type="range" min="0" max="100" value="80">
 						</div>
 						<img class="bg-control play-btn" src="/static/imissmycafe/img/Pause.png" alt="pause/play" onclick="toggleBg(this)">
 					</div>

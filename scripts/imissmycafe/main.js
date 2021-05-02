@@ -1,33 +1,45 @@
-const defaultPlaylist = "https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq";
+const defaultPlaylist = "https://www.youtube.com/watch?v=5qap5aO4i9A";
 
 const lofiPlaylists = [
-	"https://www.youtube.com/watch?v=gMZhRJ5354o&list=PLvlw_ICcAI4fShFuH9p4ugLuv75jyDjbu",
-	"https://www.youtube.com/playlist?list=PLcghjaDFUHglje0wiMUDMTrUV6z5wGGQq",
-	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
-	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=5qap5aO4i9A",
+	"https://www.youtube.com/watch?v=IRseJUSzWTo",
+	"https://www.youtube.com/watch?v=cqEydD0wAuI",
+	"https://www.youtube.com/watch?v=Q326lVMgsHk",
+	"https://www.youtube.com/watch?v=-5KAN9_CzSA",
+	"https://www.youtube.com/watch?v=Xry_g0Vp5MY",
+	"https://www.youtube.com/watch?v=1NCOFZpZE2Q"
 ];
 
 const kpopPlaylists = [
-	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
-	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
-	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"hhttps://www.youtube.com/watch?v=QNS3SXYyaUY&list=PL5FeYIiqkJGrIHcXmkcUvQUCHN-h3eyay",
+	"https://www.youtube.com/watch?v=lKlSesz-V-8",
+	"https://www.youtube.com/watch?v=ntOYV6mz_7Q",
 ];
 
 const jpopPlaylists = [
-	"https://www.youtube.com/watch?v=VGMrcfpg0h8",
-	"https://www.youtube.com/watch?v=sRiruE1FaIQ",
+	"https://www.youtube.com/watch?v=Q7odl3oyii0",
+	"https://www.youtube.com/watch?v=1gSe78TIEEk",
+	"https://www.youtube.com/watch?v=DXHgBUMnlvY",
+	"https://www.youtube.com/watch?v=9FvvbVI5rYA",
+	"https://www.youtube.com/watch?v=WHUhgVz2JDg"
 ];
 
 const animePlaylists = [
-	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=UoMbwCoJTYM",
+	"https://www.youtube.com/watch?v=SbHhaVmdEvc",
+	"https://www.youtube.com/watch?v=zyAdlInC_P0",
+	"https://www.youtube.com/watch?v=zcaskjhhXWQ",
+	"https://www.youtube.com/watch?v=QE239OnSAu4&list=PL5FeYIiqkJGo3f96VYm4nkJXQZOXLV7Bv",
+	"https://www.youtube.com/watch?v=OEtx1ek3-h8"
 ];
 
 const gamesPlaylists = [
+	"https://www.youtube.com/watch?v=wofB1wzyYYI",
+	"https://www.youtube.com/watch?v=GdzrrWA8e7A",
+	"https://www.youtube.com/watch?v=WfMClt3K5K4",
+	"https://www.youtube.com/watch?v=MO30O_f1nzU",
 	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
-	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
-	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
-	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
-	"https://www.youtube.com/watch?v=SlUYv-CUoOo&list=PL9Xuki_HcjmBJPp_ku7MHmJke1jtc_QTq",
+	"https://www.youtube.com/watch?v=7JMvn0wfABQ"
 ];
 
 const bgSounds = ["Rain", "Forest", "Beach", "Fireplace", "Flight", "Cafe"];
@@ -56,6 +68,7 @@ loadSounds();
 loadYouTubePlayer();
 
 window.onload = function() {
+	updateSlider();
 	infoModal = document.getElementById('info-modal');
 	shareModal = document.getElementById('share-modal');
 	registerEvents();
@@ -82,7 +95,7 @@ function onYouTubeIframeAPIReady() {
 	
 	player = new YT.Player('player', {
 		playerVars: {
-			'autoplay': 1,
+			'autoplay': 0,
 			'fs': 0,
 			'origin': 'https://ryanshee.com/',
 			'listType': playlistData[0],
@@ -103,7 +116,7 @@ function onPlayerReady(event) {
 		playlistData = playlistUrlMap.get(currentPlaylist)[currentIndex - 1];
 	}
 
-	changePlaylist(playlistData);
+	// changePlaylist(playlistData);
 }
 
 function onPlayerStateChange(event) {
@@ -180,14 +193,14 @@ function updateSubPlaylistStyle(index) {
 	nodes.forEach(node => {
 		if (node.style != undefined) {
 			node.style.color = 'white';
-			node.style.borderBottom = '2px solid transparent';
+			// node.style.borderBottom = '2px solid transparent';
 		}
 	});
 
 	let subPlaylist = document.getElementById(index);
 	if (subPlaylist != null) {
-		subPlaylist.style.color = '#a7bfff';
-		subPlaylist.style.borderBottom = '2px solid #a7bfff';
+		subPlaylist.style.color = '#aca7e8';
+		// subPlaylist.style.borderBottom = '2px solid #a7bfff';
 	}
 }
 
@@ -309,15 +322,15 @@ function manageSelectedOption(type, option) {
 	let nodes = document.getElementById(type + '-dropdown').childNodes;
 	nodes.forEach(node => {
 		if (node.style != undefined) {
-			if (node.innerHTML.indexOf(' ✓') > -1) {
-				node.innerHTML = node.innerHTML.substr(0, node.innerHTML.indexOf(' ✓'));
+			if (node.innerHTML.indexOf(' ・') > -1) {
+				node.innerHTML = node.innerHTML.substr(0, node.innerHTML.indexOf(' ・'));
 			}
 		}
 	});
 
 	// Set style of selected background.
 	let selection = document.getElementById(option);
-	selection.innerHTML = selection.innerHTML + ' ✓';
+	selection.innerHTML = selection.innerHTML + ' ・';
 }
 
 function padWithZeroes(number, length) {
@@ -427,9 +440,12 @@ function playBackgroundAudio(background) {
 
 	bgInstance = createjs.Sound.play(background, {
 		loop: -1,
-		pan: 0 // Might have pan controls later
+		pan: 0, // Might have pan controls later
+		volume: document.getElementById('background-slider').value
 	});
 	createjs.Sound.loop = -1;
+
+	manageSelectedOption('background', background);
 }
 
 function loadSoundFinished(event, sounds, audioPath) {
@@ -481,7 +497,6 @@ function closeShareModal() {
 	
 	// Reset button state.
 	const copyButton = document.getElementById('copy-button');
-	copyButton.style.color = '#a7bfff';
 	copyButton.innerHTML = 'Copy';
 }
 
@@ -491,6 +506,5 @@ function closeInfoModal() {
 
 function shareCopyClicked(button) {
 	button.innerHTML = "Copied!";
-	button.style.color = 'white';
 	document.execCommand(window.location.href);
 }
