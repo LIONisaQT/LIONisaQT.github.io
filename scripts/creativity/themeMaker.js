@@ -27,7 +27,7 @@ const allActivities = writingActivities.concat(visualActivities).concat(musicAct
 
 function generateList() {
 	let daysToPopulate = getNumberFromInput("day-count");
-	let numActivitiesInDay =  getNumberFromInput("activity-count");
+	let numActivitiesInDay = getNumberFromInput("activity-count");
 
 	let writingRatio = getNumberFromInput("ratio-writing");
 	let visualRatio = getNumberFromInput("ratio-visual");
@@ -54,9 +54,8 @@ function generateList() {
 
 	let breakdownMap = initializeMap(["Writing", "Visual", "Music"]);
 
-	for (let i = 0; i < daysToPopulate; i++)
-	{
-		console.log( "===== DAY " + (i + 1) + " =====");
+	for (let i = 0; i < daysToPopulate; i++) {
+		console.log("===== DAY " + (i + 1) + " =====");
 		for (let j = 0; j < numActivitiesInDay; j++) {
 			let category;
 			let categoryName;
@@ -87,7 +86,7 @@ function generateList() {
 
 			console.log("	> Picked " + activity);
 
-			if (writingPool.length <= 0 && breakdownMap["Writing"] < maxWriting) {	
+			if (writingPool.length <= 0 && breakdownMap["Writing"] < maxWriting) {
 				writingPool = [...writingActivities];
 			}
 			if (visualPool.length <= 0 && breakdownMap["Visual"] < maxVisual) {
@@ -169,7 +168,7 @@ function plotRawCount(rawCountMap) {
 	let config = {
 		staticPlot: true
 	}
-	
+
 	Plotly.newPlot(rawCountGraph, data, layout, config);
 }
 
