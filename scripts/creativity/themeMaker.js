@@ -4,7 +4,7 @@ const writingActivities = [
 	"Comic Relief",
 	"Poetry",
 	"Wordsmith",
-	"Creative Writing"
+	"Write Stuff"
 ];
 
 const visualActivities = [
@@ -14,12 +14,13 @@ const visualActivities = [
 	"Shape Shift",
 	"Finish Line",
 	"Rough Shape",
-	"Shape Shift Menu"
+	"Cut & Paste"
 ];
 
 const musicActivities = [
 	"Beat Board",
-	"Composer"
+	"Composer",
+	"Sound Sampler"
 ]
 
 const allActivities = writingActivities.concat(visualActivities).concat(musicActivities);
