@@ -66,7 +66,7 @@ manageLocalStorage();
 loadSounds();
 loadYouTubePlayer();
 
-window.onload = function() {
+window.onload = function () {
 	updateSlider();
 	infoModal = document.getElementById('info-modal');
 	shareModal = document.getElementById('share-modal');
@@ -91,7 +91,7 @@ function onYouTubeIframeAPIReady() {
 		playlistData = getYoutubeId(playlistUrlMap.get(currentPlaylist)[currentIndex - 1]);
 		subPlaylistSelected(null, currentIndex);
 	}
-	
+
 	player = new YT.Player('player', {
 		playerVars: {
 			'autoplay': 0,
@@ -169,7 +169,7 @@ function playlistSelected(playlistName) {
 		if (playlistName == currentPlaylist) {
 			updateSubPlaylistStyle(currentIndex);
 		}
-		
+
 		// Hide input field and show subplaylist div.
 		playlistParent.style.display = 'inline-block'
 		input.style.display = 'none';
@@ -233,7 +233,7 @@ function createFragments() {
 			if (el.addEventListener) {
 				el.addEventListener('click', e => subPlaylistSelected(e, el.id), false);
 			} else {
-				el.attachEvent('onclick',  e => subPlaylistSelected(e, el.id));
+				el.attachEvent('onclick', e => subPlaylistSelected(e, el.id));
 			}
 			el.appendChild(num);
 			fragment.appendChild(el);
@@ -385,7 +385,7 @@ function changePlaylist(playlist, autoplay) {
 	} else {
 		player.cuePlaylist(loadData);
 	}
-	
+
 	setLoopStatus();
 	player.setVolume(50);
 	saveData();
@@ -488,7 +488,7 @@ function infoClicked() {
 	infoModal.style.display = 'block';
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
 	if (event.target == infoModal) {
 		closeInfoModal();
 	} else if (event.target == shareModal) {
@@ -498,7 +498,7 @@ window.onclick = function(event) {
 
 function closeShareModal() {
 	shareModal.style.display = 'none';
-	
+
 	// Reset button state.
 	const copyButton = document.getElementById('copy-button');
 	copyButton.innerHTML = 'Copy';
