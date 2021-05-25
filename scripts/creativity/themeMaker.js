@@ -23,7 +23,25 @@ const musicActivities = [
 	"Sound Sampler"
 ]
 
+let writingPool = [...writingActivities];
+let visualPool = [...visualActivities];
+let musicPool = [...musicActivities];
+
+let occurrenceMap;
+let breakdownMap;
+
+let lastXActivities = [];
+
 const allActivities = writingActivities.concat(visualActivities).concat(musicActivities);
+
+const ACTIVITY_DAY_CACHE_SIZE = 3;
+
+function generate() {
+	occurrenceMap = [];
+	breakdownMap = initializeMap(["Writing", "Visual", "Music"]);
+	generateList();
+	plotGraphs(occurrenceMap, breakdownMap);
+}
 
 function generateList() {
 	let daysToPopulate = getNumberFromInput("day-count");
@@ -43,19 +61,12 @@ function generateList() {
 	let maxVisual = Math.floor(visualRatio * maxActivities / 100);
 	let maxMusic = Math.floor(musicRatio * maxActivities / 100);
 
-	let writingPool = [...writingActivities];
-	let visualPool = [...visualActivities];
-	let musicPool = [...musicActivities];
-
 	let div = document.getElementById("theme-day-parent");
 	div.innerHTML = "";
 
-	let occurrenceMap = [];
-
-	let breakdownMap = initializeMap(["Writing", "Visual", "Music"]);
-
 	for (let i = 0; i < daysToPopulate; i++) {
 		console.log("===== DAY " + (i + 1) + " =====");
+
 		for (let j = 0; j < numActivitiesInDay; j++) {
 			let category;
 			let categoryName;
@@ -64,7 +75,7 @@ function generateList() {
 			// Get random activity from chosen pool.
 			let activity = null;
 			while (activity == null) {
-				// Select which activity pool we're drawing form.
+				// Select which activity pool we're drawing from.
 				let rand = Math.floor(Math.random() * 100);
 				if (rand < writingRatio) {
 					categoryName = "Writing";
@@ -82,18 +93,30 @@ function generateList() {
 
 				console.log(rand + ": Picking from " + categoryName);
 				activity = getRandomActivityFromPool(category, categoryName, categoryMax, breakdownMap);
+
+				if (category.length <= 0) {
+					refillPool(categoryName);
+				}
+
+				if (activity != null) {
+					lastXActivities.push(activity);
+
+					if (lastXActivities.length > ACTIVITY_DAY_CACHE_SIZE * numActivitiesInDay) {
+						lastXActivities.shift();
+					}
+				}
 			}
 
 			console.log("	> Picked " + activity);
 
-			if (writingPool.length <= 0 && breakdownMap["Writing"] < maxWriting) {
-				writingPool = [...writingActivities];
+			if (writingPool.length <= 0) {
+				refillPool("Writing");
 			}
-			if (visualPool.length <= 0 && breakdownMap["Visual"] < maxVisual) {
-				visualPool = [...visualActivities];
+			if (visualPool.length <= 0) {
+				refillPool("Visual");
 			}
-			if (musicPool.length <= 0 && breakdownMap["Music"] < maxMusic) {
-				musicPool = [...musicActivities];
+			if (musicPool.length <= 0) {
+				refillPool("Music");
 			}
 
 			addKeyValuePairToMap(occurrenceMap, activity);
@@ -102,8 +125,6 @@ function generateList() {
 		}
 		div.innerHTML += "\n\n";
 	}
-
-	plotGraphs(occurrenceMap, breakdownMap);
 }
 
 function getNumberFromInput(id) {
@@ -117,15 +138,42 @@ function getRandomActivityFromPool(activityPool, categoryName, categoryMax, brea
 		return null;
 	}
 
-	// No idea why it hangs up if this is a >= operation.
-	if (breakdownMap[categoryName] > categoryMax) {
-		return null;
-	}
-
 	let activity = activityPool[Math.floor(Math.random() * activityPool.length)];
 	let index = activityPool.indexOf(activity);
 	activityPool.splice(index, 1);
+
+	lastXActivities.forEach(element => {
+		if (element == activity) {
+			console.warn(activity + " was found in the last " + ACTIVITY_DAY_CACHE_SIZE + " days!");
+			activity = null;
+		}
+	});
+
 	return activity;
+}
+
+function refillPool(category) {
+	let pool;
+
+	switch (category) {
+		case "Writing":
+			writingPool = [...writingActivities];
+			pool = writingPool;
+			break;
+		case "Visual":
+			visualPool = [...visualActivities];
+			pool = visualPool;
+			break;
+		case "Music":
+			musicPool = [...musicActivities];
+			pool = musicPool;
+			break;
+		default:
+			console.warn("refillPool called without arg!");
+			break;
+	}
+
+	return pool;
 }
 
 function initializeMap(keys) {
@@ -165,11 +213,7 @@ function plotRawCount(rawCountMap) {
 		}
 	}
 
-	let config = {
-		staticPlot: true
-	}
-
-	Plotly.newPlot(rawCountGraph, data, layout, config);
+	Plotly.newPlot(rawCountGraph, data, layout);
 }
 
 function plotBreakdown(breakdownMap) {
