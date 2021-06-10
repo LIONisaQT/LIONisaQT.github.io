@@ -1,3 +1,8 @@
+/*
+	Current implementation does not deal with significantly large numbers nor negative numbers in file input -- will
+	discuss implementation with such numbers during interview.
+*/
+
 let grid;
 let cols, rows;
 const resolution = 10; // Size of squares.
@@ -39,7 +44,7 @@ function draw() {
 		}
 	}
 
-	if (numGenerations > 0 || numGenerations <= -99) {
+	if (numGenerations > 0 || numGenerations == -99) {
 		background(0, 70);
 
 		// Compute next generation based on current grid.
