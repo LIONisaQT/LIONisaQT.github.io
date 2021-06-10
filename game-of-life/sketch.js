@@ -6,7 +6,7 @@
 let grid;
 let cols, rows;
 const resolution = 10; // Size of squares.
-let numGenerations = 10;
+let numGenerations = -99;
 
 function setup() {
 	createCanvas(1200, 800);
@@ -44,7 +44,7 @@ function draw() {
 		}
 	}
 
-	if (numGenerations > 0 || numGenerations == -99) {
+	if (numGenerations > 0 || numGenerations <= -99) {
 		background(0, 70);
 
 		// Compute next generation based on current grid.
