@@ -81,7 +81,9 @@ function draw() {
 
 				} else {
 					next[i][j] = cell;
-					if (cell.isAlive) {
+
+					// We only care about what's left on the final generation.
+					if (numGenerations == 1 && cell.isAlive) {
 						liveCellsList.push(cell);
 					}
 				}
