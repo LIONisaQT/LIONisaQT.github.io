@@ -59,7 +59,11 @@ function draw() {
 					dirtyCell.y = j;
 					dirtyCell.isAlive = true;
 					dirtyCellsList.push(dirtyCell);
-					liveCellsList.push(dirtyCell);
+
+					// We only care about what's left on the final generation.
+					if (numGenerations == 1) {
+						liveCellsList.push(dirtyCell);
+					}
 
 				} else if (cell.isAlive && (cell.liveNeighbors < 2 || cell.liveNeighbors > 3)) {
 					next[i][j] = new Cell(i, j, false, cell.liveNeighbors);
