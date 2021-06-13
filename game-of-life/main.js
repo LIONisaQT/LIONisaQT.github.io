@@ -188,6 +188,12 @@ function populateGridFromFile(file) {
 			const line = lines[i].split(' ');
 			const x = Number.parseInt(line[0]);
 			const y = Number.parseInt(line[1]);
+
+			// Skip negative numbers and numbers greater than the biggest number JavaScript can handle (2^53 - 1).
+			if (x < 0 || x > Number.MAX_SAFE_INTEGER || y < 0 || y > Number.MAX_SAFE_INTEGER) {
+				continue;
+			}
+
 			grid[x * rows + y] = new Cell(x, y, true, 0);
 		}
 
