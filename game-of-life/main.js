@@ -150,12 +150,6 @@ function renderGrid(grid) {
 		}
 	}
 }
-
-function deepCopyGrids(from, to) {
-	for (let i = 0; i < cols; i++) {
-		to[i] = JSON.parse(JSON.stringify(from[i]));
-	}
-}
 //#endregion Helper methods for Game of Life.
 
 class Cell {
