@@ -31,6 +31,8 @@ function setup() {
 }
 
 function draw() {
+	background(0);
+
 	// Render grid.
 	for (let i = 0; i < cols; i++) {
 		for (let j = 0; j < rows; j++) {
@@ -45,8 +47,6 @@ function draw() {
 	}
 
 	if (numGenerations > 0 || numGenerations <= -99) {
-		background(0, 70);
-
 		// Compute next generation based on current grid.
 		const dirtyCellsList = [];
 		const liveCellsList = [];
@@ -101,8 +101,6 @@ function draw() {
 			liveCellsList.forEach(cell => console.log(cell.x + ' ' + cell.y));
 		}
 	}
-
-	background(0, 5);
 }
 
 // Makes 2-D array for grid.
@@ -181,8 +179,8 @@ function dropHandler(event) {
 function populateGridFromFile(file) {
 	let reader = new FileReader();
 	reader.readAsText(file);
-	
-	reader.onload = function() {
+
+	reader.onload = function () {
 		clearGrid(grid);
 		const content = reader.result;
 		let lines = content.split('\n');
@@ -203,7 +201,7 @@ function populateGridFromFile(file) {
 		numGenerations = 10;
 	}
 
-	reader.onerror = function() {
+	reader.onerror = function () {
 		console.error(reader.error);
 	}
 }
