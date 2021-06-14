@@ -1,6 +1,7 @@
 /*
 	Implementation does not deal with significantly large numbers nor negative numbers in file input -- will
 	discuss implementation with such numbers during interview.
+	Runs an infinite loop unless a #Life 1.06 file is dragged into the window.
 */
 
 let grid;

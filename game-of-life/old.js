@@ -1,17 +1,18 @@
 /*
 	Implementation does not deal with significantly large numbers nor negative numbers in file input -- will
 	discuss implementation with such numbers during interview.
+	Runs an infinite loop unless a #Life 1.06 file is dragged into the window.
 */
 
 let grid;
 let cols, rows;
-const resolution = 10; // Size of squares.
+const cellSize = 10; // Size of squares.
 let numGenerations = -99;
 
 function setup() {
 	createCanvas(1200, 800);
-	cols = width / resolution;
-	rows = height / resolution;
+	cols = width / cellSize;
+	rows = height / cellSize;
 
 	grid = makeGrid(cols, rows);
 
@@ -36,12 +37,12 @@ function draw() {
 	// Render grid.
 	for (let i = 0; i < cols; i++) {
 		for (let j = 0; j < rows; j++) {
-			const x = i * resolution;
-			const y = j * resolution;
+			const x = i * cellSize;
+			const y = j * cellSize;
 			if (grid[i][j].isAlive) {
 				fill(255);
 				stroke(0);
-				rect(x, y, resolution - 1, resolution - 1);
+				rect(x, y, cellSize - 1, cellSize - 1);
 			}
 		}
 	}
