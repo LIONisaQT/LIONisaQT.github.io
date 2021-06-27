@@ -41,6 +41,7 @@ body {
 .contents {
 	max-width: 1600px;
 	margin: auto;
+	position: relative;
 }
 
 .header {
@@ -477,4 +478,117 @@ h2 {
 
 .right-icon-group {
 	text-align: right;
+}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+	.grid {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	.grid-main {
+		grid-template-columns: 1fr;
+	}
+
+	.left-main {
+		position: absolute;
+		width: 189px;
+		top: 640px;
+	}
+
+	.right-main {
+		position: absolute;
+		width: 189px;
+		right: 0;
+		top: 640px;
+	}
+}
+
+@media only screen
+and (min-device-width : 1024px)
+and (max-device-width : 1366px)
+and (orientation : portrait) {
+	.left-main {
+		width: 250px;
+		top: 780px;
+	}
+
+	.right-main {
+		width: 250px;
+		top: 780px;
+	}
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) {
+	body {
+		margin: 20px;
+		background-size: auto;
+	}
+
+	.grid {
+		grid-template-columns: 1fr;
+		display: relative;
+	}
+
+	.header {
+		margin-bottom: 30px;
+	}
+
+	.grid-main {
+		grid-template-columns: 1fr;
+	}
+
+	.logo {
+		content: url("/static/imissmycafe/img/LogoSmall.png");
+		width: 90%;
+	}
+
+	.left-header {
+		/* position: absolute;
+		top: 140px;
+		left: 30%; */
+		display: none;
+	}
+
+	.right-header {
+		/* position: absolute;
+		top: 140px;
+		right: 30%; */
+		display: none;
+	}
+
+	.left-main {
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		width: 80%;
+		top: 400px;
+	}
+
+	.right-main {
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		width: 80%;
+		top: 680px;
+		padding-bottom: 40px;
+	}
+}
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 414px) {
+	.left-main {
+		top: 480px;
+	}
+
+	.right-main {
+		top: 780px;
+	}
 }
