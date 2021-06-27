@@ -461,3 +461,20 @@ h2 {
 	cursor: pointer;
 	filter: hue-rotate(225deg);
 }
+
+.top-bar {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	background: var(--light-purple);
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	padding: 8px 16px 2px;
+}
+
+.left-icon-group {
+	text-align: left;
+}
+
+.right-icon-group {
+	text-align: right;
+}
