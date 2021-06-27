@@ -510,5 +510,5 @@ function closeInfoModal() {
 
 function shareCopyClicked(button) {
 	button.innerHTML = "Copied!";
-	document.execCommand(window.location.href);
+	navigator.clipboard.writeText(window.location.href);
 }
