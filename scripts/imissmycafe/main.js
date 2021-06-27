@@ -2,8 +2,8 @@ const defaultPlaylist = "https://www.youtube.com/watch?v=5qap5aO4i9A";
 
 const lofiPlaylists = [
 	"https://www.youtube.com/watch?v=5qap5aO4i9A",
-	"https://www.youtube.com/watch?v=IRseJUSzWTo",
-	"https://www.youtube.com/watch?v=cqEydD0wAuI",
+	"https://www.youtube.com/watch?v=5yx6BWlEVcY",
+	"https://www.youtube.com/watch?v=-5KAN9_CzSA",
 	"https://www.youtube.com/watch?v=Q326lVMgsHk",
 	"https://www.youtube.com/watch?v=-5KAN9_CzSA",
 	"https://www.youtube.com/watch?v=Xry_g0Vp5MY",
