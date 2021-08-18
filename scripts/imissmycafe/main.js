@@ -11,7 +11,7 @@ const lofiPlaylists = [
 ];
 
 const kpopPlaylists = [
-	"hhttps://www.youtube.com/watch?v=QNS3SXYyaUY&list=PL5FeYIiqkJGrIHcXmkcUvQUCHN-h3eyay",
+	"https://www.youtube.com/watch?v=QNS3SXYyaUY&list=PL5FeYIiqkJGrIHcXmkcUvQUCHN-h3eyay",
 	"https://www.youtube.com/watch?v=lKlSesz-V-8",
 	"https://www.youtube.com/watch?v=ntOYV6mz_7Q",
 ];
