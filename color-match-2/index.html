@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | ColorMatch</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body style="background-color:#333;">
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width=960 height=600></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-mobile-warning">
+        WebGL builds are not supported on mobile devices.
+      </div>
+      <div id="unity-footer">
+        <!-- <div id="unity-webgl-logo"></div> -->
+        <!-- <div id="unity-fullscreen-button"></div> -->
+        <!-- <div id="unity-build-title">ColorMatch</div> -->
+      </div>
+    </div>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
+      import { getFirestore, query, where, collection, doc, getDoc, getDocs, setDoc } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore.js";
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyAdHD7RHFdS8kxU0Xqb1e-pZqvO5GMiAlU",
+        authDomain: "colormatch-a03a4.firebaseapp.com",
+        databaseURL: "https://colormatch-a03a4-default-rtdb.firebaseio.com",
+        projectId: "colormatch-a03a4",
+        storageBucket: "colormatch-a03a4.appspot.com",
+        messagingSenderId: "625653729161",
+        appId: "1:625653729161:web:ced18fad9e90d52f7b4358",
+        measurementId: "G-QHJ64VGBJK"
+      };
+    
+      // Initialize Firebase
+      window.app = initializeApp(firebaseConfig);
+      window.db = getFirestore(app);
+
+      window.getData = async () => {
+        await getDocs(collection(window.db, "playerData"));
+      }
+
+      const docRef = doc(window.db, "playerData", "50319f93c7ba854ebe096ed4ce58d0be5c591e6f");
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        window.playerData = docSnap.data();
+      } else {
+        console.log("No such document!");
+      }
+
+      window.sendData = async (payload) => {
+        const json = JSON.parse(payload);
+        await setDoc(doc(window.db, "playerData", json.name == "n/a" ? "0" : "json.name"), {json});
+      }
+    </script>
+    <script>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/Build.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/Build.data",
+        frameworkUrl: buildUrl + "/Build.framework.js",
+        codeUrl: buildUrl + "/Build.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "ColorMatch",
+        productVersion: "1.0",
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      // var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var mobileWarning = document.querySelector("#unity-mobile-warning");
+
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        // Avoid draining fillrate performance on mobile devices,
+        // and default/override low DPI mode on mobile browsers.
+        config.devicePixelRatio = 1;
+        mobileWarning.style.display = "block";
+        setTimeout(() => {
+          mobileWarning.style.display = "none";
+        }, 5000);
+      } else {
+        canvas.style.width = "800px";
+        canvas.style.height = "600px";
+      }
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          window.unityInstance = unityInstance;
+          loadingBar.style.display = "none";
+          // fullscreenButton.onclick = () => {
+          //   unityInstance.SetFullscreen(1);
+          // };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
